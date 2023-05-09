@@ -1,15 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>二叉树遍历方式</title>
-    <url>/blog/2023/04/20/%E4%BA%8C%E5%8F%89%E6%A0%91%E9%81%8D%E5%8E%86%E6%96%B9%E5%BC%8F/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\blog\assets\css\APlayer.min.css"><script src="\blog\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\blog\assets\js\Meting.min.js"></script><p>二叉树遍历方式有：前序遍历，中序遍历，后续遍历。所有的遍历都是以根节点作为参照。比如前序遍历：根左右</p>
+    <title>VUE第一章</title>
+    <url>/blog/2023/05/09/VUE%E7%AC%AC%E4%B8%80%E7%AB%A0/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\blog\assets\css\APlayer.min.css"><script src="\blog\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\blog\assets\js\Meting.min.js"></script><h1 id="什么是-Vue？​"><a href="#什么是-Vue？​" class="headerlink" title="什么是 Vue？​"></a>什么是 Vue？​</h1><p>Vue (发音为 &#x2F;vjuː&#x2F;，类似 view) 是一款用于构建用户界面的 <strong>JavaScript 框架</strong>。它基于标准 HTML、CSS 和 JavaScript 构建，并提供了一套声明式的、组件化的编程模型，帮助你高效地开发用户界面。无论是简单还是复杂的界面，Vue 都可以胜任。</p>
+<p>其特点是组件化（vue文件封装DOM，css，js）、声明式编码（不直接DOM操作DOM，而是用vue自定义的指令（实际就是不用自己写js脚本操作DOM）、渐进式（可以用简单的核心包搭建项目，后续可以根据需要增加必要的插件））。</p>
+<p><em>注：Vue 2 将于 2023 年 12 月 31 日停止维护。</em></p>
 ]]></content>
       <categories>
-        <category>-算法</category>
+        <category>-前端 -vue</category>
       </categories>
       <tags>
-        <tag>二叉树</tag>
+        <tag>vue</tag>
       </tags>
   </entry>
   <entry>
@@ -20,5 +22,17 @@
       <categories>
         <category>-生活</category>
       </categories>
+  </entry>
+  <entry>
+    <title>二叉树遍历方式</title>
+    <url>/blog/2023/04/20/%E4%BA%8C%E5%8F%89%E6%A0%91%E9%81%8D%E5%8E%86%E6%96%B9%E5%BC%8F/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\blog\assets\css\APlayer.min.css"><script src="\blog\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\blog\assets\js\Meting.min.js"></script><p>二叉树遍历方式有：前序遍历，中序遍历，后续遍历。所有的遍历都是以根节点作为参照。比如前序遍历：根左右</p>
+]]></content>
+      <categories>
+        <category>-算法</category>
+      </categories>
+      <tags>
+        <tag>二叉树</tag>
+      </tags>
   </entry>
 </search>
