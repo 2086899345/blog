@@ -1,0 +1,610 @@
+<!DOCTYPE html>
+
+
+<html lang="zh-CN">
+  
+
+    <head>
+      <meta charset="utf-8" />
+        
+      <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1, maximum-scale=1"
+      />
+      <title>Vue2 |  个人博客</title>
+  <meta name="generator" content="hexo-theme-ayer">
+      
+      <link rel="shortcut icon" href="/blog/logo.ico" />
+       
+<link rel="stylesheet" href="/blog/dist/main.css">
+
+      
+<link rel="stylesheet" href="/blog/css/fonts/remixicon.css">
+
+      
+<link rel="stylesheet" href="/blog/css/custom.css">
+ 
+      <script src="https://cdn.staticfile.org/pace/1.2.4/pace.min.js"></script>
+       
+ 
+
+      <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/@sweetalert2/theme-bulma@5.0.1/bulma.min.css"
+      />
+      <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.19/dist/sweetalert2.min.js"></script>
+
+      <!-- mermaid -->
+      
+      <style>
+        .swal2-styled.swal2-confirm {
+          font-size: 1.6rem;
+        }
+      </style>
+    </head>
+  </html>
+</html>
+
+
+<body>
+  <div id="app">
+    
+      
+      <canvas width="1777" height="841"
+        style="position: fixed; left: 0px; top: 0px; z-index: 99999; pointer-events: none;"></canvas>
+      
+    <main class="content on">
+      <section class="outer">
+  <article
+  id="post-vue"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h1 class="article-title sea-center" style="border-left:0" itemprop="name">
+  Vue2
+</h1>
+ 
+
+      
+    </header>
+     
+    <div class="article-meta">
+      <a href="/blog/2023/06/01/vue/" class="article-date">
+  <time datetime="2023-06-01T12:44:53.000Z" itemprop="datePublished">2023-06-01</time>
+</a> 
+  <div class="article-category">
+    <a class="article-category-link" href="/blog/categories/Vue2/">-Vue2</a>
+  </div>
+  
+<div class="word_count">
+    <span class="post-time">
+        <span class="post-meta-item-icon">
+            <i class="ri-quill-pen-line"></i>
+            <span class="post-meta-item-text"> 字数统计:</span>
+            <span class="post-count">1.5k</span>
+        </span>
+    </span>
+
+    <span class="post-time">
+        &nbsp; | &nbsp;
+        <span class="post-meta-item-icon">
+            <i class="ri-book-open-line"></i>
+            <span class="post-meta-item-text"> 阅读时长≈</span>
+            <span class="post-count">6 分钟</span>
+        </span>
+    </span>
+</div>
+ 
+    </div>
+      
+    <div class="tocbot"></div>
+
+
+
+
+  
+    <div class="article-entry" itemprop="articleBody">
+       
+  <h1 id="什么是-Vue？​"><a href="#什么是-Vue？​" class="headerlink" title="什么是 Vue？​"></a>什么是 Vue？​</h1><p>Vue (发音为 &#x2F;vjuː&#x2F;，类似 view) 是一款用于构建用户界面的 <strong>JavaScript 框架</strong>。它基于标准 HTML、CSS 和 JavaScript 构建，并提供了一套声明式的、组件化的编程模型，帮助你高效地开发用户界面。无论是简单还是复杂的界面，Vue 都可以胜任。</p>
+<p>其特点是组件化（vue文件封装DOM，css，js）、声明式编码（不直接DOM操作DOM，而是用vue自定义的指令（实际就是不用自己写js脚本操作DOM）、渐进式（可以用简单的核心包搭建项目，后续可以根据需要增加必要的插件））。</p>
+<p><em>注：Vue 2 将于 2023 年 12 月 31 日停止维护。</em></p>
+<h1 id="1-模板语法"><a href="#1-模板语法" class="headerlink" title="1.模板语法"></a>1.模板语法</h1><p>插值语法：用于解析标签体内容</p>
+<p>指令语法：用于解析标签属性，内容，绑定事件等等（vue自定义的指令，以v-开头）。</p>
+<h1 id="2-数据绑定"><a href="#2-数据绑定" class="headerlink" title="2.数据绑定"></a>2.数据绑定</h1><h2 id="v-bind-和-v-model"><a href="#v-bind-和-v-model" class="headerlink" title="v-bind 和 v-model"></a>v-bind 和 v-model</h2><p>v-bind是单向绑定，vue实例属性变化标签value会变化，标签value变化不会引起vue实例属性的变化。一般简写成:value。</p>
+<p>v-model是双向绑定，标签value和vue实例属性变化任意一方变化，都会引起一方变化。只能用于form表单元素。因为是对form表单元素value的绑定，所以一般v-model:value写成v-model。</p>
+<p><em><strong>tips：由vue管理的函数不要用箭头函数，不然函数体里的this就不是vue函数</strong></em></p>
+<h1 id="MVVM"><a href="#MVVM" class="headerlink" title="MVVM"></a>MVVM</h1><p>MVVM指的是Model，View，ViewModel。在vue中，Model指的是一般的js对象，View指的是DOM，ViewModel指的是vue实例对象。</p>
+<h1 id="数据代理"><a href="#数据代理" class="headerlink" title="数据代理"></a>数据代理</h1><h2 id="前置知识"><a href="#前置知识" class="headerlink" title="前置知识"></a>前置知识</h2><ul>
+<li>Object.defineProperty 设置的对象属性不参与枚举（遍历）。</li>
+</ul>
+<p><em>如果想枚举属性，可以设置参数enumerable为true。</em></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> person = &#123;</span><br><span class="line">            <span class="attr">name</span>: <span class="string">&quot;zhangsan&quot;</span></span><br><span class="line">        &#125;</span><br><span class="line"><span class="title class_">Object</span>.<span class="title function_">defineProperty</span>(person,<span class="string">&quot;sex&quot;</span>,&#123;</span><br><span class="line">    <span class="attr">value</span>:<span class="string">&#x27;male&#x27;</span>,</span><br><span class="line">    <span class="attr">enumerable</span>: <span class="literal">true</span>, <span class="comment">// 属性是否可以枚举</span></span><br><span class="line">    <span class="attr">writable</span>: <span class="literal">true</span> <span class="comment">// 属性是否可以修改</span></span><br><span class="line">    <span class="attr">configurable</span>: <span class="literal">true</span> <span class="comment">// 属性是否可以删除</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<ul>
+<li>getter和setter函数。<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> number = <span class="number">18</span></span><br><span class="line"><span class="keyword">let</span> person = &#123;</span><br><span class="line">    <span class="attr">name</span>: <span class="string">&quot;zhangsan&quot;</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="title class_">Object</span>.<span class="title function_">defineProperty</span>(person,<span class="string">&quot;age&quot;</span>,&#123;</span><br><span class="line">    <span class="comment">// 当读取person属性age时，get函数（getter）就会被调用，且返回值就是age</span></span><br><span class="line">    <span class="title function_">get</span>(<span class="params"></span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> number;</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="comment">// 当读取person属性age时，set函数（setter）就会被调用，且收到修改的值</span></span><br><span class="line">    <span class="title function_">set</span>(<span class="params">value</span>) &#123;</span><br><span class="line">        number = value;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br><span class="line"></span><br></pre></td></tr></table></figure></li>
+</ul>
+<h2 id="数据代理定义"><a href="#数据代理定义" class="headerlink" title="数据代理定义"></a>数据代理定义</h2><p>通过一个对象代理对另一个对象的属性操作（读写）。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> obj1 = &#123;<span class="attr">x</span>:<span class="number">100</span>&#125;</span><br><span class="line"><span class="keyword">let</span> obj2 = &#123;<span class="attr">y</span>:<span class="number">200</span>&#125;</span><br><span class="line"></span><br><span class="line"><span class="title class_">Object</span>.<span class="title function_">defineProperty</span>(obj2,<span class="string">&#x27;x&#x27;</span>,&#123;</span><br><span class="line">    <span class="title function_">get</span>(<span class="params"></span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> obj1.<span class="property">x</span></span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="title function_">set</span>(<span class="params">value</span>) &#123;</span><br><span class="line">        obj1.<span class="property">x</span> = value</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<p>obj2代理对obj1中x属性操作。</p>
+<h1 id="vue数据代理"><a href="#vue数据代理" class="headerlink" title="vue数据代理"></a>vue数据代理</h1><p>通过vm对象代理data属性中的操作（读写）<br>原理：通过 Object.defineProperty()把data对象中的属性添加到vm对象上，为每一个添加到vm的属性指定getter和setter，通过getter和setter操作data中的属性。</p>
+<h1 id="事件"><a href="#事件" class="headerlink" title="事件"></a>事件</h1><p>指令：v-on:事件名称 简写@事件名称</p>
+<blockquote>
+<p>事件修饰符</p>
+</blockquote>
+<ul>
+<li><p>stop 阻止事件冒泡</p>
+</li>
+<li><p>prevent 阻止默认事件</p>
+</li>
+<li><p>self 只有event.target是当前操作元素才触发</p>
+</li>
+<li><p>capture 使用事件的捕获方式</p>
+</li>
+<li><p>once 事件只触发一次</p>
+</li>
+<li><p>passive 立即执行，无需等待事件回调</p>
+<blockquote>
+<p>键盘事件</p>
+</blockquote>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;!-- 仅在 <span class="string">`key`</span> 为 <span class="string">`Enter`</span> 时调用 <span class="string">`submit`</span> --&gt;</span><br><span class="line"><span class="language-xml"><span class="tag">&lt;<span class="name">input</span> @<span class="attr">keyup.enter</span>=<span class="string">&quot;submit&quot;</span> /&gt;</span></span></span><br></pre></td></tr></table></figure>
+<p>Vue 为一些常用的按键提供了别名：</p>
+</li>
+<li><p>enter</p>
+</li>
+<li><p>tab</p>
+</li>
+<li><p>delete (捕获“Delete”和“Backspace”两个按键)</p>
+</li>
+<li><p>esc</p>
+</li>
+<li><p>space</p>
+</li>
+<li><p>up</p>
+</li>
+<li><p>down</p>
+</li>
+<li><p>left</p>
+</li>
+<li><p>right</p>
+</li>
+</ul>
+<h1 id="计算属性"><a href="#计算属性" class="headerlink" title="计算属性"></a>计算属性</h1><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> &#123;</span><br><span class="line">  <span class="title function_">data</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> &#123;</span><br><span class="line">      <span class="attr">author</span>: &#123;</span><br><span class="line">        <span class="attr">name</span>: <span class="string">&#x27;John Doe&#x27;</span>,</span><br><span class="line">        <span class="attr">books</span>: [</span><br><span class="line">          <span class="string">&#x27;Vue 2 - Advanced Guide&#x27;</span>,</span><br><span class="line">          <span class="string">&#x27;Vue 3 - Basic Guide&#x27;</span>,</span><br><span class="line">          <span class="string">&#x27;Vue 4 - The Mystery&#x27;</span></span><br><span class="line">        ]</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">computed</span>: &#123;</span><br><span class="line">    <span class="comment">// 一个计算属性的 getter</span></span><br><span class="line">    <span class="title function_">publishedBooksMessage</span>(<span class="params"></span>) &#123;</span><br><span class="line">      <span class="comment">// `this` 指向当前组件实例</span></span><br><span class="line">      <span class="keyword">return</span> <span class="variable language_">this</span>.<span class="property">author</span>.<span class="property">books</span>.<span class="property">length</span> &gt; <span class="number">0</span> ? <span class="string">&#x27;Yes&#x27;</span> : <span class="string">&#x27;No&#x27;</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>和method相比，计算属性有缓存，效率高。</p>
+<h1 id="可写计算属性"><a href="#可写计算属性" class="headerlink" title="可写计算属性"></a>可写计算属性</h1><p>计算属性默认是只读的。当你尝试修改一个计算属性时，你会收到一个运行时警告。只在某些特殊场景中你可能才需要用到“可写”的属性，你可以通过同时提供 getter 和 setter 来创建：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> &#123;</span><br><span class="line">  <span class="title function_">data</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> &#123;</span><br><span class="line">      <span class="attr">firstName</span>: <span class="string">&#x27;John&#x27;</span>,</span><br><span class="line">      <span class="attr">lastName</span>: <span class="string">&#x27;Doe&#x27;</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">computed</span>: &#123;</span><br><span class="line">    <span class="attr">fullName</span>: &#123;</span><br><span class="line">      <span class="comment">// getter</span></span><br><span class="line">      <span class="title function_">get</span>(<span class="params"></span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="variable language_">this</span>.<span class="property">firstName</span> + <span class="string">&#x27; &#x27;</span> + <span class="variable language_">this</span>.<span class="property">lastName</span></span><br><span class="line">      &#125;,</span><br><span class="line">      <span class="comment">// setter</span></span><br><span class="line">      <span class="title function_">set</span>(<span class="params">newValue</span>) &#123;</span><br><span class="line">        <span class="comment">// 注意：我们这里使用的是解构赋值语法</span></span><br><span class="line">        [<span class="variable language_">this</span>.<span class="property">firstName</span>, <span class="variable language_">this</span>.<span class="property">lastName</span>] = newValue.<span class="title function_">split</span>(<span class="string">&#x27; &#x27;</span>)</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="侦听器"><a href="#侦听器" class="headerlink" title="侦听器"></a>侦听器</h1><p>计算属性允许我们声明性地计算衍生值。然而在有些情况下，我们需要在状态变化时执行一些“副作用”：例如更改 DOM，或是根据异步操作的结果去修改另一处的状态。</p>
+<p>在选项式 API 中，我们可以使用 watch 选项在每次响应式属性发生变化时触发一个函数。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> &#123;</span><br><span class="line">  <span class="title function_">data</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> &#123;</span><br><span class="line">      <span class="attr">question</span>: <span class="string">&#x27;&#x27;</span>,</span><br><span class="line">      <span class="attr">answer</span>: <span class="string">&#x27;Questions usually contain a question mark. ;-)&#x27;</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">watch</span>: &#123;</span><br><span class="line">    <span class="comment">// 每当 question 改变时，这个函数就会执行</span></span><br><span class="line">    <span class="title function_">question</span>(<span class="params">newQuestion, oldQuestion</span>) &#123;</span><br><span class="line">      <span class="keyword">if</span> (newQuestion.<span class="title function_">includes</span>(<span class="string">&#x27;?&#x27;</span>)) &#123;</span><br><span class="line">        <span class="variable language_">this</span>.<span class="title function_">getAnswer</span>()</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">methods</span>: &#123;</span><br><span class="line">    <span class="keyword">async</span> <span class="title function_">getAnswer</span>(<span class="params"></span>) &#123;</span><br><span class="line">      <span class="variable language_">this</span>.<span class="property">answer</span> = <span class="string">&#x27;Thinking...&#x27;</span></span><br><span class="line">      <span class="keyword">try</span> &#123;</span><br><span class="line">        <span class="keyword">const</span> res = <span class="keyword">await</span> <span class="title function_">fetch</span>(<span class="string">&#x27;https://yesno.wtf/api&#x27;</span>)</span><br><span class="line">        <span class="variable language_">this</span>.<span class="property">answer</span> = (<span class="keyword">await</span> res.<span class="title function_">json</span>()).<span class="property">answer</span></span><br><span class="line">      &#125; <span class="keyword">catch</span> (error) &#123;</span><br><span class="line">        <span class="variable language_">this</span>.<span class="property">answer</span> = <span class="string">&#x27;Error! Could not reach the API. &#x27;</span> + error</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="深层侦听器"><a href="#深层侦听器" class="headerlink" title="深层侦听器"></a>深层侦听器</h1><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> &#123;</span><br><span class="line">  <span class="attr">watch</span>: &#123;</span><br><span class="line">    <span class="attr">someObject</span>: &#123;</span><br><span class="line">      <span class="title function_">handler</span>(<span class="params">newValue, oldValue</span>) &#123;</span><br><span class="line">        <span class="comment">// 注意：在嵌套的变更中，</span></span><br><span class="line">        <span class="comment">// 只要没有替换对象本身，</span></span><br><span class="line">        <span class="comment">// 那么这里的 `newValue` 和 `oldValue` 相同</span></span><br><span class="line">      &#125;,</span><br><span class="line">      <span class="attr">deep</span>: <span class="literal">true</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="this-watch"><a href="#this-watch" class="headerlink" title="this.$watch()"></a>this.$watch()</h1><p>我们也可以使用组件实例的 $watch() 方法来命令式地创建一个侦听器：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> &#123;</span><br><span class="line">  <span class="title function_">created</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="variable language_">this</span>.$watch(<span class="string">&#x27;question&#x27;</span>, <span class="function">(<span class="params">newQuestion</span>) =&gt;</span> &#123;</span><br><span class="line">      <span class="comment">// ...</span></span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><em>tips: watch一般做异步调用</em></p>
+<h1 id="Class-与-Style-绑定"><a href="#Class-与-Style-绑定" class="headerlink" title="Class 与 Style 绑定"></a>Class 与 Style 绑定</h1><p>数据绑定的一个常见需求场景是操纵元素的 CSS class 列表和内联样式。因为 class 和 style 都是 attribute，我们可以和其他 attribute 一样使用 v-bind 将它们和动态的字符串绑定。但是，在处理比较复杂的绑定时，通过拼接生成字符串是麻烦且易出错的。因此，Vue 专门为 class 和 style 的 v-bind 用法提供了特殊的功能增强。除了字符串外，表达式的值也可以是对象或数组。</p>
+ 
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <footer class="article-footer">
+       
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/Vue2/" rel="tag">Vue2</a></li></ul>
+
+    </footer>
+  </div>
+
+   
+  <nav class="article-nav">
+    
+      <a href="/blog/2023/06/01/linux/" class="article-nav-link">
+        <strong class="article-nav-caption">上一篇</strong>
+        <div class="article-nav-title">
+          
+            Linux
+          
+        </div>
+      </a>
+    
+    
+      <a href="/blog/2023/04/20/%E4%BA%8C%E5%8F%89%E6%A0%91%E9%81%8D%E5%8E%86%E6%96%B9%E5%BC%8F/" class="article-nav-link">
+        <strong class="article-nav-caption">下一篇</strong>
+        <div class="article-nav-title">二叉树遍历方式</div>
+      </a>
+    
+  </nav>
+
+  
+   
+  
+    
+</article>
+
+</section>
+      <footer class="footer">
+  <div class="outer">
+    <ul>
+      <li>
+        Copyrights &copy;
+        2023
+        <i class="ri-heart-fill heart_icon"></i> Jie
+      </li>
+    </ul>
+    <ul>
+      <li>
+        
+      </li>
+    </ul>
+    <ul>
+      <li>
+        
+      </li>
+    </ul>
+    <ul>
+      
+    </ul>
+    <ul>
+      
+    </ul>
+    <ul>
+      <li>
+        <!-- cnzz统计 -->
+        
+        <script type="text/javascript" src=''></script>
+        
+      </li>
+    </ul>
+  </div>
+</footer>    
+    </main>
+    <div class="float_btns">
+      <div class="totop" id="totop">
+  <i class="ri-arrow-up-line"></i>
+</div>
+
+<div class="todark" id="todark">
+  <i class="ri-moon-line"></i>
+</div>
+
+    </div>
+    <aside class="sidebar on">
+      <button class="navbar-toggle"></button>
+<nav class="navbar">
+  
+  <div class="logo">
+    <a href="/blog/"><img src="/blog/images/sider.svg" alt="个人博客"></a>
+  </div>
+  
+  <ul class="nav nav-main">
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/blog/">主页</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/blog/archives">归档</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/blog/categories">分类</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/blog/tags">标签</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/blog/friends">友链</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/blog/photos">相册</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/blog/music">音乐</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/blog/">关于我</a>
+    </li>
+    
+  </ul>
+</nav>
+<nav class="navbar navbar-bottom">
+  <ul class="nav">
+    <li class="nav-item">
+      
+      <a class="nav-item-link nav-item-search"  title="搜索">
+        <i class="ri-search-line"></i>
+      </a>
+      
+      
+    </li>
+  </ul>
+</nav>
+<div class="search-form-wrap">
+  <div class="local-search local-search-plugin">
+  <input type="search" id="local-search-input" class="local-search-input" placeholder="Search...">
+  <div id="local-search-result" class="local-search-result"></div>
+</div>
+</div>
+    </aside>
+    <div id="mask"></div>
+
+<!-- #reward -->
+<div id="reward">
+  <span class="close"><i class="ri-close-line"></i></span>
+  <p class="reward-p"><i class="ri-cup-line"></i>请我喝杯咖啡吧~</p>
+  <div class="reward-box">
+    
+    <div class="reward-item">
+      <img class="reward-img" src="/blog/images/alipay.jpg">
+      <span class="reward-type">支付宝</span>
+    </div>
+    
+    
+    <div class="reward-item">
+      <img class="reward-img" src="/blog/images/wechat.jpg">
+      <span class="reward-type">微信</span>
+    </div>
+    
+  </div>
+</div>
+    
+<script src="/blog/js/jquery-3.6.0.min.js"></script>
+ 
+<script src="/blog/js/lazyload.min.js"></script>
+
+<!-- Tocbot -->
+ 
+<script src="/blog/js/tocbot.min.js"></script>
+
+<script>
+  tocbot.init({
+    tocSelector: ".tocbot",
+    contentSelector: ".article-entry",
+    headingSelector: "h1, h2, h3, h4, h5, h6",
+    hasInnerContainers: true,
+    scrollSmooth: true,
+    scrollContainer: "main",
+    positionFixedSelector: ".tocbot",
+    positionFixedClass: "is-position-fixed",
+    fixedSidebarOffset: "auto",
+  });
+</script>
+
+<script src="https://cdn.staticfile.org/jquery-modal/0.9.2/jquery.modal.min.js"></script>
+<link
+  rel="stylesheet"
+  href="https://cdn.staticfile.org/jquery-modal/0.9.2/jquery.modal.min.css"
+/>
+<script src="https://cdn.staticfile.org/justifiedGallery/3.8.1/js/jquery.justifiedGallery.min.js"></script>
+
+<script src="/blog/dist/main.js"></script>
+
+<!-- ImageViewer -->
+ <!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" style="display:none" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<link rel="stylesheet" href="https://cdn.staticfile.org/photoswipe/4.1.3/photoswipe.min.css">
+<link rel="stylesheet" href="https://cdn.staticfile.org/photoswipe/4.1.3/default-skin/default-skin.min.css">
+<script src="https://cdn.staticfile.org/photoswipe/4.1.3/photoswipe.min.js"></script>
+<script src="https://cdn.staticfile.org/photoswipe/4.1.3/photoswipe-ui-default.min.js"></script>
+
+<script>
+    function viewer_init() {
+        let pswpElement = document.querySelectorAll('.pswp')[0];
+        let $imgArr = document.querySelectorAll(('.article-entry img:not(.reward-img)'))
+
+        $imgArr.forEach(($em, i) => {
+            $em.onclick = () => {
+                // slider展开状态
+                // todo: 这样不好，后面改成状态
+                if (document.querySelector('.left-col.show')) return
+                let items = []
+                $imgArr.forEach(($em2, i2) => {
+                    let img = $em2.getAttribute('data-idx', i2)
+                    let src = $em2.getAttribute('data-target') || $em2.getAttribute('src')
+                    let title = $em2.getAttribute('alt')
+                    // 获得原图尺寸
+                    const image = new Image()
+                    image.src = src
+                    items.push({
+                        src: src,
+                        w: image.width || $em2.width,
+                        h: image.height || $em2.height,
+                        title: title
+                    })
+                })
+                var gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, items, {
+                    index: parseInt(i)
+                });
+                gallery.init()
+            }
+        })
+    }
+    viewer_init()
+</script> 
+<!-- MathJax -->
+ <script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+      tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+  });
+
+  MathJax.Hub.Queue(function() {
+      var all = MathJax.Hub.getAllJax(), i;
+      for(i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+      }
+  });
+</script>
+
+<script src="https://cdn.staticfile.org/mathjax/2.7.7/MathJax.js"></script>
+<script src="https://cdn.staticfile.org/mathjax/2.7.7/config/TeX-AMS-MML_HTMLorMML-full.js"></script>
+<script>
+  var ayerConfig = {
+    mathjax: true,
+  };
+</script>
+
+<!-- Katex -->
+
+<!-- busuanzi  -->
+
+<!-- ClickLove -->
+
+<!-- ClickBoom1 -->
+
+<!-- ClickBoom2 -->
+ 
+<script src="/blog/js/clickBoom2.js"></script>
+ 
+<!-- CodeCopy -->
+ 
+<link rel="stylesheet" href="/blog/css/clipboard.css">
+ <script src="https://cdn.staticfile.org/clipboard.js/2.0.10/clipboard.min.js"></script>
+<script>
+  function wait(callback, seconds) {
+    var timelag = null;
+    timelag = window.setTimeout(callback, seconds);
+  }
+  !function (e, t, a) {
+    var initCopyCode = function(){
+      var copyHtml = '';
+      copyHtml += '<button class="btn-copy" data-clipboard-snippet="">';
+      copyHtml += '<i class="ri-file-copy-2-line"></i><span>COPY</span>';
+      copyHtml += '</button>';
+      $(".highlight .code pre").before(copyHtml);
+      $(".article pre code").before(copyHtml);
+      var clipboard = new ClipboardJS('.btn-copy', {
+        target: function(trigger) {
+          return trigger.nextElementSibling;
+        }
+      });
+      clipboard.on('success', function(e) {
+        let $btn = $(e.trigger);
+        $btn.addClass('copied');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('ri-file-copy-2-line');
+        $icon.addClass('ri-checkbox-circle-line');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPIED';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('ri-checkbox-circle-line');
+          $icon.addClass('ri-file-copy-2-line');
+          $span[0].innerText = 'COPY';
+        }, 2000);
+      });
+      clipboard.on('error', function(e) {
+        e.clearSelection();
+        let $btn = $(e.trigger);
+        $btn.addClass('copy-failed');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('ri-file-copy-2-line');
+        $icon.addClass('ri-time-line');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPY FAILED';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('ri-time-line');
+          $icon.addClass('ri-file-copy-2-line');
+          $span[0].innerText = 'COPY';
+        }, 2000);
+      });
+    }
+    initCopyCode();
+  }(window, document);
+</script>
+ 
+<!-- CanvasBackground -->
+
+<script>
+  if (window.mermaid) {
+    mermaid.initialize({ theme: "forest" });
+  }
+</script>
+
+
+    
+    
+
+  </div>
+</body>
+
+</html>
