@@ -6,7 +6,7 @@
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\blog\assets\css\APlayer.min.css"><script src="\blog\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\blog\assets\js\Meting.min.js"></script><p>记录学习，记录生活，记录一切</p>
 ]]></content>
       <categories>
-        <category>-生活</category>
+        <category>生活</category>
       </categories>
   </entry>
   <entry>
@@ -15,7 +15,7 @@
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\blog\assets\css\APlayer.min.css"><script src="\blog\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\blog\assets\js\Meting.min.js"></script><p>二叉树遍历方式有：前序遍历，中序遍历，后续遍历。所有的遍历都是以根节点作为参照。比如前序遍历：根左右</p>
 ]]></content>
       <categories>
-        <category>-算法</category>
+        <category>算法</category>
       </categories>
       <tags>
         <tag>二叉树</tag>
@@ -37,7 +37,7 @@
 <p>对于对象锁（this），如果是同一个实例，就会按顺序访问，但是如果是不同实例，就可以同时访问。</p>
 ]]></content>
       <categories>
-        <category>-java</category>
+        <category>java</category>
       </categories>
       <tags>
         <tag>java</tag>
@@ -77,7 +77,7 @@
 <p><img src="/blog/img/640.png" alt="640"></p>
 ]]></content>
       <categories>
-        <category>-SpringBoot2</category>
+        <category>SpringBoot2</category>
       </categories>
       <tags>
         <tag>SpringBoot2</tag>
@@ -96,19 +96,11 @@
 </ul>
 ]]></content>
       <categories>
-        <category>-Spring</category>
+        <category>Spring</category>
       </categories>
       <tags>
         <tag>Spring</tag>
       </tags>
-  </entry>
-  <entry>
-    <title></title>
-    <url>/blog/2023/06/01/1.%E7%AE%80%E4%BB%8B/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\blog\assets\css\APlayer.min.css"><script src="\blog\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\blog\assets\js\Meting.min.js"></script><h1 id="1-1-Spring-Web-MVC是什么"><a href="#1-1-Spring-Web-MVC是什么" class="headerlink" title="1.1 Spring Web MVC是什么"></a>1.1 Spring Web MVC是什么</h1><p>Spring Web MVC 是一种基于 Java 的实现了 Web MVC 设计模式的请求驱动类型的轻量级 Web 框架，即使用了 MVC 架构模式的思想，将 web 层进行职责解耦，基于请求驱动指的就是使用请求-响应模型，框架的目的就是帮助我们简化开发，Spring Web MVC 也是要简化我们日常 Web 开发的。在 传统的 Jsp&#x2F;Servlet 技术体系中，如果要开发接口，一个接口对应一个 Servlet，会导致我们开发出许多 Servlet，使用 SpringMVC 可以有效的简化这一步骤。 </p>
-<p>Spring Web MVC 也是服务到工作者模式的实现，但进行可优化。前端控制器是 DispatcherServlet；应用控制器可以拆为处理器映射器(Handler Mapping)进行处理器管理和视图解析器(View Resolver)进行视图管理；页面控制器&#x2F;动作&#x2F;处理器为 Controller 接口（仅包含 ModelAndView handleRequest(request, response) 方法，也有人称作 Handler）的实现（也可以是任何的 POJO 类）；支持本地化（Locale）解析、主题（Theme）解析及文件上传等；提供了非常灵活的数据验证、格式化和数据绑定机制；提供了强大的约定大于配置（惯例优先原则）的契约式编程支持。 </p>
-<h1 id="1-2-Spring-Web-MVC能帮我们做什么"><a href="#1-2-Spring-Web-MVC能帮我们做什么" class="headerlink" title="1.2 Spring Web MVC能帮我们做什么"></a>1.2 Spring Web MVC能帮我们做什么</h1><p>让我们能非常简单的设计出干净的 Web 层和薄薄的 Web 层； 进行更简洁的 Web 层的开发； 天生与 Spring 框架集成（如 IoC 容器、AOP 等）； 提供强大的约定大于配置的契约式编程支持； 能简单的进行 Web 层的单元测试； 支持灵活的 URL 到页面控制器的映射； 非常容易与其他视图技术集成，如 Velocity、FreeMarker 等等，因为模型数据不放在特定的 API 里，而是放在一个 Model 里（Map 数据结构实现，因此很容易被其他框架使用）； 非常灵活的数据验证、格式化和数据绑定机制，能使用任何对象进行数据绑定，不必实现特定框架的 API； 提供一套强大的 JSP 标签库，简化 JSP 开发； 支持灵活的本地化、主题等解析； 更加简单的异常处理； 对静态资源的支持； 支持 RESTful 风格</p>
-]]></content>
   </entry>
   <entry>
     <title>10.SpringMVC JSON处理</title>
@@ -138,7 +130,7 @@
 <h1 id="接受json"><a href="#接受json" class="headerlink" title="接受json"></a>接受json</h1><p>使用注解 @RequestBody</p>
 <figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="meta">@RequestMapping(&quot;/addbook3&quot;)</span></span><br><span class="line"><span class="meta">@ResponseBody</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">addBook3</span><span class="params">(<span class="meta">@RequestBody</span> Book book)</span> &#123;</span><br><span class="line">    System.out.println(book);</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>]]></content>
       <categories>
-        <category>-SpringMVC</category>
+        <category>SpringMVC</category>
       </categories>
       <tags>
         <tag>SpringMVC</tag>
@@ -172,7 +164,7 @@
 <p>重启nginx，访问<a href="http://zhangjie.com/set">http://zhangjie.com/set</a> 和<a href="http://zhangjie.com/get">http://zhangjie.com/get</a></p>
 ]]></content>
       <categories>
-        <category>-SpringBoot2</category>
+        <category>SpringBoot2</category>
       </categories>
       <tags>
         <tag>SpringBoot2</tag>
@@ -221,7 +213,7 @@
 <p>最常见的一种设计错误，就是 URI 包含动词。因为”资源”表示一种实体，所以应该是名词，URI 不应该有动词，动词应该放在 HTTP 协议中。 举例来说，某个 URI 是 &#x2F;posts&#x2F;show&#x2F;1，其中 show 是动词，这个 URI 就设计错了，正确的写法应该是 &#x2F;posts&#x2F;1，然后用 GET 方法表示 show。</p>
 ]]></content>
       <categories>
-        <category>-Spring</category>
+        <category>Spring</category>
       </categories>
       <tags>
         <tag>Spring</tag>
@@ -250,7 +242,7 @@
 <p>基于此，浏览器在实际操作中，会对请求进行分类，分为简单请求，预先请求，带凭证的请求等，预先请求会首先发送一个 options 探测请求，和浏览器进行协商是否接受请求。默认情况下跨域请求是不需要凭证的，但是服务端可以配置要求客户端提供凭证，这样就可以有效避免 csrf 攻击。</p>
 ]]></content>
       <categories>
-        <category>-SpringBoot2</category>
+        <category>SpringBoot2</category>
       </categories>
       <tags>
         <tag>SpringBoot2</tag>
@@ -273,7 +265,7 @@
 </ul>
 ]]></content>
       <categories>
-        <category>-SpringMVC</category>
+        <category>SpringMVC</category>
       </categories>
       <tags>
         <tag>SpringMVC</tag>
@@ -307,7 +299,7 @@
 </tbody></table>
 ]]></content>
       <categories>
-        <category>-SpringMVC</category>
+        <category>SpringMVC</category>
       </categories>
       <tags>
         <tag>SpringMVC</tag>
@@ -319,7 +311,7 @@
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\blog\assets\css\APlayer.min.css"><script src="\blog\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\blog\assets\js\Meting.min.js"></script><p><img src="/blog/img/spring01.png" alt="spring02"></p>
 ]]></content>
       <categories>
-        <category>-Spring</category>
+        <category>Spring</category>
       </categories>
       <tags>
         <tag>Spring</tag>
@@ -350,7 +342,7 @@
 </ol>
 ]]></content>
       <categories>
-        <category>-SpringMVC</category>
+        <category>SpringMVC</category>
       </categories>
       <tags>
         <tag>SpringMVC</tag>
@@ -372,7 +364,7 @@
 <p>当然，这种方法命名主要是针对查询，但是一些特殊需求，可能并不能通过这种方式解决，例如想要查询 id 最大的用户，这时就需要开发者自定义查询 SQL 了。 如上代码所示，自定义查询 SQL，使用 @Query 注解，在注解中写自己的 SQL，默认使用的查询语言不是 SQL，而是 JPQL，这是一种数据库平台无关的面向对象的查询语言，有点定位类似于 Hibernate 中的 HQL，在 @Query 注解中设置 nativeQuery 属性为 true 则表示使用原生查询，即大伙所熟悉的 SQL。上面代码中的只是一个很简单的例子，还有其他一些点，例如如果这个方法中的 SQL 涉及到数据操作，则需要使用 @Modifying 注解。</p>
 <figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="meta">@SpringBootTest</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">SpringbootJpaDemoApplicationTests</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="type">Logger</span> <span class="variable">logger</span> <span class="operator">=</span> getLogger(SpringbootJpaDemoApplicationTests.class);</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    <span class="keyword">private</span> StudentDao studentDao;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Test</span></span><br><span class="line">    <span class="keyword">void</span> <span class="title function_">saveStudent</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="type">Student</span> <span class="variable">student</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Student</span>();</span><br><span class="line">        student.setName(<span class="string">&quot;李四&quot;</span>);</span><br><span class="line">        student.setNumber(DateUtil.yearOf(<span class="keyword">new</span> <span class="title class_">Date</span>())+<span class="string">&quot;0002&quot;</span>);</span><br><span class="line">        studentDao.save(student);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="meta">@Test</span></span><br><span class="line">    <span class="keyword">void</span> <span class="title function_">selectStudentByNumber</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="type">Student</span> <span class="variable">student</span> <span class="operator">=</span> studentDao.findStudentByNumber(<span class="string">&quot;20230001&quot;</span>);</span><br><span class="line">        logger.info(student.toString());</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="meta">@Test</span></span><br><span class="line">    <span class="keyword">void</span> <span class="title function_">updateStudent</span><span class="params">()</span> &#123;</span><br><span class="line">        Optional&lt;Student&gt; optional = studentDao.findById(<span class="number">1</span>);</span><br><span class="line">        <span class="keyword">if</span> (!optional.isEmpty()) &#123;</span><br><span class="line">            <span class="type">Student</span> <span class="variable">student</span> <span class="operator">=</span> optional.get();</span><br><span class="line">            logger.info(student.toString());</span><br><span class="line">            student.setName(<span class="string">&quot;王五&quot;</span>);</span><br><span class="line">            studentDao.saveAndFlush(student);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="meta">@Test</span></span><br><span class="line">    <span class="keyword">void</span> <span class="title function_">selectAll</span><span class="params">()</span> &#123;</span><br><span class="line">        List&lt;Student&gt; all = studentDao.findAll();</span><br><span class="line">        logger.info(all.toString());</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="meta">@Test</span></span><br><span class="line">    <span class="keyword">void</span> <span class="title function_">selectByPage</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="type">Pageable</span> <span class="variable">page</span> <span class="operator">=</span> PageRequest.of(<span class="number">0</span>,<span class="number">10</span>, Sort.by(<span class="string">&quot;id&quot;</span>));</span><br><span class="line">        Page&lt;Student&gt; all = studentDao.findAll(page);</span><br><span class="line">        System.out.println(all.getTotalPages());</span><br><span class="line">        System.out.println(all.getTotalElements());</span><br><span class="line">        System.out.println(all.getContent());</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="meta">@Test</span></span><br><span class="line">    <span class="keyword">void</span> <span class="title function_">deleteById</span><span class="params">()</span> &#123;</span><br><span class="line">        studentDao.deleteById(<span class="number">1</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>]]></content>
       <categories>
-        <category>-SpringBoot2</category>
+        <category>SpringBoot2</category>
       </categories>
       <tags>
         <tag>SpringBoot2</tag>
@@ -406,7 +398,7 @@ class 属性表示需要注册的 bean 的全路径，id 则表示 bean 的唯�
 <p>所以，一般建议使用 name 或者 id 去获取 Bean 的实例。</p>
 ]]></content>
       <categories>
-        <category>-Spring</category>
+        <category>Spring</category>
       </categories>
       <tags>
         <tag>Spring</tag>
@@ -418,7 +410,7 @@ class 属性表示需要注册的 bean 的全路径，id 则表示 bean 的唯�
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\blog\assets\css\APlayer.min.css"><script src="\blog\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\blog\assets\js\Meting.min.js"></script><p><img src="/blog/img/springmvc.png" alt="springmvc工作流"></p>
 ]]></content>
       <categories>
-        <category>-SpringMVC</category>
+        <category>SpringMVC</category>
       </categories>
       <tags>
         <tag>SpringMVC</tag>
@@ -451,7 +443,7 @@ class 属性表示需要注册的 bean 的全路径，id 则表示 bean 的唯�
 </ol>
 <figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="meta">@ApiModel</span></span><br><span class="line">publicclass User &#123;</span><br><span class="line">    <span class="meta">@ApiModelProperty(value = &quot;用户id&quot;)</span></span><br><span class="line">    <span class="keyword">private</span> Integer id;</span><br><span class="line">    <span class="meta">@ApiModelProperty(value = &quot;用户名&quot;)</span></span><br><span class="line">    <span class="keyword">private</span> String username;</span><br><span class="line">    <span class="meta">@ApiModelProperty(value = &quot;用户地址&quot;)</span></span><br><span class="line">    <span class="keyword">private</span> String address;</span><br><span class="line">    <span class="comment">//getter/setter</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
       <categories>
-        <category>-SpringBoot2</category>
+        <category>SpringBoot2</category>
       </categories>
       <tags>
         <tag>SpringBoot2</tag>
@@ -582,7 +574,7 @@ class 属性表示需要注册的 bean 的全路径，id 则表示 bean 的唯�
 <figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="meta">@Service</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">UserService</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    UserDao userDao;</span><br><span class="line">    <span class="keyword">public</span> String <span class="title function_">hello</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> userDao.hello();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> List&lt;String&gt; <span class="title function_">getAllUser</span><span class="params">()</span> &#123;</span><br><span class="line">        List&lt;String&gt; users = <span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;&gt;();</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; <span class="number">10</span>; i++) &#123;</span><br><span class="line">            users.add(<span class="string">&quot;javaboy:&quot;</span> + i);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> users;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 ]]></content>
       <categories>
-        <category>-Spring</category>
+        <category>Spring</category>
       </categories>
       <tags>
         <tag>Spring</tag>
@@ -607,7 +599,7 @@ class 属性表示需要注册的 bean 的全路径，id 则表示 bean 的唯�
 </code></pre>
 ]]></content>
       <categories>
-        <category>-SpringBoot2</category>
+        <category>SpringBoot2</category>
       </categories>
       <tags>
         <tag>SpringBoot2</tag>
@@ -638,7 +630,7 @@ class 属性表示需要注册的 bean 的全路径，id 则表示 bean 的唯�
 <p>ViewResolver 负责将处理结果生成 View 视图，ViewResolver 首先根据逻辑视图名解析成物理视图名即具体的页面地址，再生成 View 视图对象，最后对 View 进行渲染将处理结果通过页面展示给用户。 SpringMVC 框架提供了很多的 View 视图类型，包括：jstlView、freemarkerView、pdfView 等。一般情况下需要通过页面标签或页面模版技术将模型数据通过页面展示给用户，需要由程序员根据业务需求开发具体的页面。</p>
 ]]></content>
       <categories>
-        <category>-SpringMVC</category>
+        <category>SpringMVC</category>
       </categories>
       <tags>
         <tag>SpringMVC</tag>
@@ -651,7 +643,7 @@ class 属性表示需要注册的 bean 的全路径，id 则表示 bean 的唯�
 <p>这个注解的属性是一个接口（Condition），接口中只有一个方法，实现这个方法，就可以控制是否创建当前bean。常用的@Profile<br>注解底层也是用的条件注解。</p>
 ]]></content>
       <categories>
-        <category>-SpringBoot2</category>
+        <category>SpringBoot2</category>
       </categories>
       <tags>
         <tag>SpringBoot2</tag>
@@ -682,7 +674,7 @@ class 属性表示需要注册的 bean 的全路径，id 则表示 bean 的唯�
 <p>这个是可以的，可以在 SpringMVC 容器中扫描所有 Bean。不写在一起，有两个方面的原因： 为了方便配置文件的管理 在 Spring+SpringMVC+Hibernate 组合中，实际上也不支持这种写法</p>
 ]]></content>
       <categories>
-        <category>-SpringMVC</category>
+        <category>SpringMVC</category>
       </categories>
       <tags>
         <tag>SpringMVC</tag>
@@ -720,7 +712,7 @@ class 属性表示需要注册的 bean 的全路径，id 则表示 bean 的唯�
 <p>启动类中设置当前环境并加载配置：</p>
 <figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Main</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        <span class="type">ClassPathXmlApplicationContext</span> <span class="variable">ctx</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">ClassPathXmlApplicationContext</span>();</span><br><span class="line">        ctx.getEnvironment().setActiveProfiles(<span class="string">&quot;prod&quot;</span>);</span><br><span class="line">        ctx.setConfigLocation(<span class="string">&quot;applicationContext.xml&quot;</span>);</span><br><span class="line">        ctx.refresh();</span><br><span class="line">        <span class="type">DataSource</span> <span class="variable">dataSource</span> <span class="operator">=</span> (DataSource) ctx.getBean(<span class="string">&quot;dataSource&quot;</span>);</span><br><span class="line">        System.out.println(dataSource);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
       <categories>
-        <category>-Spring</category>
+        <category>Spring</category>
       </categories>
       <tags>
         <tag>Spring</tag>
@@ -739,7 +731,7 @@ class 属性表示需要注册的 bean 的全路径，id 则表示 bean 的唯�
 <p>每一个子接口均提供了一个 set 方法，方法的参数就是当前 Bean 需要感知的内容，因此我们需要在 Bean 中声明相关的成员变量来接受这个参数。接收到这个参数后，就可以通过这个参数获取到容器的详细信息了。</p>
 <figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="meta">@Component</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">SayHello</span> <span class="keyword">implements</span> <span class="title class_">ApplicationContextAware</span> &#123;</span><br><span class="line">    <span class="keyword">private</span> ApplicationContext applicationContext;</span><br><span class="line">    <span class="keyword">public</span> String <span class="title function_">sayHello</span><span class="params">(String name)</span> &#123;</span><br><span class="line">        <span class="comment">//判断容器中是否存在某个 Bean</span></span><br><span class="line">        <span class="type">boolean</span> <span class="variable">userDao</span> <span class="operator">=</span> applicationContext.containsBean(<span class="string">&quot;userDao333&quot;</span>);</span><br><span class="line">        System.out.println(userDao);</span><br><span class="line">        <span class="keyword">return</span><span class="string">&quot;hello &quot;</span> + name;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">setApplicationContext</span><span class="params">(ApplicationContext applicationContext)</span> <span class="keyword">throws</span> BeansException &#123;</span><br><span class="line">        <span class="built_in">this</span>.applicationContext = applicationContext;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
       <categories>
-        <category>-Spring</category>
+        <category>Spring</category>
       </categories>
       <tags>
         <tag>Spring</tag>
@@ -756,7 +748,7 @@ class 属性表示需要注册的 bean 的全路径，id 则表示 bean 的唯�
 <h1 id="HandlerAdapter"><a href="#HandlerAdapter" class="headerlink" title="HandlerAdapter"></a>HandlerAdapter</h1><p>HandlerAdapter，中文译作处理器适配器。 HandlerAdapter 会根据适配器接口对后端控制器进行包装（适配），包装后即可对处理器进行执行，通过扩展处理器适配器可以执行多种类型的处理器，这里使用了适配器设计模式。</p>
 ]]></content>
       <categories>
-        <category>-SpringMVC</category>
+        <category>SpringMVC</category>
       </categories>
       <tags>
         <tag>SpringMVC</tag>
@@ -774,7 +766,7 @@ class 属性表示需要注册的 bean 的全路径，id 则表示 bean 的唯�
 <p>第二个处理器兼容性较差，它适用于 Servlet3.0 之后的版本，它不依赖第三方工具，使用它，可以直接做文件上传。</p>
 ]]></content>
       <categories>
-        <category>-SpringMVC</category>
+        <category>SpringMVC</category>
       </categories>
       <tags>
         <tag>SpringMVC</tag>
@@ -868,7 +860,7 @@ Proxy.newProxyInstance 方法接收三个参数，第一个是一个 classloader
 <p>最后，在 Main 方法中加载配置文件：</p>
 <figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Main</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        <span class="type">ClassPathXmlApplicationContext</span> <span class="variable">ctx</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">ClassPathXmlApplicationContext</span>(<span class="string">&quot;applicationContext.xml&quot;</span>);</span><br><span class="line">        <span class="type">MyCalculatorImpl</span> <span class="variable">myCalculator</span> <span class="operator">=</span> ctx.getBean(MyCalculatorImpl.class);</span><br><span class="line">        myCalculator.add(<span class="number">3</span>, <span class="number">4</span>);</span><br><span class="line">        myCalculator.min(<span class="number">5</span>, <span class="number">6</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
       <categories>
-        <category>-Spring</category>
+        <category>Spring</category>
       </categories>
       <tags>
         <tag>Spring</tag>
@@ -907,7 +899,7 @@ Proxy.newProxyInstance 方法接收三个参数，第一个是一个 classloader
 <p>这个注解一般加在删除方法上，当数据库中的数据删除后，相关的缓存数据也要自动清除，该注解在使用的时候也可以配置按照某种条件删除（condition 属性）或者或者配置清除所有缓存（allEntries 属性），示例代码如下：</p>
 <figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="meta">@CacheEvict()</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">deleteUserById</span><span class="params">(Integer id)</span> &#123;</span><br><span class="line">    <span class="comment">//在这里执行删除操作， 删除是去数据库中删除</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
       <categories>
-        <category>-SpringBoot2</category>
+        <category>SpringBoot2</category>
       </categories>
       <tags>
         <tag>SpringBoot2</tag>
@@ -924,12 +916,12 @@ Proxy.newProxyInstance 方法接收三个参数，第一个是一个 classloader
 <ol>
 <li>深圳的小王先将邮件投递到深圳的邮局</li>
 <li>深圳的邮局将邮件运送到上海的邮局</li>
-<li>上海的小张来邮局取邮件<br>这是一个缩减版的生活中邮件发送过程。这三个步骤可以分别对应我们的邮件发送过程，假设从 <a href="mailto:&#97;&#97;&#97;&#64;&#113;&#x71;&#x2e;&#x63;&#x6f;&#x6d;">&#97;&#97;&#97;&#64;&#113;&#x71;&#x2e;&#x63;&#x6f;&#x6d;</a> 发送邮件到 <a href="mailto:&#49;&#49;&#x31;&#x40;&#x31;&#x36;&#51;&#46;&#x63;&#x6f;&#109;">&#49;&#49;&#x31;&#x40;&#x31;&#x36;&#51;&#46;&#x63;&#x6f;&#109;</a> ：</li>
+<li>上海的小张来邮局取邮件<br>这是一个缩减版的生活中邮件发送过程。这三个步骤可以分别对应我们的邮件发送过程，假设从 <a href="mailto:&#x61;&#97;&#x61;&#x40;&#x71;&#x71;&#x2e;&#99;&#111;&#109;">&#x61;&#97;&#x61;&#x40;&#x71;&#x71;&#x2e;&#99;&#111;&#109;</a> 发送邮件到 <a href="mailto:&#x31;&#49;&#49;&#x40;&#x31;&#54;&#51;&#46;&#x63;&#x6f;&#x6d;">&#x31;&#49;&#49;&#x40;&#x31;&#54;&#51;&#46;&#x63;&#x6f;&#x6d;</a> ：</li>
 </ol>
-<p><a href="mailto:&#x61;&#97;&#97;&#64;&#113;&#x71;&#x2e;&#99;&#111;&#109;">&#x61;&#97;&#97;&#64;&#113;&#x71;&#x2e;&#99;&#111;&#109;</a> 先将邮件投递到腾讯的邮件服务器<br>腾讯的邮件服务器将我们的邮件投递到网易的邮件服务器<br><a href="mailto:&#x31;&#x31;&#49;&#64;&#49;&#54;&#51;&#x2e;&#99;&#111;&#x6d;">&#x31;&#x31;&#49;&#64;&#49;&#54;&#51;&#x2e;&#99;&#111;&#x6d;</a> 登录网易的邮件服务器查看邮件<br>邮件投递大致就是这个过程，这个过程就涉及到了多个协议，我们来分别看一下。</p>
+<p><a href="mailto:&#x61;&#x61;&#x61;&#64;&#x71;&#x71;&#46;&#99;&#111;&#x6d;">&#x61;&#x61;&#x61;&#64;&#x71;&#x71;&#46;&#99;&#111;&#x6d;</a> 先将邮件投递到腾讯的邮件服务器<br>腾讯的邮件服务器将我们的邮件投递到网易的邮件服务器<br><a href="mailto:&#49;&#49;&#x31;&#x40;&#49;&#x36;&#51;&#46;&#x63;&#111;&#109;">&#49;&#49;&#x31;&#x40;&#49;&#x36;&#51;&#46;&#x63;&#111;&#109;</a> 登录网易的邮件服务器查看邮件<br>邮件投递大致就是这个过程，这个过程就涉及到了多个协议，我们来分别看一下。</p>
 <p>SMTP 协议全称为 Simple Mail Transfer Protocol，译作简单邮件传输协议，它定义了邮件客户端软件与 SMTP 服务器之间，以及 SMTP 服务器与 SMTP 服务器之间的通信规则。</p>
-<p>也就是说 <a href="mailto:&#97;&#97;&#x61;&#x40;&#113;&#x71;&#46;&#x63;&#x6f;&#x6d;">&#97;&#97;&#x61;&#x40;&#113;&#x71;&#46;&#x63;&#x6f;&#x6d;</a> 用户先将邮件投递到腾讯的 SMTP 服务器这个过程就使用了 SMTP 协议，然后腾讯的 SMTP 服务器将邮件投递到网易的 SMTP 服务器这个过程也依然使用了 SMTP 协议，SMTP 服务器就是用来收邮件。</p>
-<p>而 POP3 协议全称为 Post Office Protocol ，译作邮局协议，它定义了邮件客户端与 POP3 服务器之间的通信规则，那么该协议在什么场景下会用到呢？当邮件到达网易的 SMTP 服务器之后， <a href="mailto:&#49;&#x31;&#x31;&#x40;&#x31;&#54;&#x33;&#x2e;&#x63;&#x6f;&#109;">&#49;&#x31;&#x31;&#x40;&#x31;&#54;&#x33;&#x2e;&#x63;&#x6f;&#109;</a> 用户需要登录服务器查看邮件，这个时候就该协议就用上了：邮件服务商都会为每一个用户提供专门的邮件存储空间，SMTP 服务器收到邮件之后，就将邮件保存到相应用户的邮件存储空间中，如果用户要读取邮件，就需要通过邮件服务商的 POP3 邮件服务器来完成。</p>
+<p>也就是说 <a href="mailto:&#x61;&#x61;&#x61;&#x40;&#113;&#113;&#46;&#99;&#x6f;&#109;">&#x61;&#x61;&#x61;&#x40;&#113;&#113;&#46;&#99;&#x6f;&#109;</a> 用户先将邮件投递到腾讯的 SMTP 服务器这个过程就使用了 SMTP 协议，然后腾讯的 SMTP 服务器将邮件投递到网易的 SMTP 服务器这个过程也依然使用了 SMTP 协议，SMTP 服务器就是用来收邮件。</p>
+<p>而 POP3 协议全称为 Post Office Protocol ，译作邮局协议，它定义了邮件客户端与 POP3 服务器之间的通信规则，那么该协议在什么场景下会用到呢？当邮件到达网易的 SMTP 服务器之后， <a href="mailto:&#49;&#49;&#49;&#x40;&#49;&#54;&#x33;&#46;&#x63;&#111;&#x6d;">&#49;&#49;&#49;&#x40;&#49;&#54;&#x33;&#46;&#x63;&#111;&#x6d;</a> 用户需要登录服务器查看邮件，这个时候就该协议就用上了：邮件服务商都会为每一个用户提供专门的邮件存储空间，SMTP 服务器收到邮件之后，就将邮件保存到相应用户的邮件存储空间中，如果用户要读取邮件，就需要通过邮件服务商的 POP3 邮件服务器来完成。</p>
 <p>最后，可能也有小伙伴们听说过 IMAP 协议，这个协议是对 POP3 协议的扩展，功能更强，作用类似，这里不再赘述。</p>
 <blockquote>
 <p>添加POM依赖</p>
@@ -953,7 +945,7 @@ Proxy.newProxyInstance 方法接收三个参数，第一个是一个 classloader
 </ol>
 ]]></content>
       <categories>
-        <category>-SpringBoot2</category>
+        <category>SpringBoot2</category>
       </categories>
       <tags>
         <tag>SpringBoot2</tag>
@@ -973,7 +965,7 @@ Proxy.newProxyInstance 方法接收三个参数，第一个是一个 classloader
 <p>例如如下代码，指挥拦截文件上传异常，其他异常和它没关系，不会进入到自定义异常处理的方法中来。</p>
 <figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="meta">@ControllerAdvice</span><span class="comment">//表示这是一个增强版的 Controller，主要用来做全局数据处理</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">MyException</span> &#123;</span><br><span class="line">    <span class="meta">@ExceptionHandler(MaxUploadSizeExceededException.class)</span></span><br><span class="line">    <span class="keyword">public</span> ModelAndView <span class="title function_">fileuploadException</span><span class="params">(MaxUploadSizeExceededException e)</span> &#123;</span><br><span class="line">        <span class="type">ModelAndView</span> <span class="variable">error</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">ModelAndView</span>(<span class="string">&quot;error&quot;</span>);</span><br><span class="line">        error.addObject(<span class="string">&quot;error&quot;</span>, e.getMessage());</span><br><span class="line">        <span class="keyword">return</span> error;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>]]></content>
       <categories>
-        <category>-SpringMVC</category>
+        <category>SpringMVC</category>
       </categories>
       <tags>
         <tag>SpringMVC</tag>
@@ -1001,7 +993,7 @@ Proxy.newProxyInstance 方法接收三个参数，第一个是一个 classloader
 <p>如此之后，我们再去访问 http 请求，就会自动重定向到 https。</p>
 ]]></content>
       <categories>
-        <category>-SpringBoot2</category>
+        <category>SpringBoot2</category>
       </categories>
       <tags>
         <tag>SpringBoot2</tag>
@@ -1070,7 +1062,7 @@ Proxy.newProxyInstance 方法接收三个参数，第一个是一个 classloader
 </tbody></table>
 ]]></content>
       <categories>
-        <category>-Spring</category>
+        <category>Spring</category>
       </categories>
       <tags>
         <tag>Spring</tag>
@@ -1091,7 +1083,7 @@ Proxy.newProxyInstance 方法接收三个参数，第一个是一个 classloader
 <h1 id="XML-配置"><a href="#XML-配置" class="headerlink" title="XML 配置"></a>XML 配置</h1><figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">bean</span> <span class="attr">class</span>=<span class="string">&quot;org.springframework.jdbc.datasource.DriverManagerDataSource&quot;</span> <span class="attr">id</span>=<span class="string">&quot;dataSource&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;username&quot;</span> <span class="attr">value</span>=<span class="string">&quot;root&quot;</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;password&quot;</span> <span class="attr">value</span>=<span class="string">&quot;root&quot;</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;url&quot;</span> <span class="attr">value</span>=<span class="string">&quot;jdbc:mysql:///testjpa?useUnicode=true&amp;useSSL=false&amp;characterEncoding=utf8&amp;serverTimezone=Asia/Shanghai&quot;</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;driverClassName&quot;</span> <span class="attr">value</span>=<span class="string">&quot;com.mysql.cj.jdbc.Driver&quot;</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">bean</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">bean</span> <span class="attr">class</span>=<span class="string">&quot;org.springframework.jdbc.core.JdbcTemplate&quot;</span> <span class="attr">id</span>=<span class="string">&quot;jdbcTemplate&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;dataSource&quot;</span> <span class="attr">ref</span>=<span class="string">&quot;dataSource&quot;</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">bean</span>&gt;</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
 ]]></content>
       <categories>
-        <category>-Spring</category>
+        <category>Spring</category>
       </categories>
       <tags>
         <tag>Spring</tag>
@@ -1127,7 +1119,7 @@ Proxy.newProxyInstance 方法接收三个参数，第一个是一个 classloader
 </ul>
 ]]></content>
       <categories>
-        <category>-Spring</category>
+        <category>Spring</category>
       </categories>
       <tags>
         <tag>Spring</tag>
@@ -1146,7 +1138,7 @@ Proxy.newProxyInstance 方法接收三个参数，第一个是一个 classloader
 <p>Ctrll+E</p>
 ]]></content>
       <categories>
-        <category>-IDEA</category>
+        <category>IDEA</category>
       </categories>
       <tags>
         <tag>IDEA</tag>
@@ -1184,7 +1176,7 @@ Proxy.newProxyInstance 方法接收三个参数，第一个是一个 classloader
 <h1 id="查看安装目录"><a href="#查看安装目录" class="headerlink" title="查看安装目录"></a>查看安装目录</h1><p>whereis 安装程序名称</p>
 ]]></content>
       <categories>
-        <category>-linux</category>
+        <category>linux</category>
       </categories>
       <tags>
         <tag>linux</tag>
@@ -1272,7 +1264,7 @@ Proxy.newProxyInstance 方法接收三个参数，第一个是一个 classloader
 <p>12.区块<br>Markdown 区块引用是在段落开头使用 &gt; 符号 ，然后后面紧跟一个空格符号</p>
 ]]></content>
       <categories>
-        <category>-markdown</category>
+        <category>markdown</category>
       </categories>
       <tags>
         <tag>markdown</tag>
@@ -1288,7 +1280,7 @@ Proxy.newProxyInstance 方法接收三个参数，第一个是一个 classloader
 <h1 id="scope"><a href="#scope" class="headerlink" title="scope"></a>scope</h1><p><img src="/blog/img/maven-scope.png" alt="image.png"></p>
 ]]></content>
       <categories>
-        <category>-maven</category>
+        <category>maven</category>
       </categories>
       <tags>
         <tag>maven</tag>
@@ -1358,7 +1350,7 @@ Proxy.newProxyInstance 方法接收三个参数，第一个是一个 classloader
 </ol>
 ]]></content>
       <categories>
-        <category>-Nginx</category>
+        <category>Nginx</category>
       </categories>
       <tags>
         <tag>Nginx</tag>
@@ -1443,10 +1435,80 @@ Proxy.newProxyInstance 方法接收三个参数，第一个是一个 classloader
 <h1 id="Class-与-Style-绑定"><a href="#Class-与-Style-绑定" class="headerlink" title="Class 与 Style 绑定"></a>Class 与 Style 绑定</h1><p>数据绑定的一个常见需求场景是操纵元素的 CSS class 列表和内联样式。因为 class 和 style 都是 attribute，我们可以和其他 attribute 一样使用 v-bind 将它们和动态的字符串绑定。但是，在处理比较复杂的绑定时，通过拼接生成字符串是麻烦且易出错的。因此，Vue 专门为 class 和 style 的 v-bind 用法提供了特殊的功能增强。除了字符串外，表达式的值也可以是对象或数组。</p>
 ]]></content>
       <categories>
-        <category>-Vue2</category>
+        <category>Vue2</category>
       </categories>
       <tags>
         <tag>Vue2</tag>
       </tags>
+  </entry>
+  <entry>
+    <title>1.SpringMVC简介</title>
+    <url>/blog/2023/06/02/1.SpringMVC%20%E7%AE%80%E4%BB%8B/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\blog\assets\css\APlayer.min.css"><script src="\blog\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\blog\assets\js\Meting.min.js"></script><h1 id="1-1-Spring-Web-MVC是什么"><a href="#1-1-Spring-Web-MVC是什么" class="headerlink" title="1.1 Spring Web MVC是什么"></a>1.1 Spring Web MVC是什么</h1><p>Spring Web MVC 是一种基于 Java 的实现了 Web MVC 设计模式的请求驱动类型的轻量级 Web 框架，即使用了 MVC 架构模式的思想，将 web 层进行职责解耦，基于请求驱动指的就是使用请求-响应模型，框架的目的就是帮助我们简化开发，Spring Web MVC 也是要简化我们日常 Web 开发的。在 传统的 Jsp&#x2F;Servlet 技术体系中，如果要开发接口，一个接口对应一个 Servlet，会导致我们开发出许多 Servlet，使用 SpringMVC 可以有效的简化这一步骤。 </p>
+<p>Spring Web MVC 也是服务到工作者模式的实现，但进行可优化。前端控制器是 DispatcherServlet；应用控制器可以拆为处理器映射器(Handler Mapping)进行处理器管理和视图解析器(View Resolver)进行视图管理；页面控制器&#x2F;动作&#x2F;处理器为 Controller 接口（仅包含 ModelAndView handleRequest(request, response) 方法，也有人称作 Handler）的实现（也可以是任何的 POJO 类）；支持本地化（Locale）解析、主题（Theme）解析及文件上传等；提供了非常灵活的数据验证、格式化和数据绑定机制；提供了强大的约定大于配置（惯例优先原则）的契约式编程支持。 </p>
+<h1 id="1-2-Spring-Web-MVC能帮我们做什么"><a href="#1-2-Spring-Web-MVC能帮我们做什么" class="headerlink" title="1.2 Spring Web MVC能帮我们做什么"></a>1.2 Spring Web MVC能帮我们做什么</h1><p>让我们能非常简单的设计出干净的 Web 层和薄薄的 Web 层； 进行更简洁的 Web 层的开发； 天生与 Spring 框架集成（如 IoC 容器、AOP 等）； 提供强大的约定大于配置的契约式编程支持； 能简单的进行 Web 层的单元测试； 支持灵活的 URL 到页面控制器的映射； 非常容易与其他视图技术集成，如 Velocity、FreeMarker 等等，因为模型数据不放在特定的 API 里，而是放在一个 Model 里（Map 数据结构实现，因此很容易被其他框架使用）； 非常灵活的数据验证、格式化和数据绑定机制，能使用任何对象进行数据绑定，不必实现特定框架的 API； 提供一套强大的 JSP 标签库，简化 JSP 开发； 支持灵活的本地化、主题等解析； 更加简单的异常处理； 对静态资源的支持； 支持 RESTful 风格</p>
+]]></content>
+      <categories>
+        <category>SpringMVC</category>
+      </categories>
+      <tags>
+        <tag>SpringMVC</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>11.Spring Boot2 自定义starter</title>
+    <url>/blog/2023/06/02/11.Spring%20Boot2%20%E8%87%AA%E5%AE%9A%E4%B9%89starter/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\blog\assets\css\APlayer.min.css"><script src="\blog\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\blog\assets\js\Meting.min.js"></script><h1 id="自定义springboot-starter"><a href="#自定义springboot-starter" class="headerlink" title="自定义springboot starter"></a>自定义springboot starter</h1><h2 id="定义步骤"><a href="#定义步骤" class="headerlink" title="定义步骤"></a>定义步骤</h2><p>1.创建maven工程</p>
+<p>2.定义Starter需要的配置类(Properties)</p>
+<p>3.编写Starter项目的业务功能</p>
+<p>4.编写自动配置类</p>
+<p>5.编写spring.factories文件加载自动配置类</p>
+<p>6.打包安装</p>
+<p>7.其它项目引用</p>
+<h1 id="案例1"><a href="#案例1" class="headerlink" title="案例1"></a>案例1</h1><h2 id="短信发送功能"><a href="#短信发送功能" class="headerlink" title="短信发送功能"></a>短信发送功能</h2><p>1.创建一个maven工程（工程名称以xx-spring-boot-starter）</p>
+<p>2.引入springboot 自动配置依赖</p>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line">    <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-autoconfigure<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">version</span>&gt;</span>2.1.8.RELEASE<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line">```    </span><br><span class="line"></span><br><span class="line">3.配置属性类，用@ConfigurationProperties控制</span><br><span class="line">```java</span><br><span class="line">@ConfigurationProperties(&quot;common.sms&quot;)</span><br><span class="line">public class SmsProperties implements Serializable &#123;</span><br><span class="line"></span><br><span class="line">    // 访问id</span><br><span class="line">    private String accessKeyId;</span><br><span class="line">    // 访问密码</span><br><span class="line">    private String accessKeySecret;</span><br><span class="line"></span><br><span class="line">    public String getAccessKeyId() &#123;</span><br><span class="line">        return accessKeyId;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void setAccessKeyId(String accessKeyId) &#123;</span><br><span class="line">        this.accessKeyId = accessKeyId;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public String getAccessKeySecret() &#123;</span><br><span class="line">        return accessKeySecret;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void setAccessKeySecret(String accessKeySecret) &#123;</span><br><span class="line">        this.accessKeySecret = accessKeySecret;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>4.编写Starter项目的业务功能</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">interface</span> <span class="title class_">ISmsService</span> &#123;</span><br><span class="line">        <span class="comment">/**</span></span><br><span class="line"><span class="comment">         * 发送短信</span></span><br><span class="line"><span class="comment">         * </span></span><br><span class="line"><span class="comment">         * <span class="doctag">@param</span> phone        要发送的手机号</span></span><br><span class="line"><span class="comment">         * <span class="doctag">@param</span> signName     短信签名-在短信控制台中找</span></span><br><span class="line"><span class="comment">         * <span class="doctag">@param</span> templateCode 短信模板-在短信控制台中找</span></span><br><span class="line"><span class="comment">         * <span class="doctag">@param</span> data         要发送的内容</span></span><br><span class="line"><span class="comment">         */</span></span><br><span class="line">         <span class="keyword">void</span> <span class="title function_">send</span><span class="params">(String phone, String signName, String templateCode, String data)</span>;</span><br><span class="line"></span><br><span class="line">      &#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">SmsServiceImpl</span> <span class="keyword">implements</span> <span class="title class_">ISmsService</span>&#123;</span><br><span class="line">    <span class="keyword">private</span> String accessKeyId;<span class="comment">//访问ID、即帐号</span></span><br><span class="line">    <span class="keyword">private</span> String accessKeySecret;<span class="comment">//访问凭证，即密码</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">SmsServiceImpl</span><span class="params">(String accessKeyId, String accessKeySecret)</span> &#123;</span><br><span class="line">        <span class="built_in">this</span>.accessKeyId = accessKeyId;</span><br><span class="line">        <span class="built_in">this</span>.accessKeySecret = accessKeySecret;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">send</span><span class="params">(String phone, String signName, String templateCode, String data)</span> &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;接入短信系统，accessKeyId=&quot;</span> + accessKeyId + <span class="string">&quot;,accessKeySecret=&quot;</span> + accessKeySecret);</span><br><span class="line">        System.out.println(<span class="string">&quot;短信发送，phone=&quot;</span> + phone + <span class="string">&quot;,signName=&quot;</span> + signName + <span class="string">&quot;,templateCode=&quot;</span> + templateCode + <span class="string">&quot;,data=&quot;</span> + data);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>5.编写自动配置类</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="meta">@Configuration</span></span><br><span class="line"><span class="meta">@EnableConfigurationProperties(&#123;SmsProperties.class&#125;)</span> <span class="comment">// 使@ConfigurationProperties生效</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">SmsAutoConfig</span> &#123;</span><br><span class="line">    <span class="meta">@Resource</span></span><br><span class="line">    <span class="keyword">private</span> SmsProperties smsProperties;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Bean</span></span><br><span class="line">    <span class="keyword">public</span> ISmsService <span class="title function_">smsServiceImpl</span><span class="params">()</span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">SmsServiceImpl</span>(smsProperties.getAccessKeyId(),smsProperties.getAccessKeySecret());</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>6.编写spring.factories文件加载自动配置类</p>
+<p>6.1.在resources下新建META-INF文件夹，然后创建spring.factories文件</p>
+<p>6.2.在该文件中加入如下配置，该配置指定上步骤中定义的配置类为自动装配的配置</p>
+<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">org.springframework.boot.autoconfigure.EnableAutoConfiguration=\</span><br><span class="line">    com.zhangjie.sms.config.SmsAutoConfig</span><br></pre></td></tr></table></figure>
+
+<p>注1：其中AutoConfig是starter配置文件的类限定名，多个之间逗号分割，还可以\进行转义即相当于去掉后面换行和空格符号，如下所示</p>
+<figure class="highlight text"><table><tr><td class="code"><pre><span class="line"># Auto Configure</span><br><span class="line">org.springframework.boot.autoconfigure.EnableAutoConfiguration=\</span><br><span class="line">com.baomidou.mybatisplus.autoconfigure.MybatisPlusLanguageDriverAutoConfiguration,\</span><br><span class="line">com.baomidou.mybatisplus.autoconfigure.MybatisPlusAutoConfiguration</span><br></pre></td></tr></table></figure>
+<p>7.打包安装</p>
+<p>8.引用</p>
+<h1 id="案例2"><a href="#案例2" class="headerlink" title="案例2"></a>案例2</h1><h2 id="打印web请求日志"><a href="#打印web请求日志" class="headerlink" title="打印web请求日志"></a>打印web请求日志</h2><p>1.创建一个maven工程（工程名称以xx-spring-boot-starter）</p>
+<p>2.引入springboot 自动配置依赖</p>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line">    <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-autoconfigure<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">version</span>&gt;</span>2.1.8.RELEASE<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!--AOP--&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-starter-aop<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">version</span>&gt;</span>$&#123;spring-boot.version&#125;<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!--web--&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-starter-web<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">version</span>&gt;</span>$&#123;spring-boot.version&#125;<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.projectlombok<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>lombok<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">version</span>&gt;</span>$&#123;lombok.version&#125;<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line">```    </span><br><span class="line"></span><br><span class="line">3.配置属性类，用@ConfigurationProperties控制</span><br><span class="line">```java</span><br><span class="line">@ConfigurationProperties(&quot;common.web-log&quot;)</span><br><span class="line">public class WebLogProperties implements Serializable &#123;</span><br><span class="line"></span><br><span class="line">    private Boolean enabled;</span><br><span class="line"></span><br><span class="line">    public Boolean getEnabled() &#123;</span><br><span class="line">        return enabled;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void setEnabled(Boolean enabled) &#123;</span><br><span class="line">        this.enabled = enabled;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>4.编写Starter项目的业务功能</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="meta">@Aspect</span></span><br><span class="line"><span class="meta">@Slf4j</span></span><br><span class="line"><span class="meta">@Component</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">WebLogAspect</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Pointcut(&quot;execution(* *..*Controller.*(..))&quot;)</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">webLog</span><span class="params">()</span>&#123;&#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Before(&quot;webLog()&quot;)</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">doBefore</span><span class="params">(JoinPoint joinPoint)</span> <span class="keyword">throws</span> Throwable &#123;</span><br><span class="line">        <span class="comment">// 接收到请求，记录请求内容</span></span><br><span class="line">        <span class="type">ServletRequestAttributes</span> <span class="variable">attributes</span> <span class="operator">=</span> (ServletRequestAttributes) RequestContextHolder.getRequestAttributes();</span><br><span class="line">        <span class="type">HttpServletRequest</span> <span class="variable">request</span> <span class="operator">=</span> attributes.getRequest();</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 记录下请求内容</span></span><br><span class="line">        log.info(<span class="string">&quot;开始服务:&#123;&#125;&quot;</span>, request.getRequestURL().toString());</span><br><span class="line">        log.info(<span class="string">&quot;客户端IP :&#123;&#125;&quot;</span> , request.getRemoteAddr());</span><br><span class="line">        log.info(<span class="string">&quot;参数值 :&#123;&#125;&quot;</span>, Arrays.toString(joinPoint.getArgs()));</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@AfterReturning(returning = &quot;ret&quot;, pointcut = &quot;webLog()&quot;)</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">doAfterReturning</span><span class="params">(Object ret)</span> <span class="keyword">throws</span> Throwable &#123;</span><br><span class="line">        <span class="comment">// 处理完请求，返回内容</span></span><br><span class="line">        log.info(<span class="string">&quot;返回值 : &#123;&#125;&quot;</span> , ret);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>5.编写自动配置类</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="meta">@Configuration</span> <span class="comment">//表示这个类为配置类</span></span><br><span class="line"><span class="meta">@EnableConfigurationProperties(&#123;WebLogProperties.class&#125;)</span></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * matchIfMissing属性：默认情况下matchIfMissing为false，也* 就是说如果未进行属性配置，则自动配置不生效。</span></span><br><span class="line"><span class="comment"> * 如果matchIfMissing为true，则表示如果没有对应的属性配置，* 则自动配置默认生效</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@ConditionalOnProperty(prefix = &quot;common.web-log&quot;,value = &quot;enabled&quot;,matchIfMissing = true)</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">WebLogAutoConfig</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Bean</span></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 在<span class="doctag">@Bean</span>定义上，它的作用就是在容器加载它作用的bean时，* 检查容器中是否存在目标类型（ConditionalOnMissingBean</span></span><br><span class="line"><span class="comment">     * 注解的value值）的bean了，如果存在这跳过原始bean的</span></span><br><span class="line"><span class="comment">     * BeanDefinition加载动作。</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="meta">@ConditionalOnMissingBean</span></span><br><span class="line">    <span class="keyword">public</span> WebLogAspect <span class="title function_">webLogAspect</span><span class="params">()</span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">WebLogAspect</span>();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>6.编写spring.factories文件加载自动配置类</p>
+<p>6.1.在resources下新建META-INF文件夹，然后创建spring.factories文件</p>
+<p>6.2.在该文件中加入如下配置，该配置指定上步骤中定义的配置类为自动装配的配置</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">org.springframework.boot.autoconfigure.EnableAutoConfiguration=\</span><br><span class="line">com.zhangjie.WebLogAutoConfig</span><br></pre></td></tr></table></figure>
+<p>7.打包安装</p>
+<p>8.引用</p>
+]]></content>
+      <categories>
+        <category>SpringBoot2</category>
+      </categories>
+      <tags>
+        <tag>SpringBoot2</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title></title>
+    <url>/blog/2023/06/02/%E8%BF%90%E7%94%A8%E7%AD%96%E7%95%A5%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E8%A7%A3%E5%86%B3if-else%E5%A4%AA%E5%A4%9A/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\blog\assets\css\APlayer.min.css"><script src="\blog\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\blog\assets\js\Meting.min.js"></script>]]></content>
   </entry>
 </search>
