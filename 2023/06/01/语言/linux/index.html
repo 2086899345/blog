@@ -87,7 +87,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> 字数统计:</span>
-            <span class="post-count">186</span>
+            <span class="post-count">463</span>
         </span>
     </span>
 
@@ -138,6 +138,29 @@
 <li>f: 指定压缩包的名字  <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">tar -xzvf all.tar.gz</span><br><span class="line">tar -xjvf all.tar.bz2</span><br></pre></td></tr></table></figure></li>
 </ul>
 <h1 id="查看安装目录"><a href="#查看安装目录" class="headerlink" title="查看安装目录"></a>查看安装目录</h1><p>whereis 安装程序名称</p>
+<h1 id="less"><a href="#less" class="headerlink" title="less"></a>less</h1><p>less指令<br>功能：查看文件内容，less用法比more更具有弹性，可以使用 [pageup][pagedown]（前后按键）等按键的功能来往前往后翻看文件，而且less在查看之前不会加载整个文件。</p>
+<p>选项：</p>
+<ul>
+<li>-i ：忽略大小写</li>
+<li>-N :显示行号</li>
+<li>&#x2F;字符串：向上搜索字符串的内容</li>
+<li>?字符串：向下搜索字符串的内容</li>
+<li>n ：重复前一个搜索（与&#x2F; 或?有关）</li>
+<li>N：返向重复前一个搜索（与&#x2F; 或?有关）</li>
+<li>q：退出less</li>
+</ul>
+<h1 id="head"><a href="#head" class="headerlink" title="head"></a>head</h1><p>功能：显示文件内容的开头到标准输出，也就是屏幕上，head不加参数默认显示前10行</p>
+<p>选项：</p>
+<p>-n&lt;行数&gt;</p>
+<h1 id="tail"><a href="#tail" class="headerlink" title="tail"></a>tail</h1><p>功能:用于显示指定文件末尾内容，我们一般查看日志时肯定是查看最新的内容，也就是从尾部开始查看，tail就能很好的帮助我们查看最近的内容</p>
+<p>选项：</p>
+<ul>
+<li>-f ：循环读取</li>
+<li>-n&lt;行号&gt; ：显示行数</li>
+</ul>
+<h1 id="find"><a href="#find" class="headerlink" title="find"></a>find</h1><p>选项：-name :按照文件名查找</p>
+<p>指定目录</p>
+<p>语法：find [起始目录位置] [-name][filename]</p>
  
       <!-- reward -->
       
@@ -166,9 +189,9 @@
       </a>
     
     
-      <a href="/blog/2023/06/01/%E5%89%8D%E7%AB%AF%E6%A1%86%E6%9E%B6/vue/" class="article-nav-link">
+      <a href="/blog/2023/04/20/%E7%AE%97%E6%B3%95/%E4%BA%8C%E5%8F%89%E6%A0%91%E9%81%8D%E5%8E%86%E6%96%B9%E5%BC%8F/" class="article-nav-link">
         <strong class="article-nav-caption">下一篇</strong>
-        <div class="article-nav-title">Vue2</div>
+        <div class="article-nav-title">二叉树遍历方式</div>
       </a>
     
   </nav>

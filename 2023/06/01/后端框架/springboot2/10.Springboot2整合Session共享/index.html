@@ -111,8 +111,8 @@
   
     <div class="article-entry" itemprop="articleBody">
        
-  <p>在传统的单服务架构中，一般来说，只有一个服务器，那么不存在 Session 共享问题，但是在分布式&#x2F;集群项目中，Session 共享则是一个必须面对的问题，先看一个简单的架构图：<br><img src="/blog/img/session001.png" alt="session001"></p>
-<p>在这样的架构中，会出现一些单服务中不存在的问题，例如客户端发起一个请求，这个请求到达 Nginx 上之后，被 Nginx 转发到 Tomcat A 上，然后在 Tomcat A 上往 session 中保存了一份数据，下次又来一个请求，这个请求被转发到 Tomcat B  上，此时再去 Session 中获取数据，发现没有之前的数据。对于这一类问题的解决，思路很简单，就是将各个服务之间需要共享的数据，保存到一个公共的地方（主流方案就是 Redis）：<br><img src="/blog/img/session002.png" alt="session002"></p>
+  <p>在传统的单服务架构中，一般来说，只有一个服务器，那么不存在 Session 共享问题，但是在分布式&#x2F;集群项目中，Session 共享则是一个必须面对的问题，先看一个简单的架构图：<br><img src="/blog/images/img/session001.png" alt="session001"></p>
+<p>在这样的架构中，会出现一些单服务中不存在的问题，例如客户端发起一个请求，这个请求到达 Nginx 上之后，被 Nginx 转发到 Tomcat A 上，然后在 Tomcat A 上往 session 中保存了一份数据，下次又来一个请求，这个请求被转发到 Tomcat B  上，此时再去 Session 中获取数据，发现没有之前的数据。对于这一类问题的解决，思路很简单，就是将各个服务之间需要共享的数据，保存到一个公共的地方（主流方案就是 Redis）：<br><img src="/blog/images/img/session002.png" alt="session002"></p>
 <p>当所有 Tomcat 需要往 Session 中写数据时，都往 Redis 中写，当所有 Tomcat 需要读数据时，都从 Redis 中读。这样，不同的服务就可以使用相同的 Session 数据了。 这样的方案，可以由开发者手动实现，即手动往 Redis 中存储数据，手动从 Redis 中读取数据，相当于使用一些 Redis 客户端工具来实现这样的功能，毫无疑问，手动实现工作量还是蛮大的。 </p>
 <p>一个简化的方案就是使用 Spring Session 来实现这一功能，Spring Session 就是使用 Spring 中的代理过滤器，将所有的 Session 操作拦截下来，自动的将数据 同步到 Redis 中，或者自动的从 Redis 中读取数据。 对于开发者来说，所有关于 Session 同步的操作都是透明的，开发者使用 Spring Session，一旦配置完成后，具体的用法就像使用一个普通的 Session 一样。</p>
 <h1 id="添加依赖"><a href="#添加依赖" class="headerlink" title="添加依赖"></a>添加依赖</h1><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-starter-data-redis<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-starter-web<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.session<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-session-data-redis<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
@@ -152,19 +152,19 @@
    
   <nav class="article-nav">
     
-      <a href="/blog/2023/06/01/%E5%90%8E%E7%AB%AF%E6%A1%86%E6%9E%B6/spring/9.Spring%20%E4%BA%8B%E5%8A%A1/" class="article-nav-link">
+      <a href="/blog/2023/06/01/%E5%90%8E%E7%AB%AF%E6%A1%86%E6%9E%B6/springboot2/2.Spring%20Boot2CORS%20%E8%A7%A3%E5%86%B3%E8%B7%A8%E5%9F%9F%E9%97%AE%E9%A2%98/" class="article-nav-link">
         <strong class="article-nav-caption">上一篇</strong>
         <div class="article-nav-title">
           
-            9.Spring 事务
+            2.Spring Boot2 CORS 解决跨域问题
           
         </div>
       </a>
     
     
-      <a href="/blog/2023/06/01/%E5%90%8E%E7%AB%AF%E6%A1%86%E6%9E%B6/springboot2/1.Spring%20Boot2@ControllerAdvice%20%E7%9A%84%E4%B8%89%E7%A7%8D%E4%BD%BF%E7%94%A8%E5%9C%BA%E6%99%AF/" class="article-nav-link">
+      <a href="/blog/2023/06/01/%E5%90%8E%E7%AB%AF%E6%A1%86%E6%9E%B6/springboot2/4.Spring%20Boot2%E6%95%B4%E5%90%88swagger2/" class="article-nav-link">
         <strong class="article-nav-caption">下一篇</strong>
-        <div class="article-nav-title">1.Spring Boot2 @ControllerAdvice 的三种使用场景</div>
+        <div class="article-nav-title">4.Spring Boot2整合swagger2</div>
       </a>
     
   </nav>

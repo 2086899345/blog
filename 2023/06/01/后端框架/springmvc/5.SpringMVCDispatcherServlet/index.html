@@ -118,7 +118,7 @@
 <li>url-pattern：表示哪些请求交给 Spring Web MVC 处理， “&#x2F;“ 是用来定义默认 servlet 映射的。也可以如 *.html 表示拦截所有以 html 为扩展名的请求 </li>
 <li>contextConfigLocation：表示 SpringMVC 配置文件的路径</li>
 </ul>
-<h1 id="两个容器"><a href="#两个容器" class="headerlink" title="两个容器"></a>两个容器</h1><p>当 Spring 和 SpringMVC 同时出现，我们的项目中将存在两个容器，一个是 Spring 容器，另一个是 SpringMVC 容器，Spring 容器通过 ContextLoaderListener 来加载，SpringMVC 容器则通过 DispatcherServlet 来加载，这两个容器不一样：<br><img src="/blog/img/springmvc002.png" alt="springmvc002"><br>从图中可以看出： </p>
+<h1 id="两个容器"><a href="#两个容器" class="headerlink" title="两个容器"></a>两个容器</h1><p>当 Spring 和 SpringMVC 同时出现，我们的项目中将存在两个容器，一个是 Spring 容器，另一个是 SpringMVC 容器，Spring 容器通过 ContextLoaderListener 来加载，SpringMVC 容器则通过 DispatcherServlet 来加载，这两个容器不一样：<br><img src="/blog/images/img/springmvc002.png" alt="springmvc002"><br>从图中可以看出： </p>
 <ul>
 <li>ContextLoaderListener 初始化的上下文加载的 Bean 是对于整个应用程序共享的，不管是使用什么表现层技术，一般如 DAO 层、Service 层 Bean； </li>
 <li>DispatcherServlet 初始化的上下文加载的 Bean 是只对 Spring Web MVC 有效的 Bean，如 Controller、HandlerMapping、HandlerAdapter 等等，该初始化上下文应该只加载 Web相关组件。 <blockquote>
@@ -149,19 +149,19 @@
    
   <nav class="article-nav">
     
-      <a href="/blog/2023/06/01/%E5%90%8E%E7%AB%AF%E6%A1%86%E6%9E%B6/springmvc/6.SpringMVC%E5%A4%84%E7%90%86%E5%99%A8%E8%AF%A6%E8%A7%A3/" class="article-nav-link">
+      <a href="/blog/2023/06/01/%E5%90%8E%E7%AB%AF%E6%A1%86%E6%9E%B6/springmvc/3.SpringMvc%E5%B7%A5%E4%BD%9C%E6%B5%81/" class="article-nav-link">
         <strong class="article-nav-caption">上一篇</strong>
         <div class="article-nav-title">
           
-            6.SpringMVC处理器详解
+            3.SpringMvc工作流
           
         </div>
       </a>
     
     
-      <a href="/blog/2023/06/01/%E5%90%8E%E7%AB%AF%E6%A1%86%E6%9E%B6/springmvc/7.SpringMVC%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/" class="article-nav-link">
+      <a href="/blog/2023/06/01/%E5%90%8E%E7%AB%AF%E6%A1%86%E6%9E%B6/springmvc/4.SpringMvc%E4%B8%AD%E7%9A%84%E7%BB%84%E4%BB%B6/" class="article-nav-link">
         <strong class="article-nav-caption">下一篇</strong>
-        <div class="article-nav-title">7.SpringMVC文件上传</div>
+        <div class="article-nav-title">4.SpringMvc中的组件</div>
       </a>
     
   </nav>
