@@ -11,7 +11,7 @@
         name="viewport"
         content="width=device-width, initial-scale=1, maximum-scale=1"
       />
-      <title>1.Spring Boot2 @ControllerAdvice 的三种使用场景 |  学思阁</title>
+      <title>centos7替换yum源 |  学思阁</title>
   <meta name="generator" content="hexo-theme-ayer">
       
       <link rel="shortcut icon" href="/blog/logo.ico" />
@@ -56,7 +56,7 @@
     <main class="content on">
       <section class="outer">
   <article
-  id="post-后端框架/springboot2/1.Spring Boot2@ControllerAdvice 的三种使用场景"
+  id="post-工具/centos7替换yum源"
   class="article article-type-post"
   itemscope
   itemprop="blogPost"
@@ -67,7 +67,7 @@
     <header class="article-header">
        
 <h1 class="article-title sea-center" style="border-left:0" itemprop="name">
-  1.Spring Boot2 @ControllerAdvice 的三种使用场景
+  centos7替换yum源
 </h1>
  
 
@@ -75,11 +75,11 @@
     </header>
      
     <div class="article-meta">
-      <a href="/blog/2023/06/01/%E5%90%8E%E7%AB%AF%E6%A1%86%E6%9E%B6/springboot2/1.Spring%20Boot2@ControllerAdvice%20%E7%9A%84%E4%B8%89%E7%A7%8D%E4%BD%BF%E7%94%A8%E5%9C%BA%E6%99%AF/" class="article-date">
-  <time datetime="2023-06-01T14:25:53.000Z" itemprop="datePublished">2023-06-01</time>
+      <a href="/blog/2023/09/21/%E5%B7%A5%E5%85%B7/centos7%E6%9B%BF%E6%8D%A2yum%E6%BA%90/" class="article-date">
+  <time datetime="2023-09-21T14:23:23.000Z" itemprop="datePublished">2023-09-21</time>
 </a> 
   <div class="article-category">
-    <a class="article-category-link" href="/blog/categories/%E5%90%8E%E7%AB%AF%E6%A1%86%E6%9E%B6/">后端框架</a> / <a class="article-category-link" href="/blog/categories/%E5%90%8E%E7%AB%AF%E6%A1%86%E6%9E%B6/SpringBoot2/">SpringBoot2</a>
+    <a class="article-category-link" href="/blog/categories/%E5%B7%A5%E5%85%B7/">工具</a> / <a class="article-category-link" href="/blog/categories/%E5%B7%A5%E5%85%B7/linux/">linux</a>
   </div>
   
 <div class="word_count">
@@ -87,7 +87,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> 字数统计:</span>
-            <span class="post-count">771</span>
+            <span class="post-count">84</span>
         </span>
     </span>
 
@@ -96,7 +96,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-book-open-line"></i>
             <span class="post-meta-item-text"> 阅读时长≈</span>
-            <span class="post-count">3 分钟</span>
+            <span class="post-count">1 分钟</span>
         </span>
     </span>
 </div>
@@ -111,35 +111,12 @@
   
     <div class="article-entry" itemprop="articleBody">
        
-  <h1 id="全局异常处理"><a href="#全局异常处理" class="headerlink" title="全局异常处理"></a>全局异常处理</h1><p>使用 @ControllerAdvice 实现全局异常处理，只需要定义类，添加该注解即可定义方式如下：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@ControllerAdvice</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">GlobalExceptionHandler</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@ExceptionHandler(Exception.class)</span></span><br><span class="line">    <span class="meta">@ResponseBody</span></span><br><span class="line">    <span class="keyword">public</span> String <span class="title function_">customerException</span><span class="params">(Exception e)</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;系统错误:&quot;</span>+e.getMessage();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p>在该类中，可以定义多个方法，不同的方法处理不同的异常，例如专门处理空指针的方法、专门处理数组越界的方法…，也可以直接向上面代码一样，在一个方法中处理所有的异常信息。</p>
-<p>@ExceptionHandler 注解用来指明异常的处理类型，即如果这里指定为 NullpointerException，则数组越界异常就不会进到这个方法中来。</p>
-<h1 id="全局数据绑定"><a href="#全局数据绑定" class="headerlink" title="全局数据绑定"></a>全局数据绑定</h1><p>全局数据绑定功能可以用来做一些初始化的数据操作，我们可以将一些公共的数据定义在添加了 @ControllerAdvice 注解的类中，这样，在每一个  Controller 的接口中，就都能够访问导致这些数据。</p>
-<p>使用步骤，首先定义全局数据，如下：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@ModelAttribute(name = &quot;md&quot;)</span></span><br><span class="line"><span class="keyword">public</span> Map&lt;String,Object&gt; <span class="title function_">mydata</span><span class="params">()</span> &#123;</span><br><span class="line">    HashMap&lt;String, Object&gt; map = <span class="keyword">new</span> <span class="title class_">HashMap</span>&lt;&gt;();</span><br><span class="line">    map.put(<span class="string">&quot;age&quot;</span>, <span class="number">99</span>);</span><br><span class="line">    map.put(<span class="string">&quot;gender&quot;</span>, <span class="string">&quot;男&quot;</span>);</span><br><span class="line">    <span class="keyword">return</span> map;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>使用 @ModelAttribute 注解标记该方法的返回数据是一个全局数据，默认情况下，这个全局数据的 key 就是返回的变量名，value 就是方法返回值，当然开发者可以通过 @ModelAttribute 注解的 name 属性去重新指定 key。</p>
-<p>定义完成后，在任何一个Controller 的接口中，都可以获取到这里定义的数据：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@RequestMapping(&quot;/hello&quot;)</span></span><br><span class="line"><span class="meta">@ResponseBody</span></span><br><span class="line"><span class="keyword">public</span> String <span class="title function_">hello</span><span class="params">(Model model)</span> &#123;</span><br><span class="line">    Map&lt;String, Object&gt; map = model.asMap();</span><br><span class="line">    System.out.println(map);</span><br><span class="line">    <span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">1</span>/<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">&quot;ok&quot;</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<h1 id="全局数据预处理"><a href="#全局数据预处理" class="headerlink" title="全局数据预处理"></a>全局数据预处理</h1><p>考虑我有两个实体类，Book 和 Author，分别定义如下：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">publicclass Book &#123;</span><br><span class="line">    <span class="keyword">private</span> String name;</span><br><span class="line">    <span class="keyword">private</span> Long price;</span><br><span class="line">    <span class="comment">//getter/setter</span></span><br><span class="line">&#125;</span><br><span class="line">publicclass Author &#123;</span><br><span class="line">    <span class="keyword">private</span> String name;</span><br><span class="line">    <span class="keyword">private</span> Integer age;</span><br><span class="line">    <span class="comment">//getter/setter</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>此时，如果我定义一个数据添加接口，如下：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@PostMapping(&quot;/book&quot;)</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">addBook</span><span class="params">(Book book, Author author)</span> &#123;</span><br><span class="line">    System.out.println(book);</span><br><span class="line">    System.out.println(author);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>这个时候，添加操作就会有问题，因为两个实体类都有一个 name 属性，从前端传递时 ，无法区分。此时，通过 @ControllerAdvice 的全局数据预处理可以解决这个问题</p>
-<p>解决步骤如下:</p>
-<p>1.给接口中的变量取别名</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@PostMapping(&quot;/book&quot;)</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">addBook</span><span class="params">(<span class="meta">@ModelAttribute(&quot;b&quot;)</span> Book book, <span class="meta">@ModelAttribute(&quot;a&quot;)</span> Author author)</span> &#123;</span><br><span class="line">    System.out.println(book);</span><br><span class="line">    System.out.println(author);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>2.进行请求数据预处理<br>在 @ControllerAdvice 标记的类中添加如下代码:</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@InitBinder(&quot;b&quot;)</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">b</span><span class="params">(WebDataBinder binder)</span> &#123;</span><br><span class="line">    binder.setFieldDefaultPrefix(<span class="string">&quot;b.&quot;</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="meta">@InitBinder(&quot;a&quot;)</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">a</span><span class="params">(WebDataBinder binder)</span> &#123;</span><br><span class="line">    binder.setFieldDefaultPrefix(<span class="string">&quot;a.&quot;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>@InitBinder(“b”) 注解表示该方法用来处理和Book和相关的参数,在方法中,给参数添加一个 b 前缀,即请求参数要有b前缀.</p>
-<p>3.发送请求</p>
-<p>请求发送时,通过给不同对象的参数添加不同的前缀,可以实现参数的区分.</p>
-<p><img src="/blog/images/img/640.png" alt="640"></p>
+  <h1 id="1、yum源进行备份"><a href="#1、yum源进行备份" class="headerlink" title="1、yum源进行备份"></a>1、yum源进行备份</h1><p>[root@Server01 &#x2F;]# cd &#x2F;etc&#x2F;yum.repos.d</p>
+<p>[root@Server01 &#x2F;]# mv Centos-Base.repo Centos-Base.repo.bak</p>
+<h1 id="2、下载网上yum源"><a href="#2、下载网上yum源" class="headerlink" title="2、下载网上yum源"></a>2、下载网上yum源</h1><p>[root@server01&#x2F;]# wget -O &#x2F;etc&#x2F;yum.repos.d&#x2F;CentOS-Base.repo <a target="_blank" rel="noopener" href="http://mirrors.aliyun.com/repo/Centos-7.repo">http://mirrors.aliyun.com/repo/Centos-7.repo</a></p>
+<h1 id="3、清除缓存更新yum列表"><a href="#3、清除缓存更新yum列表" class="headerlink" title="3、清除缓存更新yum列表"></a>3、清除缓存更新yum列表</h1><p>[root@Server01 &#x2F;]# yum clean all</p>
+<p>[root@Server01 &#x2F;]# yum makecache</p>
+<p>[root@Server01 &#x2F;]# yum update</p>
  
       <!-- reward -->
       
@@ -150,27 +127,16 @@
     
     <footer class="article-footer">
        
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/SpringBoot2/" rel="tag">SpringBoot2</a></li></ul>
-
     </footer>
   </div>
 
    
   <nav class="article-nav">
     
-      <a href="/blog/2023/06/01/%E8%AF%AD%E8%A8%80/markdown/" class="article-nav-link">
-        <strong class="article-nav-caption">上一篇</strong>
-        <div class="article-nav-title">
-          
-            markdown基本使用
-          
-        </div>
-      </a>
     
-    
-      <a href="/blog/2023/06/01/%E5%90%8E%E7%AB%AF%E6%A1%86%E6%9E%B6/springboot2/2.Spring%20Boot2CORS%20%E8%A7%A3%E5%86%B3%E8%B7%A8%E5%9F%9F%E9%97%AE%E9%A2%98/" class="article-nav-link">
+      <a href="/blog/2023/09/21/%E5%B7%A5%E5%85%B7/centos7%E5%AE%89%E8%A3%85mysql8/" class="article-nav-link">
         <strong class="article-nav-caption">下一篇</strong>
-        <div class="article-nav-title">2.Spring Boot2 CORS 解决跨域问题</div>
+        <div class="article-nav-title">centos7安装mysql8</div>
       </a>
     
   </nav>

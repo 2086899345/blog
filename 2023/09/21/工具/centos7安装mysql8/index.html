@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+
+
+<html lang="zh-CN">
+  
+
+    <head>
+      <meta charset="utf-8" />
+        
+      <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1, maximum-scale=1"
+      />
+      <title>centos7安装mysql8 |  学思阁</title>
+  <meta name="generator" content="hexo-theme-ayer">
+      
+      <link rel="shortcut icon" href="/blog/logo.ico" />
+       
+<link rel="stylesheet" href="/blog/dist/main.css">
+
+      
+<link rel="stylesheet" href="/blog/css/fonts/remixicon.css">
+
+      
+<link rel="stylesheet" href="/blog/css/custom.css">
+ 
+      <script src="https://cdn.staticfile.org/pace/1.2.4/pace.min.js"></script>
+       
+ 
+
+      <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/@sweetalert2/theme-bulma@5.0.1/bulma.min.css"
+      />
+      <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.19/dist/sweetalert2.min.js"></script>
+
+      <!-- mermaid -->
+      
+      <style>
+        .swal2-styled.swal2-confirm {
+          font-size: 1.6rem;
+        }
+      </style>
+    </head>
+  </html>
+</html>
+
+
+<body>
+  <div id="app">
+    
+      
+      <canvas width="1777" height="841"
+        style="position: fixed; left: 0px; top: 0px; z-index: 99999; pointer-events: none;"></canvas>
+      
+    <main class="content on">
+      <section class="outer">
+  <article
+  id="post-工具/centos7安装mysql8"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h1 class="article-title sea-center" style="border-left:0" itemprop="name">
+  centos7安装mysql8
+</h1>
+ 
+
+      
+    </header>
+     
+    <div class="article-meta">
+      <a href="/blog/2023/09/21/%E5%B7%A5%E5%85%B7/centos7%E5%AE%89%E8%A3%85mysql8/" class="article-date">
+  <time datetime="2023-09-21T13:50:04.000Z" itemprop="datePublished">2023-09-21</time>
+</a> 
+  <div class="article-category">
+    <a class="article-category-link" href="/blog/categories/%E5%B7%A5%E5%85%B7/">工具</a> / <a class="article-category-link" href="/blog/categories/%E5%B7%A5%E5%85%B7/%E5%AE%89%E8%A3%85mysql8/">安装mysql8</a>
+  </div>
+  
+<div class="word_count">
+    <span class="post-time">
+        <span class="post-meta-item-icon">
+            <i class="ri-quill-pen-line"></i>
+            <span class="post-meta-item-text"> 字数统计:</span>
+            <span class="post-count">879</span>
+        </span>
+    </span>
+
+    <span class="post-time">
+        &nbsp; | &nbsp;
+        <span class="post-meta-item-icon">
+            <i class="ri-book-open-line"></i>
+            <span class="post-meta-item-text"> 阅读时长≈</span>
+            <span class="post-count">4 分钟</span>
+        </span>
+    </span>
+</div>
+ 
+    </div>
+      
+    <div class="tocbot"></div>
+
+
+
+
+  
+    <div class="article-entry" itemprop="articleBody">
+       
+  <h1 id="1-卸载mariadb"><a href="#1-卸载mariadb" class="headerlink" title="1.卸载mariadb"></a>1.卸载mariadb</h1><p>rpm -qa|grep mariadb</p>
+<p>rpm -e –nodeps mariadb-libs-5.5.68-1.el7.x86_64</p>
+<h1 id="2-wget下载mysql8"><a href="#2-wget下载mysql8" class="headerlink" title="2.wget下载mysql8"></a>2.wget下载mysql8</h1><p>wget <a target="_blank" rel="noopener" href="https://dev.mysql.com/get/Downloads/MySQL-8.0/mysql-8.0.20-linux-glibc2.12-x86_64.tar.xz">https://dev.mysql.com/get/Downloads/MySQL-8.0/mysql-8.0.20-linux-glibc2.12-x86_64.tar.xz</a></p>
+<h1 id="3-解压"><a href="#3-解压" class="headerlink" title="3.解压"></a>3.解压</h1><p>.tar.gz 后缀</p>
+<p>tar -zxvf 文件名</p>
+<p> .tar.xz 后缀</p>
+<p>tar -Jxvf 文件名</p>
+<h1 id="4-移动到-x2F-usr-x2F-local-x2F"><a href="#4-移动到-x2F-usr-x2F-local-x2F" class="headerlink" title="4.移动到&#x2F;usr&#x2F;local&#x2F;"></a>4.移动到&#x2F;usr&#x2F;local&#x2F;</h1><p>mv 文件名 &#x2F;usr&#x2F;local</p>
+<h1 id="5-重命名"><a href="#5-重命名" class="headerlink" title="5.重命名"></a>5.重命名</h1><p>mv 原文件夹名 mysql8</p>
+<h1 id="6-修改环境变量"><a href="#6-修改环境变量" class="headerlink" title="6.修改环境变量"></a>6.修改环境变量</h1><p>vi &#x2F;etc&#x2F;profile</p>
+<p>export PATH&#x3D;$PATH:&#x2F;usr&#x2F;local&#x2F;mysql8&#x2F;bin</p>
+<p>source &#x2F;etc&#x2F;profile</p>
+<h1 id="7-确定安装成功"><a href="#7-确定安装成功" class="headerlink" title="7.确定安装成功"></a>7.确定安装成功</h1><p>mysql –version</p>
+<h1 id="8-创建用户组、用户"><a href="#8-创建用户组、用户" class="headerlink" title="8.创建用户组、用户"></a>8.创建用户组、用户</h1><p>groupadd mysql</p>
+<p>useradd -r -g mysql mysql</p>
+<h1 id="9-创建数据目录"><a href="#9-创建数据目录" class="headerlink" title="9.创建数据目录"></a>9.创建数据目录</h1><p>mkdir -p &#x2F;data&#x2F;mysql8_data</p>
+<h1 id="10-赋予权限"><a href="#10-赋予权限" class="headerlink" title="10.赋予权限"></a>10.赋予权限</h1><p>更改属主和数组</p>
+<p>chown -R mysql:mysql &#x2F;data&#x2F;mysql8_data</p>
+<p>更改模式</p>
+<p>chmod -R 750 &#x2F;data&#x2F;mysql8_data</p>
+<h1 id="11-创建配置文件"><a href="#11-创建配置文件" class="headerlink" title="11.创建配置文件"></a>11.创建配置文件</h1><p>touch &#x2F;usr&#x2F;local&#x2F;etc&#x2F;my.cnf</p>
+<h1 id="12-配置内容"><a href="#12-配置内容" class="headerlink" title="12.配置内容"></a>12.配置内容</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br></pre></td><td class="code"><pre><span class="line">[mysql]</span><br><span class="line"># 默认字符集</span><br><span class="line">default-character-set=utf8mb4</span><br><span class="line">[client]</span><br><span class="line">port       = 3306</span><br><span class="line">socket     = /tmp/mysql.sock</span><br><span class="line">[mysqld]</span><br><span class="line">port       = 3306</span><br><span class="line">server-id  = 3306</span><br><span class="line">user       = mysql</span><br><span class="line">socket     = /tmp/mysql.sock</span><br><span class="line"># 安装目录</span><br><span class="line">basedir    = /usr/local/mysql8</span><br><span class="line"># 数据存放目录</span><br><span class="line">datadir    = /data/mysql8_data/mysql</span><br><span class="line">log-bin    = /data/mysql8_data/mysql/mysql-bin</span><br><span class="line">innodb_data_home_dir      =/data/mysql8_data/mysql</span><br><span class="line">innodb_log_group_home_dir =/data/mysql8_data/mysql</span><br><span class="line"># 日志及进程数据的存放目录</span><br><span class="line">log-error =/data/mysql8_data/mysql/mysql.log</span><br><span class="line">pid-file  =/data/mysql8_data/mysql/mysql.pid</span><br><span class="line"># 服务端字符集</span><br><span class="line">character-set-server=utf8mb4</span><br><span class="line">lower_case_table_names=1</span><br><span class="line">autocommit =1</span><br><span class="line">##### 以上涉及文件夹明，注意修改</span><br><span class="line">skip-external-locking</span><br><span class="line">key_buffer_size = 256M</span><br><span class="line">max_allowed_packet = 1M</span><br><span class="line">table_open_cache = 1024</span><br><span class="line">sort_buffer_size = 4M</span><br><span class="line">net_buffer_length = 8K</span><br><span class="line">read_buffer_size = 4M</span><br><span class="line">read_rnd_buffer_size = 512K</span><br><span class="line">myisam_sort_buffer_size = 64M</span><br><span class="line">thread_cache_size = 128</span><br><span class="line">#query_cache_size = 128M</span><br><span class="line">tmp_table_size = 128M</span><br><span class="line">explicit_defaults_for_timestamp = true</span><br><span class="line">max_connections = 500</span><br><span class="line">max_connect_errors = 100</span><br><span class="line">open_files_limit = 65535</span><br><span class="line">binlog_format=mixed</span><br><span class="line">binlog_expire_logs_seconds =864000</span><br><span class="line"># 创建表时使用的默认存储引擎</span><br><span class="line">default_storage_engine = InnoDB</span><br><span class="line">innodb_data_file_path = ibdata1:10M:autoextend</span><br><span class="line">innodb_buffer_pool_size = 1024M</span><br><span class="line">innodb_log_file_size = 256M</span><br><span class="line">innodb_log_buffer_size = 8M</span><br><span class="line">innodb_flush_log_at_trx_commit = 1</span><br><span class="line">innodb_lock_wait_timeout = 50</span><br><span class="line">transaction-isolation=READ-COMMITTED</span><br><span class="line">[mysqldump]</span><br><span class="line">quick</span><br><span class="line">max_allowed_packet = 16M</span><br><span class="line">[myisamchk]</span><br><span class="line">key_buffer_size = 256M</span><br><span class="line">sort_buffer_size = 4M</span><br><span class="line">read_buffer = 2M</span><br><span class="line">write_buffer = 2M</span><br><span class="line">[mysqlhotcopy]</span><br><span class="line">interactive-timeout</span><br></pre></td></tr></table></figure>
+<h1 id="13-初始化"><a href="#13-初始化" class="headerlink" title="13.初始化"></a>13.初始化</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mysqld --defaults-file=/usr/local/etc/my.cnf --basedir=/usr/local/mysql8 --datadir=/data/mysql8_data/mysql --user=mysql --initialize-insecure</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>–defaults-file：指定配置文件（要放在–initialize 前面）</p>
+<p>–user： 指定用户</p>
+<p>–basedir：指定安装目录</p>
+<p>–datadir：指定初始化数据目录</p>
+<p>–intialize-insecure：初始化无密码（否则生成随机密码）</p>
+<h1 id="14-启动-MySQL"><a href="#14-启动-MySQL" class="headerlink" title="14.启动 MySQL"></a>14.启动 MySQL</h1><p>查看 MySQL 的 &#x2F;bin 下是否包含 mysqld_safe</p>
+<p>用于后台安全启动 MySQL</p>
+<h1 id="15-启动服务"><a href="#15-启动服务" class="headerlink" title="15.启动服务"></a>15.启动服务</h1><p>mysqld_safe –defaults-file&#x3D;&#x2F;usr&#x2F;local&#x2F;etc&#x2F;my.cnf &amp;</p>
+<p>ps -aux|grep mysql 查看启动的服务</p>
+<h1 id="16-登录"><a href="#16-登录" class="headerlink" title="16.登录"></a>16.登录</h1><p>无密码：若以 –initialize-insecure 初始化，首次登录时跳过密码。</p>
+<p>mysql -u root –skip-password</p>
+<p>有密码：若初始化时设置了随机密码，在 &#x2F;data&#x2F;mysql8_data&#x2F;mysql&#x2F;mysql.log 查看</p>
+<p>mysql -u root -p</p>
+<h1 id="17-修改密码"><a href="#17-修改密码" class="headerlink" title="17.修改密码"></a>17.修改密码</h1><h2 id="首次修改"><a href="#首次修改" class="headerlink" title="首次修改"></a>首次修改</h2><p>MySQL 初始化的 root 用户、新创建的用户，都需要设置首次密码。</p>
+<p>建议使用本地密码插件 mysql_native_password。</p>
+<p>修改密码<br>ALTER USER ‘root‘@’localhost’ IDENTIFIED WITH mysql_native_password BY ‘新密码’;</p>
+<p>刷新权限<br>FLUSH PRIVILEGES;</p>
+<h2 id="平时修改"><a href="#平时修改" class="headerlink" title="平时修改"></a>平时修改</h2><p>mysqladmin -u用户名 -p旧密码 password 新密码</p>
+<p>或者</p>
+<p>设置密码<br>SET PASSWORD FOR ‘用户名‘@’主机’ &#x3D; PASSWORD(‘密码’);<br>刷新权限<br>FLUSH PRIVILEGES;</p>
+<h1 id="18-再次登录"><a href="#18-再次登录" class="headerlink" title="18.再次登录"></a>18.再次登录</h1><p>mysql -uroot -proot;</p>
+<h1 id="19-远程连接-MySQL"><a href="#19-远程连接-MySQL" class="headerlink" title="19.远程连接 MySQL"></a>19.远程连接 MySQL</h1><p>选择 mysql 数据库，查看当前用户</p>
+<p>USE mysql;</p>
+<p>SELECT user,host,plugin,authentication_string FROM user;</p>
+<p>host 字段 表示可访问当前数据库的主机，目前仅本地可访问。</p>
+<p><img src="/blog/images/img/mysql8.png" alt="mysql8"></p>
+<p>创建用户，任意远程访问</p>
+<h2 id="创建用户"><a href="#创建用户" class="headerlink" title="创建用户"></a>创建用户</h2><p>CREATE user ‘root‘@’%’;</p>
+<h2 id="设置首次密码"><a href="#设置首次密码" class="headerlink" title="设置首次密码"></a>设置首次密码</h2><p>ALTER USER ‘root‘@’%’ IDENTIFIED WITH mysql_native_password BY ‘密码’;</p>
+<h2 id="授权用户所有权限，刷新权限"><a href="#授权用户所有权限，刷新权限" class="headerlink" title="授权用户所有权限，刷新权限"></a>授权用户所有权限，刷新权限</h2><p>GRANT ALL PRIVILEGES ON <em>.</em> TO ‘root‘@’%’;<br>FLUSH PRIVILEGES;</p>
+<h1 id="20-设置-mysql开机自启动"><a href="#20-设置-mysql开机自启动" class="headerlink" title="20.设置 mysql开机自启动"></a>20.设置 mysql开机自启动</h1><h2 id="在-x2F-etc-x2F-rc-d-x2F-init-d-x2F-编辑一个新文件autostartmysql-sh"><a href="#在-x2F-etc-x2F-rc-d-x2F-init-d-x2F-编辑一个新文件autostartmysql-sh" class="headerlink" title="在&#x2F;etc&#x2F;rc.d&#x2F;init.d&#x2F;编辑一个新文件autostartmysql.sh"></a>在&#x2F;etc&#x2F;rc.d&#x2F;init.d&#x2F;编辑一个新文件autostartmysql.sh</h2><p>cd &#x2F;etc&#x2F;rc.d&#x2F;init.d&#x2F;</p>
+<p>vim .&#x2F;autostartmysql.sh</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">#!/bin/sh</span><br><span class="line"> </span><br><span class="line"># chkconfig: 2345 10 90</span><br><span class="line"># description: myservice...</span><br><span class="line">/usr/local/mysql8/bin/mysqld_safe --defaults-file=/usr/local/etc/my.cnf &amp;</span><br></pre></td></tr></table></figure>
+
+<h2 id="为autostartmysql-sh赋予权限"><a href="#为autostartmysql-sh赋予权限" class="headerlink" title="为autostartmysql.sh赋予权限"></a>为autostartmysql.sh赋予权限</h2><p>chmod +x .&#x2F;autostartmysql.sh</p>
+<h2 id="将autostartmysql-sh添加到-chkconfig-中"><a href="#将autostartmysql-sh添加到-chkconfig-中" class="headerlink" title="将autostartmysql.sh添加到 chkconfig 中"></a>将autostartmysql.sh添加到 chkconfig 中</h2><p>chkconfig –add .&#x2F;autostartmysql.sh </p>
+<p>chkconfig autostartmysql.sh on</p>
+<p>查看是否添加成功</p>
+<p>chkconfig –list</p>
+ 
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <footer class="article-footer">
+       
+    </footer>
+  </div>
+
+   
+  <nav class="article-nav">
+    
+      <a href="/blog/2023/09/21/%E5%B7%A5%E5%85%B7/centos7%E6%9B%BF%E6%8D%A2yum%E6%BA%90/" class="article-nav-link">
+        <strong class="article-nav-caption">上一篇</strong>
+        <div class="article-nav-title">
+          
+            centos7替换yum源
+          
+        </div>
+      </a>
+    
+    
+      <a href="/blog/2023/09/09/%E5%B7%A5%E5%85%B7/centos7%E5%AE%89%E8%A3%85mysql57/" class="article-nav-link">
+        <strong class="article-nav-caption">下一篇</strong>
+        <div class="article-nav-title">centos7安装mysql57</div>
+      </a>
+    
+  </nav>
+
+  
+   
+  
+    
+</article>
+
+</section>
+      <footer class="footer">
+  <div class="outer">
+    <ul>
+      <li>
+        Copyrights &copy;
+        2023
+        <i class="ri-heart-fill heart_icon"></i> Jie
+      </li>
+    </ul>
+    <ul>
+      <li>
+        
+      </li>
+    </ul>
+    <ul>
+      <li>
+        
+      </li>
+    </ul>
+    <ul>
+      
+    </ul>
+    <ul>
+      
+    </ul>
+    <ul>
+      <li>
+        <!-- cnzz统计 -->
+        
+        <script type="text/javascript" src=''></script>
+        
+      </li>
+    </ul>
+  </div>
+</footer>    
+    </main>
+    <div class="float_btns">
+      <div class="totop" id="totop">
+  <i class="ri-arrow-up-line"></i>
+</div>
+
+<div class="todark" id="todark">
+  <i class="ri-moon-line"></i>
+</div>
+
+    </div>
+    <aside class="sidebar on">
+      <button class="navbar-toggle"></button>
+<nav class="navbar">
+  
+  <div class="logo">
+    <a href="/blog/"><img src="/blog/images/sider.svg" alt="学思阁"></a>
+  </div>
+  
+  <ul class="nav nav-main">
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/blog/">主页</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/blog/archives">归档</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/blog/categories">分类</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/blog/friends">友链</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/blog/music">音乐</a>
+    </li>
+    
+  </ul>
+</nav>
+<nav class="navbar navbar-bottom">
+  <ul class="nav">
+    <li class="nav-item">
+      
+      <a class="nav-item-link nav-item-search"  title="搜索">
+        <i class="ri-search-line"></i>
+      </a>
+      
+      
+    </li>
+  </ul>
+</nav>
+<div class="search-form-wrap">
+  <div class="local-search local-search-plugin">
+  <input type="search" id="local-search-input" class="local-search-input" placeholder="Search...">
+  <div id="local-search-result" class="local-search-result"></div>
+</div>
+</div>
+    </aside>
+    <div id="mask"></div>
+
+<!-- #reward -->
+<div id="reward">
+  <span class="close"><i class="ri-close-line"></i></span>
+  <p class="reward-p"><i class="ri-cup-line"></i>请我喝杯咖啡吧~</p>
+  <div class="reward-box">
+    
+    <div class="reward-item">
+      <img class="reward-img" src="/blog/images/alipay.jpg">
+      <span class="reward-type">支付宝</span>
+    </div>
+    
+    
+    <div class="reward-item">
+      <img class="reward-img" src="/blog/images/wechat.jpg">
+      <span class="reward-type">微信</span>
+    </div>
+    
+  </div>
+</div>
+    
+<script src="/blog/js/jquery-3.6.0.min.js"></script>
+ 
+<script src="/blog/js/lazyload.min.js"></script>
+
+<!-- Tocbot -->
+ 
+<script src="/blog/js/tocbot.min.js"></script>
+
+<script>
+  tocbot.init({
+    tocSelector: ".tocbot",
+    contentSelector: ".article-entry",
+    headingSelector: "h1, h2, h3, h4, h5, h6",
+    hasInnerContainers: true,
+    scrollSmooth: true,
+    scrollContainer: "main",
+    positionFixedSelector: ".tocbot",
+    positionFixedClass: "is-position-fixed",
+    fixedSidebarOffset: "auto",
+  });
+</script>
+
+<script src="https://cdn.staticfile.org/jquery-modal/0.9.2/jquery.modal.min.js"></script>
+<link
+  rel="stylesheet"
+  href="https://cdn.staticfile.org/jquery-modal/0.9.2/jquery.modal.min.css"
+/>
+<script src="https://cdn.staticfile.org/justifiedGallery/3.8.1/js/jquery.justifiedGallery.min.js"></script>
+
+<script src="/blog/dist/main.js"></script>
+
+<!-- ImageViewer -->
+ <!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" style="display:none" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<link rel="stylesheet" href="https://cdn.staticfile.org/photoswipe/4.1.3/photoswipe.min.css">
+<link rel="stylesheet" href="https://cdn.staticfile.org/photoswipe/4.1.3/default-skin/default-skin.min.css">
+<script src="https://cdn.staticfile.org/photoswipe/4.1.3/photoswipe.min.js"></script>
+<script src="https://cdn.staticfile.org/photoswipe/4.1.3/photoswipe-ui-default.min.js"></script>
+
+<script>
+    function viewer_init() {
+        let pswpElement = document.querySelectorAll('.pswp')[0];
+        let $imgArr = document.querySelectorAll(('.article-entry img:not(.reward-img)'))
+
+        $imgArr.forEach(($em, i) => {
+            $em.onclick = () => {
+                // slider展开状态
+                // todo: 这样不好，后面改成状态
+                if (document.querySelector('.left-col.show')) return
+                let items = []
+                $imgArr.forEach(($em2, i2) => {
+                    let img = $em2.getAttribute('data-idx', i2)
+                    let src = $em2.getAttribute('data-target') || $em2.getAttribute('src')
+                    let title = $em2.getAttribute('alt')
+                    // 获得原图尺寸
+                    const image = new Image()
+                    image.src = src
+                    items.push({
+                        src: src,
+                        w: image.width || $em2.width,
+                        h: image.height || $em2.height,
+                        title: title
+                    })
+                })
+                var gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, items, {
+                    index: parseInt(i)
+                });
+                gallery.init()
+            }
+        })
+    }
+    viewer_init()
+</script> 
+<!-- MathJax -->
+ <script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+      tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+  });
+
+  MathJax.Hub.Queue(function() {
+      var all = MathJax.Hub.getAllJax(), i;
+      for(i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+      }
+  });
+</script>
+
+<script src="https://cdn.staticfile.org/mathjax/2.7.7/MathJax.js"></script>
+<script src="https://cdn.staticfile.org/mathjax/2.7.7/config/TeX-AMS-MML_HTMLorMML-full.js"></script>
+<script>
+  var ayerConfig = {
+    mathjax: true,
+  };
+</script>
+
+<!-- Katex -->
+
+<!-- busuanzi  -->
+
+<!-- ClickLove -->
+
+<!-- ClickBoom1 -->
+
+<!-- ClickBoom2 -->
+ 
+<script src="/blog/js/clickBoom2.js"></script>
+ 
+<!-- CodeCopy -->
+ 
+<link rel="stylesheet" href="/blog/css/clipboard.css">
+ <script src="https://cdn.staticfile.org/clipboard.js/2.0.10/clipboard.min.js"></script>
+<script>
+  function wait(callback, seconds) {
+    var timelag = null;
+    timelag = window.setTimeout(callback, seconds);
+  }
+  !function (e, t, a) {
+    var initCopyCode = function(){
+      var copyHtml = '';
+      copyHtml += '<button class="btn-copy" data-clipboard-snippet="">';
+      copyHtml += '<i class="ri-file-copy-2-line"></i><span>COPY</span>';
+      copyHtml += '</button>';
+      $(".highlight .code pre").before(copyHtml);
+      $(".article pre code").before(copyHtml);
+      var clipboard = new ClipboardJS('.btn-copy', {
+        target: function(trigger) {
+          return trigger.nextElementSibling;
+        }
+      });
+      clipboard.on('success', function(e) {
+        let $btn = $(e.trigger);
+        $btn.addClass('copied');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('ri-file-copy-2-line');
+        $icon.addClass('ri-checkbox-circle-line');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPIED';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('ri-checkbox-circle-line');
+          $icon.addClass('ri-file-copy-2-line');
+          $span[0].innerText = 'COPY';
+        }, 2000);
+      });
+      clipboard.on('error', function(e) {
+        e.clearSelection();
+        let $btn = $(e.trigger);
+        $btn.addClass('copy-failed');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('ri-file-copy-2-line');
+        $icon.addClass('ri-time-line');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPY FAILED';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('ri-time-line');
+          $icon.addClass('ri-file-copy-2-line');
+          $span[0].innerText = 'COPY';
+        }, 2000);
+      });
+    }
+    initCopyCode();
+  }(window, document);
+</script>
+ 
+<!-- CanvasBackground -->
+
+<script>
+  if (window.mermaid) {
+    mermaid.initialize({ theme: "forest" });
+  }
+</script>
+
+
+    
+    
+
+  </div>
+</body>
+
+</html>
