@@ -87,7 +87,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> 字数统计:</span>
-            <span class="post-count">175</span>
+            <span class="post-count">540</span>
         </span>
     </span>
 
@@ -96,13 +96,15 @@
         <span class="post-meta-item-icon">
             <i class="ri-book-open-line"></i>
             <span class="post-meta-item-text"> 阅读时长≈</span>
-            <span class="post-count">1 分钟</span>
+            <span class="post-count">2 分钟</span>
         </span>
     </span>
 </div>
  
     </div>
       
+    <div class="tocbot"></div>
+
 
 
 
@@ -133,6 +135,26 @@
 <ol start="6">
 <li>开机自启<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line">vi /usr/lib/systemd/system/rocketmqname.service</span><br><span class="line"></span><br><span class="line">[Unit]</span><br><span class="line">Description=rocketmq-nameserver</span><br><span class="line">After=network.target</span><br><span class="line"></span><br><span class="line">[Service]</span><br><span class="line">Type=sample</span><br><span class="line">User=root</span><br><span class="line">ExecStart=/usr/local/rocketmq/bin/mqnamesrv</span><br><span class="line">ExecReload=/bin/kill -s HUP $MAINPID</span><br><span class="line">ExecStop=/bin/kill -s QUIT $MAINPID</span><br><span class="line">Restart=0</span><br><span class="line">LimitNOFILE=65536</span><br><span class="line"></span><br><span class="line">[Install]</span><br><span class="line">WantedBy=multi-user.target</span><br><span class="line"></span><br><span class="line">vi /usr/lib/systemd/system/rocketmqbroker.service</span><br><span class="line"></span><br><span class="line">[Unit]</span><br><span class="line">Description=rocketmq-broker</span><br><span class="line">After=network.target</span><br><span class="line"></span><br><span class="line">[Service]</span><br><span class="line">Type=sample</span><br><span class="line">User=root</span><br><span class="line">ExecStart=/usr/local/rocketmq/bin/mqbroker -c /usr/local/rocketmq/conf/broker.conf</span><br><span class="line">ExecReload=/bin/kill -s HUP $MAINPID</span><br><span class="line">ExecStop=/bin/kill -s QUIT $MAINPID</span><br><span class="line">Restart=0</span><br><span class="line">LimitNOFILE=65536</span><br><span class="line"></span><br><span class="line">[Install]</span><br><span class="line">WantedBy=multi-user.target</span><br><span class="line"></span><br><span class="line">systemctl start rocketmqname.service</span><br><span class="line">systemctl start rocketmqbroker.service</span><br><span class="line"> </span><br><span class="line">systemctl enable rocketmqname.service</span><br><span class="line">systemctl enable rocketmqbroker.service</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure></li>
 </ol>
+<h1 id="RocketMQ-Dashboard"><a href="#RocketMQ-Dashboard" class="headerlink" title="RocketMQ Dashboard"></a>RocketMQ Dashboard</h1><p>服务器得有maven环境</p>
+<ol>
+<li>下载RocketMQ Dashboard<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">使用git下载</span><br><span class="line"></span><br><span class="line">提示没有git的话，使用yum下载</span><br><span class="line"></span><br><span class="line">yum install -y git</span><br><span class="line"></span><br><span class="line">git clone https://github.com/apache/rocketmq-dashboard.git</span><br><span class="line"></span><br><span class="line">下载完后进入目录</span><br><span class="line"></span><br><span class="line">cd rocketmq-dashboard/</span><br><span class="line"></span><br><span class="line">vim src/main/resources/application.yml</span><br><span class="line"></span><br><span class="line">修改端口</span><br><span class="line"></span><br><span class="line">maven打包</span><br><span class="line"></span><br><span class="line">回到rocketmq-dashboard目录下</span><br><span class="line"></span><br><span class="line">mvn clean package -Dmaven.test.skip=true</span><br><span class="line"></span><br><span class="line">显示BUILD SUCCESS即为打包成功</span><br><span class="line"></span><br><span class="line">cd target</span><br><span class="line"></span><br><span class="line">nohup java -jar rocketmq-dashboard-1.0.1-SNAPSHOT.jar &amp;</span><br><span class="line"></span><br></pre></td></tr></table></figure></li>
+<li>编写启动，停止，重启脚本</li>
+</ol>
+<p>进入&#x2F;usr&#x2F;local&#x2F; 并创建文件夹rocketmq-dashboard</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cd /usr/local</span><br><span class="line">mkdir rocketmq-dashboard</span><br></pre></td></tr></table></figure>
+
+<p>2.1 启动脚本</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">vim rocketmq-dashboard-start.sh</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">#!/bin/bash</span><br><span class="line"></span><br><span class="line"># 启动rocketmq dashboard</span><br><span class="line">cd /usr/local/rocketmq-dashboard/target</span><br><span class="line">if jps -ml | grep &quot;rocketmq-dashboard&quot;; then</span><br><span class="line">        echo &quot;rocketmq dashboard is running.&quot;;</span><br><span class="line">else</span><br><span class="line">        echo &quot;rocketmq dashboard is Starting ...&quot;;</span><br><span class="line">        rm -rf nohup.out;</span><br><span class="line">        nohup java -jar rocketmq-dashboard-1.0.1-SNAPSHOT.jar &amp; </span><br><span class="line">        count=0</span><br><span class="line">        while [ $count -le 10 ]; do</span><br><span class="line">          if tail -100 nohup.out | grep &quot;Tomcat started on port(s)&quot;; then</span><br><span class="line">                echo &quot;rocketmq dashboard has been started successfully&quot;;</span><br><span class="line">                break</span><br><span class="line">          else</span><br><span class="line">                count=$((count+1))</span><br><span class="line">                sleep 2</span><br><span class="line">          fi</span><br><span class="line">        done</span><br><span class="line">fi</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>2.2 停止脚本</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">vim rocketmq-dashboard-stop.sh</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">#!/bin/bash</span><br><span class="line"></span><br><span class="line"># 项目名称</span><br><span class="line">APPLICATION=&quot;rocketmq-dashboard&quot;</span><br><span class="line"></span><br><span class="line"># 项目启动jar包名称</span><br><span class="line">APPLICATION_JAR=&quot;rocketmq-dashboard-1.0.1-SNAPSHOT.jar&quot;</span><br><span class="line"></span><br><span class="line">PID=$(ps -ef | grep $&#123;APPLICATION_JAR&#125; | grep -v grep | awk &#x27;&#123; print $2 &#125;&#x27;)</span><br><span class="line">if [ -z &quot;$PID&quot; ]</span><br><span class="line">then</span><br><span class="line">    echo $&#123;APPLICATION&#125; is already stopped</span><br><span class="line">else</span><br><span class="line">    echo kill  $&#123;PID&#125;</span><br><span class="line">    kill -9 $&#123;PID&#125;</span><br><span class="line">    echo $&#123;APPLICATION&#125; stopped successfully</span><br><span class="line">fi</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>2.3 重启脚本</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">#!/bin/bash</span><br><span class="line"></span><br><span class="line"># 项目名称</span><br><span class="line">APPLICATION=&quot;rocketmq-dashboard&quot;</span><br><span class="line"></span><br><span class="line"># 停服</span><br><span class="line">echo stop $&#123;APPLICATION&#125; Application...</span><br><span class="line">sh rocketmq-dashboard-stop.sh</span><br><span class="line"></span><br><span class="line"># 启动服务</span><br><span class="line">echo start $&#123;APPLICATION&#125; Application...</span><br><span class="line">sh rocketmq-dashboard-start.sh</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>2.4 赋予执行权力</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chmod +755 rocketmq-dashboard-*</span><br></pre></td></tr></table></figure>
+
+
+
  
       <!-- reward -->
       
@@ -148,6 +170,15 @@
 
    
   <nav class="article-nav">
+    
+      <a href="/blog/2023/10/04/%E5%B7%A5%E5%85%B7/centos7%E5%AE%89%E8%A3%85maven/" class="article-nav-link">
+        <strong class="article-nav-caption">上一篇</strong>
+        <div class="article-nav-title">
+          
+            centos7安装maven
+          
+        </div>
+      </a>
     
     
       <a href="/blog/2023/09/29/%E5%B7%A5%E5%85%B7/centos7%E5%AE%89%E8%A3%85mongodb/" class="article-nav-link">
