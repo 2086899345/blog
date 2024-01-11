@@ -87,7 +87,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> 字数统计:</span>
-            <span class="post-count">453</span>
+            <span class="post-count">470</span>
         </span>
     </span>
 
@@ -132,6 +132,7 @@
 <h1 id="查看分支合并图"><a href="#查看分支合并图" class="headerlink" title="查看分支合并图"></a>查看分支合并图</h1><p>git log –graph –pretty&#x3D;oneline –abbrev-commit</p>
 <h1 id="暂存开发现场"><a href="#暂存开发现场" class="headerlink" title="暂存开发现场"></a>暂存开发现场</h1><p>针对当前分支开发而没有提交，需要去处理其他分支的情景，可以使用git stash 暂存开发现场。等解决完其他分支切回当前分支后执行git list查看当前stash记录。然后执行git stash pop还原当前分支开发现场（pop会还原后删除保存的记录，git stash apply则不会删除，删除需要手动执行git stash drop）。</p>
 <h1 id="格式化提交时间线"><a href="#格式化提交时间线" class="headerlink" title="格式化提交时间线"></a>格式化提交时间线</h1><p>git rebase</p>
+<h1 id="提交-gitignore文件中忽视的文件"><a href="#提交-gitignore文件中忽视的文件" class="headerlink" title="提交.gitignore文件中忽视的文件"></a>提交.gitignore文件中忽视的文件</h1><p>git rm -r –cached [文件夹]</p>
  
       <!-- reward -->
       
@@ -177,7 +178,7 @@
     <ul>
       <li>
         Copyrights &copy;
-        2022-2023
+        2022-2024
         <i class="ri-heart-fill heart_icon"></i> Jie
       </li>
     </ul>
