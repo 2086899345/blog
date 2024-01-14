@@ -79,7 +79,7 @@
   <time datetime="2024-01-11T13:05:39.000Z" itemprop="datePublished">2024-01-11</time>
 </a> 
   <div class="article-category">
-    <a class="article-category-link" href="/blog/categories/%E5%B7%A5%E4%BD%9C%E6%B5%81/">工作流</a> / <a class="article-category-link" href="/blog/categories/%E5%B7%A5%E4%BD%9C%E6%B5%81/activiti7/">activiti7</a>
+    <a class="article-category-link" href="/blog/categories/activiti7/">activiti7</a>
   </div>
   
 <div class="word_count">
@@ -87,7 +87,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> 字数统计:</span>
-            <span class="post-count">3.5k</span>
+            <span class="post-count">3.7k</span>
         </span>
     </span>
 
@@ -96,7 +96,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-book-open-line"></i>
             <span class="post-meta-item-text"> 阅读时长≈</span>
-            <span class="post-count">13 分钟</span>
+            <span class="post-count">14 分钟</span>
         </span>
     </span>
 </div>
@@ -123,6 +123,7 @@
 <p>ACT_ID_ : ‘ID’表示identity。 这些表包含身份信息，比如用户，组等等</p>
 <p>ACT_HI_: ‘HI’表示history。 这些表包含历史数据，比如历史流程实例， 变量，任务等等</p>
 <p>ACT_GE_*: 通用数据， 用于不同场景下</p>
+<p><img src="/blog/images/img/tables.png" alt="tables"></p>
 <h1 id="activiti-工作流不支持分布式"><a href="#activiti-工作流不支持分布式" class="headerlink" title="activiti 工作流不支持分布式"></a>activiti 工作流不支持分布式</h1><p>原因是：在Activiti工作流的act_ge_property表中通常情况下有3条记录：</p>
 <p>next.dbid<br>schema.history<br>schema.version</p>
 <p>其中next.dbid对应的值为数据库中当前最近一次增长后的最大记录id，每次增长的步长为2500，protected int idBlockSize &#x3D; 2500; （在ProcessEngineConfiguration类中）</p>
@@ -167,9 +168,7 @@
 <p>Local变量由于作用在不同的任务或不同的执行实例中，所以不同变量的作用域是互不影响的，变量名可以相同。Local变量名也可以和Global变量名相同，不会有影响。</p>
 <h3 id="使用流程变量"><a href="#使用流程变量" class="headerlink" title="使用流程变量"></a>使用流程变量</h3><p>定义好流程变量后，就可以在整个流程定义中使用这些流程变量了。<br>设置Global流程变量</p>
 <p>1） 启动流程时设置变量</p>
-<ol start="2">
-<li>任务办理时设置变量</li>
-</ol>
+<p>2） 任务办理时设置变量</p>
 <p>3） 通过当前流程实例设置</p>
 <p>4） 通过当前任务设置</p>
 <h1 id="网关"><a href="#网关" class="headerlink" title="网关"></a>网关</h1><p>网关是用来控制流程流向的重要组件，通常都会要结合流程变量来使用。</p>
@@ -178,12 +177,18 @@
 <p>注意 ：</p>
 <p>排他网关只会选择一个为true的分支执行。如果有两个分支条件都为true，排他网关会选择id值较小的一条分支去执行。</p>
 <p>如果从网关出去的线所有条件都不满足则系统抛出异常。</p>
+<p>例如下面流程，请假天数小于等于1天，科任老师老师批准，请假流程结束；请假天数大于1天，就需要班主任批准。</p>
+<p><img src="/blog/images/img/exclusiveGateway.png" alt="exclusiveGateway"></p>
 <h2 id="并行网关ParallelGateway"><a href="#并行网关ParallelGateway" class="headerlink" title="并行网关ParallelGateway"></a>并行网关ParallelGateway</h2><p>并行网关允许将流程分成多条分支，也可以把多条分支汇聚到一起，并行网关的功能是基于进入和外出顺序流的：并行网关在业务应用中常用于会签任务，会签任务即多个参与者共同办理的任务</p>
 <p>与其他网关的主要区别是，并行网关不会解析条件。 即使顺序流中定义了条件，也会被忽略。</p>
+<p>例如下面流程，需要科任老师批准、班主任批准，请假流程才能结束。</p>
+<p><img src="/blog/images/img/parallelGateway.png" alt="parallelGateway"></p>
 <h2 id="包含网关InclusiveGateway"><a href="#包含网关InclusiveGateway" class="headerlink" title="包含网关InclusiveGateway"></a>包含网关InclusiveGateway</h2><p>包含网关可以看做是排他网关和并行网关的结合体。</p>
 <p>包含网关的功能是基于进入和外出顺序流的：</p>
 <p>分支： 所有外出顺序流的条件都会被解析，结果为true的顺序流会以并行方式继续执行， 会为每个顺序流创建一个分支。</p>
 <p>汇聚： 所有并行分支到达包含网关，会进入等待状态， 直到每个包含流程token的进入顺序流的分支都到达。</p>
+<p>例如下面流程，请假天数小于等于1天，科任老师老师批准，请假流程结束；请假天数大于1天，班主任批准，请假流程结束；请假天数大于三天，就需要班主任批准、校长批准，请假流程才能结束。</p>
+<p><img src="/blog/images/img/inclusiveGateway.png" alt="inclusiveGateway"></p>
 <h2 id="事件网关EventGateway"><a href="#事件网关EventGateway" class="headerlink" title="事件网关EventGateway"></a>事件网关EventGateway</h2><h1 id="组任务分配"><a href="#组任务分配" class="headerlink" title="组任务分配"></a>组任务分配</h1><h2 id="设置多个候选责任人"><a href="#设置多个候选责任人" class="headerlink" title="设置多个候选责任人"></a>设置多个候选责任人</h2><p>某个订单合同，需要找部门经理级别的负责人签字。而公司中有多个部门经理，业务上只需要找其中任意一个人完成审批就可以了。</p>
 <p>这种场景下，我们就无法通过设置流程变量的方式来设置负责人。这时，就需要用到Activiti提供的另一个利器-任务候选人Candidate Users。</p>
 <h2 id="组任务办理流程"><a href="#组任务办理流程" class="headerlink" title="组任务办理流程"></a>组任务办理流程</h2><p>给任务分配了候选人后，后续就需要这些候选人主动认领自己的业务，然后进行处理。</p>
@@ -220,7 +225,7 @@
    
   <nav class="article-nav">
     
-      <a href="/blog/2024/01/11/%E5%B7%A5%E4%BD%9C%E6%B5%81/%E5%B7%A5%E4%BD%9C%E6%B5%81%E7%AE%80%E4%BB%8B/" class="article-nav-link">
+      <a href="/blog/2024/01/11/%E5%B7%A5%E4%BD%9C%E6%B5%81/%E7%AE%80%E4%BB%8B/%E5%B7%A5%E4%BD%9C%E6%B5%81%E7%AE%80%E4%BB%8B/" class="article-nav-link">
         <strong class="article-nav-caption">上一篇</strong>
         <div class="article-nav-title">
           
