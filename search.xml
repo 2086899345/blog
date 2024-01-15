@@ -2745,6 +2745,7 @@ Proxy.newProxyInstance 方法接收三个参数，第一个是一个 classloader
       <categories>
         <category>工作流</category>
         <category>activiti7</category>
+        <category>简介</category>
       </categories>
   </entry>
   <entry>
@@ -2757,6 +2758,7 @@ Proxy.newProxyInstance 方法接收三个参数，第一个是一个 classloader
 ]]></content>
       <categories>
         <category>工作流</category>
+        <category>activiti7</category>
         <category>部署流程</category>
       </categories>
   </entry>
@@ -2774,6 +2776,7 @@ Proxy.newProxyInstance 方法接收三个参数，第一个是一个 classloader
 ]]></content>
       <categories>
         <category>工作流</category>
+        <category>activiti7</category>
         <category>发起流程</category>
       </categories>
   </entry>
@@ -2785,7 +2788,34 @@ Proxy.newProxyInstance 方法接收三个参数，第一个是一个 classloader
 ]]></content>
       <categories>
         <category>工作流</category>
+        <category>activiti7</category>
         <category>自带流程设计器</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>5-任务分配</title>
+    <url>/blog/2024/01/15/%E5%B7%A5%E4%BD%9C%E6%B5%81/activiti7/5-%E4%BB%BB%E5%8A%A1%E5%88%86%E9%85%8D/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\blog\assets\css\APlayer.min.css"><script src="\blog\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\blog\assets\js\Meting.min.js"></script><h1 id="值表达式"><a href="#值表达式" class="headerlink" title="值表达式"></a>值表达式</h1><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">$&#123;变量名称&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h1 id="方法表达式"><a href="#方法表达式" class="headerlink" title="方法表达式"></a>方法表达式</h1><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">$&#123;bean.demo&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>返回是一个执行人名称</p>
+<h1 id="监听器配置"><a href="#监听器配置" class="headerlink" title="监听器配置"></a>监听器配置</h1><p>实现TaskListener接口</p>
+]]></content>
+      <categories>
+        <category>工作流</category>
+        <category>activiti7</category>
+        <category>任务分配</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>流程变量</title>
+    <url>/blog/2024/01/15/%E5%B7%A5%E4%BD%9C%E6%B5%81/activiti7/6-%E6%B5%81%E7%A8%8B%E5%8F%98%E9%87%8F/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\blog\assets\css\APlayer.min.css"><script src="\blog\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\blog\assets\js\Meting.min.js"></script><h1 id="运行时变量"><a href="#运行时变量" class="headerlink" title="运行时变量"></a>运行时变量</h1><p>全局变量、局部变量、历史变量</p>
+]]></content>
+      <categories>
+        <category>工作流</category>
+        <category>activiti7</category>
+        <category>流程变量</category>
       </categories>
   </entry>
 </search>
