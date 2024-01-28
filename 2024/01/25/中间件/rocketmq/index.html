@@ -87,7 +87,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> 字数统计:</span>
-            <span class="post-count">9.4k</span>
+            <span class="post-count">9.6k</span>
         </span>
     </span>
 
@@ -96,7 +96,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-book-open-line"></i>
             <span class="post-meta-item-text"> 阅读时长≈</span>
-            <span class="post-count">34 分钟</span>
+            <span class="post-count">35 分钟</span>
         </span>
     </span>
 </div>
@@ -147,7 +147,10 @@
 </ul>
 <p>标签可以被认为是对主题的进一步细化，可以理解为二级分类，一般在相同业务模块中通过引入标签来标记不同用途，同时消费者也可以根据不同的标签进行消息的过滤。</p>
 <ul>
-<li>Broker</li>
+<li><p>key<br>一般用于消息在业务层面的唯一标识。对发送的消息设置好 Key，以后可以根据这个 Key 来查找消息。比如消息异常，消息丢失，进行查找会很 方便。RocketMQ 会创建专门的索引文件，用来存储 Key 与消息的映射，由于是 Hash 索引，应尽量使 Key 唯一，避免潜在的哈希冲突。Tag 和 Key 的主要差别是使用场景不同，Tag 用在 Consumer 代码中，用于服务端消息过滤，Key 主要用于通过命令进行查找消息RocketMQ 并不能保证 message id 唯一，在这种情况下，生产者在 push 消息的时候可以给每条消息设定唯一的 key, 消费者可以通过 message key 保证对消息幂等处理。</p>
+</li>
+<li><p>Broker</p>
+</li>
 </ul>
 <p>Broker 是 RocketMQ 系统的主要角色，就是前面一直说的 MQ。Broker 接收来自生产者的消息，储存以及为消费者拉取消息的请求做好准备。</p>
 <ul>
@@ -156,16 +159,17 @@
 <p>Name Server 提供轻量级的服务发现和路由信息，每个 NameServer 记录完整的路由信息，提供等效的读写服务，并支持快速存储扩展。</p>
 <p>通俗地讲：</p>
 <p>NameService</p>
-<p>可以理解为简化的zk，起到一个注册中心的作用<br>区别与ZK是他没有监听的概念，而是通过心跳包来维持自己与Broker之间的关系<br>NameService集群之间的每个节点互相之间没有通信，是无状态的<br>NameService的压力不会太大，主要是维护Topic-Broker之间的映射关系<br>但若是broker中的topic信息量太大，broker向nameService注册信息的时候会导致传输时间过长超时，NameService会误判认为Broker下线</p>
+<p>可以理解为简化的zk，起到一个注册中心的作用区别与ZK是他没有监听的概念，而是通过心跳包来维持自己与Broker之间的关系NameService集群之间的每个节点互相之间没有通信，是无状态的NameService的压力不会太大，主要是维护Topic-Broker之间的映射关系但若是broker中的topic信息量太大，broker向nameService注册信息的时候会导致传输时间过长超时，NameService会误判认为Broker下线。</p>
 <p>Broker</p>
-<p>每台broker节点与所有的nameService保持长连接及心跳，并定时将Topic信息注册到nameService中<br>每个topic默认创建4个队列，相同的队列中保证顺序消费<br>Broker同样分为master和salve，相同的BrokerName，不同的BrokerId，一个master对应多个salve，一个salve只对应一个master<br>Broker上存topic信息，topic由多个队列组成，队列会均匀分布到所有的broker上<br>Producer在发送消息时，会尽量平均分布到队列中，这样保证最终所有的消息在broker上是平均分配的</p>
+<p>每台broker节点与所有的nameService保持长连接及心跳，并定时将Topic信息注册到nameService中每个topic默认创建4个队列，相同的队列中保证顺序消费Broker同样分为master和salve，相同的BrokerName，不同的BrokerId，一个master对应多个salve，一个salve只对应一个master，Broker上存topic信息，topic由多个队列组成，队列会均匀分布到所有的broker上Producer在发送消息时，会尽量平均分布到队列中，这样保证最终所有的消息在broker上是平均分配的</p>
 <p>Producer</p>
-<p>producer与随机的一个nameService节点建立长连接，定期从nameSerive中拉取topic-broker的映射信息<br>与提供topic的broker master建立一个长连接，producer每隔30秒向broker 发送一个心跳，broker每隔10秒扫描一下存活的链接<br>Producer发送消息支持三种模式</p>
+<p>producer与随机的一个nameService节点建立长连接，定期从nameSerive中拉取topic-broker的映射信息与提供topic的broker master建立一个长连接，producer每隔30秒向broker 发送一个心跳，broker每隔10秒扫描一下存活的链接Producer发送消息支持三种模式</p>
 <p>同步</p>
 <p>异步</p>
 <p>单向</p>
 <p>Comsumer</p>
-<p>comsumer同样采用集群部署，支持pull、push两种消费模式<br>comsumer可分为广播消息消费和集群消费</p>
+<p>comsumer同样采用集群部署，支持pull、push两种消费模式</p>
+<p>comsumer可分为广播消息消费和集群消费</p>
 <h1 id="逻辑架构图"><a href="#逻辑架构图" class="headerlink" title="逻辑架构图"></a>逻辑架构图</h1><p><img src="/blog/images/img/mqluoji.png"></p>
 <p>Rocketmq的概念模型</p>
 <p><img src="/blog/images/img/mqcore.png"></p>
@@ -195,7 +199,7 @@
 <p>因为不需要保证消息的顺序，所以消息可以大规模并发地发送和消费，吞吐量很高，适合大部分场景。</p>
 <h2 id="有序消息"><a href="#有序消息" class="headerlink" title="有序消息"></a>有序消息</h2><p>有序消息就是按照一定的先后顺序的消息类型。</p>
 <p>举个例子来说，producer 依次发送 order id 为 1、2、3 的消息到 broker，consumer 接到的消息顺序也就是 1、2、3 ，而不会出现普通消息那样的 2、1、3 等情况。</p>
-<p>那么有序消息是如何保证的呢？我们都知道消息首先由 producer 到 broker，再从 broker 到 consumer，分这两步走。那么要保证消息的有序，势必这两步都是要保证有序的，即要保证消息是按有序发送到 broker，broker 也是有序将消息投递给 consumer，两个条件必须同时满足，缺一不可。<br>进一步还可以将有序消息分成</p>
+<p>那么有序消息是如何保证的呢？我们都知道消息首先由 producer 到 broker，再从 broker 到 consumer，分这两步走。那么要保证消息的有序，势必这两步都是要保证有序的，即要保证消息是按有序发送到 broker，broker 也是有序将消息投递给 consumer，两个条件必须同时满足，缺一不可。进一步还可以将有序消息分成</p>
 <ul>
 <li>全局有序消息</li>
 <li>局部有序消息</li>
@@ -219,8 +223,8 @@
 </ul>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Consumer</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> MQClientException &#123;</span><br><span class="line"></span><br><span class="line">        <span class="comment">//声明并初始化一个consumer</span></span><br><span class="line">        <span class="comment">//需要一个consumer group名字作为构造方法的参数，这里为concurrent_consumer</span></span><br><span class="line">        <span class="type">DefaultMQPushConsumer</span> <span class="variable">consumer</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">DefaultMQPushConsumer</span>(<span class="string">&quot;ordered_consumer&quot;</span>);</span><br><span class="line"></span><br><span class="line">        <span class="comment">//同样也要设置NameServer地址</span></span><br><span class="line">        consumer.setNamesrvAddr(<span class="string">&quot;localhost:9876&quot;</span>);</span><br><span class="line"></span><br><span class="line">        <span class="comment">//这里设置的是一个consumer的消费策略</span></span><br><span class="line">        <span class="comment">//CONSUME_FROM_LAST_OFFSET 默认策略，从该队列最尾开始消费，即跳过历史消息</span></span><br><span class="line">        <span class="comment">//CONSUME_FROM_FIRST_OFFSET 从队列最开始开始消费，即历史消息（还储存在broker的）全部消费一遍</span></span><br><span class="line">        <span class="comment">//CONSUME_FROM_TIMESTAMP 从某个时间点开始消费，和setConsumeTimestamp()配合使用，默认是半个小时以前</span></span><br><span class="line">        consumer.setConsumeFromWhere(ConsumeFromWhere.CONSUME_FROM_FIRST_OFFSET);</span><br><span class="line"></span><br><span class="line">        <span class="comment">//设置consumer所订阅的Topic和Tag</span></span><br><span class="line">        consumer.subscribe(<span class="string">&quot;TopicTestOrdered&quot;</span>, <span class="string">&quot;TagA || TagC || TagD&quot;</span>);</span><br><span class="line"></span><br><span class="line">        <span class="comment">//设置一个Listener，主要进行消息的逻辑处理</span></span><br><span class="line">        <span class="comment">//注意这里使用的是MessageListenerOrderly这个接口</span></span><br><span class="line">        consumer.registerMessageListener(<span class="keyword">new</span> <span class="title class_">MessageListenerOrderly</span>() &#123;</span><br><span class="line"></span><br><span class="line">            <span class="meta">@Override</span></span><br><span class="line">            <span class="keyword">public</span> ConsumeOrderlyStatus <span class="title function_">consumeMessage</span><span class="params">(List&lt;MessageExt&gt; msgs, ConsumeOrderlyContext context)</span> &#123;</span><br><span class="line"></span><br><span class="line">                System.out.println(Thread.currentThread().getName() + <span class="string">&quot; Receive New Messages: &quot;</span> + msgs);</span><br><span class="line"></span><br><span class="line">                <span class="comment">//返回消费状态</span></span><br><span class="line">                <span class="comment">//SUCCESS 消费成功</span></span><br><span class="line">                <span class="comment">//SUSPEND_CURRENT_QUEUE_A_MOMENT 消费失败，暂停当前队列的消费</span></span><br><span class="line">                <span class="keyword">return</span> ConsumeOrderlyStatus.SUCCESS;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br><span class="line"></span><br><span class="line">        <span class="comment">//调用start()方法启动consumer</span></span><br><span class="line">        consumer.start();</span><br><span class="line"></span><br><span class="line">        System.out.println(<span class="string">&quot;Consumer Started.&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h2 id="延时消息"><a href="#延时消息" class="headerlink" title="延时消息"></a>延时消息</h2><p>延时消息，简单来说就是当 producer 将消息发送到 broker 后，会延时一定时间后才投递给 consumer 进行消费。</p>
-<p>RcoketMQ的延时等级为：1s，5s，10s，30s，1m，2m，3m，4m，5m，6m，7m，8m，9m，10m，20m，30m，1h，2h。<br>level&#x3D;0，表示不延时。level&#x3D;1，表示 1 级延时，对应延时 1s。level&#x3D;2 表示 2 级延时，对应5s，以此类推。</p>
-<p>这种消息一般适用于消息生产和消费之间有时间窗口要求的场景。比如说我们网购时，下单之后是有一个支付时间，超过这个时间未支付，<br>系统就应该自动关闭该笔订单。那么在订单创建的时候就会就需要发送一条延时消息（延时15分钟）后投递给 consumer，<br>consumer 接收消息后再对订单的支付状态进行判断是否关闭订单。</p>
+<p>RcoketMQ的延时等级为：1s，5s，10s，30s，1m，2m，3m，4m，5m，6m，7m，8m，9m，10m，20m，30m，1h，2h。level&#x3D;0，表示不延时。level&#x3D;1，表示 1 级延时，对应延时 1s。level&#x3D;2 表示 2 级延时，对应5s，以此类推。</p>
+<p>这种消息一般适用于消息生产和消费之间有时间窗口要求的场景。比如说我们网购时，下单之后是有一个支付时间，超过这个时间未支付，系统就应该自动关闭该笔订单。那么在订单创建的时候就会就需要发送一条延时消息（延时15分钟）后投递给 consumer，consumer 接收消息后再对订单的支付状态进行判断是否关闭订单。</p>
 <p>设置延时非常简单，只需要在Message设置对应的延时级别即可：</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">Message</span> <span class="variable">msg</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Message</span>(<span class="string">&quot;TopicTest&quot;</span>,<span class="comment">// topic</span></span><br><span class="line">                        <span class="string">&quot;TagA&quot;</span>,<span class="comment">// tag</span></span><br><span class="line">                        (<span class="string">&quot;Hello RocketMQ &quot;</span> + i).getBytes(RemotingHelper.DEFAULT_CHARSET)<span class="comment">// body</span></span><br><span class="line">                );</span><br><span class="line">                <span class="comment">// 这里设置需要延时的等级即可</span></span><br><span class="line">                msg.setDelayTimeLevel(<span class="number">3</span>);</span><br><span class="line">                <span class="type">SendResult</span> <span class="variable">sendResult</span> <span class="operator">=</span> producer.send(msg);</span><br></pre></td></tr></table></figure>
 
@@ -231,61 +235,61 @@
 </ol>
 <h2 id="同步发送"><a href="#同步发送" class="headerlink" title="同步发送"></a>同步发送</h2><p><img src="/blog/images/img/mqsycn.png"> </p>
 <p>简单来说，同步发送就是指 producer 发送消息后，会在接收到 broker 响应后才继续发下一条消息的通信方式。</p>
-<p>由于这种同步发送的方式确保了消息的可靠性，同时也能及时得到消息发送的结果，故而适合一些发送比较重要的消息场景，<br>比如说重要的通知邮件、营销短信等等。在实际应用中，这种同步发送的方式还是用得比较多的。</p>
+<p>由于这种同步发送的方式确保了消息的可靠性，同时也能及时得到消息发送的结果，故而适合一些发送比较重要的消息场景，比如说重要的通知邮件、营销短信等等。在实际应用中，这种同步发送的方式还是用得比较多的。</p>
 <h2 id="异步发送"><a href="#异步发送" class="headerlink" title="异步发送"></a>异步发送</h2><p><img src="/blog/images/img/mqyb.png"> </p>
-<p>接着就是异步发送，异步发送是指 producer 发出一条消息后，不需要等待 broker 响应，就接着发送下一条消息的通信方式。<br>需要注意的是，不等待 broker 响应，并不意味着 broker 不响应，而是通过回调接口来接收 broker 的响应。<br>所以要记住一点，异步发送同样可以对消息的响应结果进行处理。</p>
-<p>由于异步发送不需要等待 broker 的响应，故在一些比较注重 RT（响应时间）的场景就会比较适用。比如，在一些视频上传的场景，<br>我们知道视频上传之后需要进行转码，如果使用同步发送的方式来通知启动转码服务，那么就需要等待转码完成才能发回转码结果的响应，<br>由于转码时间往往较长，很容易造成响应超时。此时，如果使用的是异步发送通知转码服务，那么就可以等转码完成后，<br>再通过回调接口来接收转码结果的响应了。</p>
+<p>接着就是异步发送，异步发送是指 producer 发出一条消息后，不需要等待 broker 响应，就接着发送下一条消息的通信方式。需要注意的是，不等待 broker 响应，并不意味着 broker 不响应，而是通过回调接口来接收 broker 的响应。所以要记住一点，异步发送同样可以对消息的响应结果进行处理。</p>
+<p>由于异步发送不需要等待 broker 的响应，故在一些比较注重 RT（响应时间）的场景就会比较适用。比如，在一些视频上传的场景，我们知道视频上传之后需要进行转码，如果使用同步发送的方式来通知启动转码服务，那么就需要等待转码完成才能发回转码结果的响应，由于转码时间往往较长，很容易造成响应超时。此时，如果使用的是异步发送通知转码服务，那么就可以等转码完成后，再通过回调接口来接收转码结果的响应了。</p>
 <h2 id="单向发送"><a href="#单向发送" class="headerlink" title="单向发送"></a>单向发送</h2><p><img src="/blog/images/img/mqsinglesend.png"> </p>
-<p>单向发送，见名知意，就是一种单方向通信方式，也就是说 producer 只负责发送消息，不等待 broker 发回响应结果，<br>而且也没有回调函数触发，这也就意味着 producer 只发送请求不等待响应结果。</p>
-<p>由于单向发送只是简单地发送消息，不需要等待响应，也没有回调接口触发，故发送消息所耗费的时间非常短，<br>同时也意味着消息不可靠。所以这种单向发送比较适用于那些耗时要求非常短，但对可靠性要求并不高的场景，比如说日志收集。</p>
-<h1 id="pull和push消费模式"><a href="#pull和push消费模式" class="headerlink" title="pull和push消费模式"></a>pull和push消费模式</h1><p>pull是主动型消费，即能从服务器拉取到数据就开始消费<br>首先通过打算消费的topic拿到MessageQueue中的集合消息，然后遍历拿取，并记录下次取消息时的offset位</p>
-<p>push是被动型消费，多了一个注册消费监听器，本质还是从服务器拉取数据，但是要等到消费监听器被触发以后，才会进行消费<br>push方式中，注册MessageListener监听器，取到消息后，唤醒MessageListener中的consumerMessage（）来消费</p>
+<p>单向发送，见名知意，就是一种单方向通信方式，也就是说 producer 只负责发送消息，不等待 broker 发回响应结果，而且也没有回调函数触发，这也就意味着 producer 只发送请求不等待响应结果。</p>
+<p>由于单向发送只是简单地发送消息，不需要等待响应，也没有回调接口触发，故发送消息所耗费的时间非常短，同时也意味着消息不可靠。所以这种单向发送比较适用于那些耗时要求非常短，但对可靠性要求并不高的场景，比如说日志收集。</p>
+<h1 id="pull和push消费模式"><a href="#pull和push消费模式" class="headerlink" title="pull和push消费模式"></a>pull和push消费模式</h1><p>pull是主动型消费，即能从服务器拉取到数据就开始消费。首先通过打算消费的topic拿到MessageQueue中的集合消息，然后遍历拿取，并记录下次取消息时的offset位</p>
+<p>push是被动型消费，多了一个注册消费监听器，本质还是从服务器拉取数据，但是要等到消费监听器被触发以后，才会进行消费。push方式中，注册MessageListener监听器，取到消息后，唤醒MessageListener中的consumerMessage（）来消费</p>
 <h1 id="RocketMQ的消费模式"><a href="#RocketMQ的消费模式" class="headerlink" title="RocketMQ的消费模式"></a>RocketMQ的消费模式</h1><ol>
 <li>集群消费</li>
 <li>广播消费</li>
 <li>( 使用集群消费模拟广播消费 )</li>
 </ol>
-<p>首先明确一点，RocketMQ 是基于发布订阅模型的消息中间件。所谓的发布订阅就是说，consumer 订阅了 broker 上的某个 topic，<br>当 producer 发布消息到 broker 上的该 topic 时，consumer 就能收到该条消息。</p>
-<p>之前我们讲过 consumer group 的概念，即消费同一类消息的多个 consumer 实例组成一个消费者组，也可以称为一个 consumer 集群，<br>这些 consumer 实例使用同一个 group name。需要注意一点，除了使用同一个 group name，订阅的 tag 也必须是一样的，<br>只有符合这两个条件的 consumer 实例才能组成 consumer 集群。</p>
+<p>首先明确一点，RocketMQ 是基于发布订阅模型的消息中间件。所谓的发布订阅就是说，consumer 订阅了 broker 上的某个 topic，当 producer 发布消息到 broker 上的该 topic 时，consumer 就能收到该条消息。</p>
+<p>之前我们讲过 consumer group 的概念，即消费同一类消息的多个 consumer 实例组成一个消费者组，也可以称为一个 consumer 集群，这些 consumer 实例使用同一个 group name。需要注意一点，除了使用同一个 group name，订阅的 tag 也必须是一样的，只有符合这两个条件的 consumer 实例才能组成 consumer 集群。</p>
 <p>集群消费</p>
 <p><img src="/blog/images/img/mqmorecum.png"> </p>
-<p>当 consumer 使用集群消费时，每条消息只会被 consumer 集群内的任意一个 consumer 实例消费一次。举个例子，当一个 consumer 集群内<br>有 3 个consumer 实例（假设为consumer 1、consumer 2、consumer 3）时，一条消息投递过来，只会被consumer 1、consumer 2、<br>consumer 3中的一个消费。</p>
-<p>同时记住一点，使用集群消费的时候，consumer 的消费进度是存储在 broker 上，consumer 自身是不存储消费进度的。消息进度存储在<br>broker 上的好处在于，当你 consumer 集群是扩大或者缩小时，由于消费进度统一在broker上，消息重复的概率会被大大降低了。</p>
+<p>当 consumer 使用集群消费时，每条消息只会被 consumer 集群内的任意一个 consumer 实例消费一次。举个例子，当一个 consumer 集群内有 3 个consumer 实例（假设为consumer 1、consumer 2、consumer 3）时，一条消息投递过来，只会被consumer 1、consumer 2、consumer 3中的一个消费。</p>
+<p>同时记住一点，使用集群消费的时候，consumer 的消费进度是存储在 broker 上，consumer 自身是不存储消费进度的。消息进度存储在 broker 上的好处在于，当你 consumer 集群是扩大或者缩小时，由于消费进度统一在broker上，消息重复的概率会被大大降低了。</p>
 <p>注意：在集群消费模式下，并不能保证每一次消息失败重投都投递到同一个 consumer 实例。</p>
 <p>广播消费</p>
 <p><img src="/blog/images/img/mqpub.png"> </p>
-<p>当 consumer 使用广播消费时，每条消息都会被 consumer 集群内所有的 consumer 实例消费一次，也就是说每条消息至少被每一个 consumer<br>实例消费一次。举个例子，当一个 consumer 集群内有 3 个 consumer 实例（假设为 consumer 1、consumer 2、consumer 3）时，一条消息投递过来，会被 consumer 1、consumer 2、consumer 3都消费一次。</p>
-<p>与集群消费不同的是，consumer 的消费进度是存储在各个 consumer 实例上，这就容易造成消息重复。还有很重要的一点，对于广播消费来说，<br>是不会进行消费失败重投的，所以在 consumer 端消费逻辑处理时，需要额外关注消费失败的情况。</p>
-<p>虽然广播消费能保证集群内每个 consumer 实例都能消费消息，但是消费进度的维护、不具备消息重投的机制大大影响了实际的使用。<br>因此，在实际使用中，更推荐使用集群消费，因为集群消费不仅拥有消费进度存储的可靠性，还具有消息重投的机制。<br>而且，我们通过集群消费也可以达到广播消费的效果。</p>
+<p>当 consumer 使用广播消费时，每条消息都会被 consumer 集群内所有的 consumer 实例消费一次，也就是说每条消息至少被每一个 consumer 实例消费一次。举个例子，当一个 consumer 集群内有 3 个 consumer 实例（假设为 consumer 1、consumer 2、consumer 3）时，一条消息投递过来，会被 consumer 1、consumer 2、consumer 3都消费一次。</p>
+<p>与集群消费不同的是，consumer 的消费进度是存储在各个 consumer 实例上，这就容易造成消息重复。还有很重要的一点，对于广播消费来说，是不会进行消费失败重投的，所以在 consumer 端消费逻辑处理时，需要额外关注消费失败的情况。</p>
+<p>虽然广播消费能保证集群内每个 consumer 实例都能消费消息，但是消费进度的维护、不具备消息重投的机制大大影响了实际的使用。因此，在实际使用中，更推荐使用集群消费，因为集群消费不仅拥有消费进度存储的可靠性，还具有消息重投的机制。而且，我们通过集群消费也可以达到广播消费的效果。</p>
 <p>使用集群消费模拟广播消费</p>
 <p><img src="/blog/images/img/mqjq.png"> </p>
-<p>如果业务上确实需要使用广播消费，那么我们可以通过创建多个 consumer 实例，每个 consumer 实例属于不同的 consumer group，<br>但是它们都订阅同一个 topic。举个例子，我们创建 3 个 consumer 实例，consumer 1（属于consumer group 1）、consumer 2<br>（属于 consumer group 2）、consumer 3（属于consumer group 3），它们都订阅了 topic A ，那么当 producer 发送一条消息<br>到 topic A 上时，由于 3 个consumer 属于不同的 consumer group，所以 3 个consumer都能收到消息，也就达到了广播消费的效果了。<br> 除此之外，每个 consumer 实例的消费逻辑可以一样也可以不一样，每个consumer group还可以根据需要增加 consumer 实例，<br> 比起广播消费来说更加灵活。 </p>
+<p>如果业务上确实需要使用广播消费，那么我们可以通过创建多个 consumer 实例，每个 consumer 实例属于不同的 consumer group，但是它们都订阅同一个 topic。举个例子，我们创建 3 个 consumer 实例，consumer 1（属于consumer group 1）、consumer 2（属于 consumer group 2）、consumer 3（属于consumer group 3），它们都订阅了 topic A ，那么当 producer 发送一条消息到 topic A 上时，由于 3 个consumer 属于不同的 consumer group，所以 3 个consumer都能收到消息，也就达到了广播消费的效果了。除此之外，每个 consumer 实例的消费逻辑可以一样也可以不一样，每个consumer group还可以根据需要增加 consumer 实例，比起广播消费来说更加灵活。 </p>
 <h1 id="消息过滤"><a href="#消息过滤" class="headerlink" title="消息过滤"></a>消息过滤</h1><p>说到消息过滤，就不得不说到 tag。没错，就是我们之前在专业术语中提到过的 tag。也称为消息标签，用来标记 Topic 下的不同用途的消息。</p>
-<p>在 RocketMQ 中消费者是可以按照 Tag 对消息进行过滤。举个电商交易场景的例子，用户下完订单之后，在后台会产生一系列的消息，<br>比如说订单消息、支付消息和物流消息。假设这些消息都发送到 Topic 为 Trade 中，同时用 tag 为 order 来标记订单消息，<br>用 tag 为 pay 来标记支付消息，用 tag 为 logistics 来标记物流消息。需要支付消息的支付系统（相当于一个 consumer）<br>订阅 Trade 中 tag 为 pay 的消息，此时，broker 则只会把 tag 为 pay 的消息投递给支付系统。而如果是一个实时计算系统，<br>它可能需要接收所有和交易相关的消息，那么只要它订阅 Trade 中 tag 为 order、pay、logistics 的消息，broker 就会把带有这些<br>tag 的消息投递给实时计算系统。</p>
-<p>对于消息分类，我们可以选择创建多个 Topic 来区分，也可以选择在同一个 Topic 下创建多个 tag 来区分。这两种方式都是可行的，<br>但是一般情况下，不同的 Topic 之间的消息是没有什么必然联系的，使用 tag 来区分同一个 Topic 下相互关联的消息则更加合适一些。</p>
-<h1 id="订阅关系一致性"><a href="#订阅关系一致性" class="headerlink" title="订阅关系一致性"></a>订阅关系一致性</h1><p>讲完了消息过滤，我们接着讲讲什么是订阅关系一致性呢？其实在讲 RocketMQ 消费模式的时候提到过，除了使用同一个 group name，<br>订阅的 tag 也必须是一样的，只有符合这两个条件的 consumer 实例才能组成 consumer 集群。这里所说的其实就是订阅关系一致性。<br>在 RocketMQ 中，订阅关系由 Topic和 Tag 组成，因此要保证订阅关系一致性，就必须同时保证这两点：</p>
+<p>在 RocketMQ 中消费者是可以按照 Tag 对消息进行过滤。举个电商交易场景的例子，用户下完订单之后，在后台会产生一系列的消息，比如说订单消息、支付消息和物流消息。假设这些消息都发送到 Topic 为 Trade 中，同时用 tag 为 order 来标记订单消息，用 tag 为 pay 来标记支付消息，用 tag 为 logistics 来标记物流消息。需要支付消息的支付系统（相当于一个 consumer）订阅 Trade 中 tag 为 pay 的消息，此时，broker 则只会把 tag 为 pay 的消息投递给支付系统。而如果是一个实时计算系统，它可能需要接收所有和交易相关的消息，那么只要它订阅 Trade 中 tag 为 order、pay、logistics 的消息，broker 就会把带有这些 tag 的消息投递给实时计算系统。</p>
+<p>对于消息分类，我们可以选择创建多个 Topic 来区分，也可以选择在同一个 Topic 下创建多个 tag 来区分。这两种方式都是可行的，但是一般情况下，不同的 Topic 之间的消息是没有什么必然联系的，使用 tag 来区分同一个 Topic 下相互关联的消息则更加合适一些。</p>
+<h1 id="订阅关系一致性"><a href="#订阅关系一致性" class="headerlink" title="订阅关系一致性"></a>订阅关系一致性</h1><p>讲完了消息过滤，我们接着讲讲什么是订阅关系一致性呢？其实在讲 RocketMQ 消费模式的时候提到过，除了使用同一个 group name，订阅的 tag 也必须是一样的，只有符合这两个条件的 consumer 实例才能组成 consumer 集群。这里所说的其实就是订阅关系一致性。在 RocketMQ 中，订阅关系由 Topic和 Tag 组成，因此要保证订阅关系一致性，就必须同时保证这两点：</p>
 <ul>
 <li><p>订阅的 Topic 必须一致</p>
 </li>
 <li><p>订阅的 Topic 中的 tag 必须一致</p>
 </li>
 </ul>
-<p>保证订阅关系一致性是非常重要的，一旦订阅关系不一致，消息消费的逻辑就会混乱，甚至导致消息丢失，这对于大部分业务场景来说都是不允许的，<br>甚至是致命的。在实际使用中，切记同一个消费者集群内的所有消费者实例务必要保证订阅关系的一致性。</p>
+<p>保证订阅关系一致性是非常重要的，一旦订阅关系不一致，消息消费的逻辑就会混乱，甚至导致消息丢失，这对于大部分业务场景来说都是不允许的，甚至是致命的。在实际使用中，切记同一个消费者集群内的所有消费者实例务必要保证订阅关系的一致性。</p>
 <p><img src="/blog/images/img/mqyzx.png"></p>
 <p> 备注：图中 “*” 代表订阅该Topic下所有的 tag。</p>
-<p>我们用具体的例子来解释一下，如图 1 所示，消费者集群中有 3 个 consumer 实例，分别为 C1、C2、C3，各自订阅的 topic 和 tag 各不相同。<br>首先 C1 和 C2 都订阅 TopicA，满足了订阅关系一致性的第一点，但是 C1 订阅的是 TopicA 的 Tag1，而 C2 订阅的是 TopicA 的 Tag2，<br>不满足订阅关系一致性的第二点，所以 C1、C2 不满足订阅关系一致性。而 C3 订阅的 Topic 和 Tag 都与 C1 和 C2不一样，同样也不满足订阅关系<br>一致性。</p>
+<p>我们用具体的例子来解释一下，如图 1 所示，消费者集群中有 3 个 consumer 实例，分别为 C1、C2、C3，各自订阅的 topic 和 tag 各不相同。首先 C1 和 C2 都订阅 TopicA，满足了订阅关系一致性的第一点，但是 C1 订阅的是 TopicA 的 Tag1，而 C2 订阅的是 TopicA 的 Tag2，不满足订阅关系一致性的第二点，所以 C1、C2 不满足订阅关系一致性。而 C3 订阅的 Topic 和 Tag 都与 C1 和 C2不一样，同样也不满足订阅关系一致性。</p>
 <p><img src="/blog/images/img/mqyzx1.png"></p>
 <p>备注：图中 “||” 用来连接不用的 tag，表示与的意思。</p>
-<p>在图 2 中，消费者集群中有 3 个 consumer 实例，分别为 C1、C2、C3，都是订阅 TopicA 下的 Tag1 和 Tag2，满足了订阅关系一致性的两点要求，<br>所以满足了订阅关系一致性。</p>
+<p>在图 2 中，消费者集群中有 3 个 consumer 实例，分别为 C1、C2、C3，都是订阅 TopicA 下的 Tag1 和 Tag2，满足了订阅关系一致性的两点要求，所以满足了订阅关系一致性。</p>
 <p><img src="/blog/images/img/mqyzx2.png"></p>
 <p>如图 3 所示，一个 consumer 也可以订阅多个 Topic，同时也必须保证该 consumer 集群里的多个消费者实例的订阅关系一致性，才不会造成不必要的麻烦。</p>
 <p>在实际使用中，消息过滤可以帮助我们只消费我们所需要的消息，这是在broker端就帮我们处理好的，大大减少了在 consumer 端的消息过滤处理，一方面减少了代码量，另一方面更减少了不必要消息的网络传输消耗。</p>
-<p>订阅消息一致性则保证了同一个消费者集群中 consumer 实例的正常运行，避免消息逻辑的混乱和消息的丢失。所以在实际使用中，在 producer 端要做好消息的分类，便于 consumer 可以使用 tag 进行消息的准确订阅，<br>而在 consumer 端，则要保证订阅关系一致性。</p>
+<p>订阅消息一致性则保证了同一个消费者集群中 consumer 实例的正常运行，避免消息逻辑的混乱和消息的丢失。所以在实际使用中，在 producer 端要做好消息的分类，便于 consumer 可以使用 tag 进行消息的准确订阅，而在 consumer 端，则要保证订阅关系一致性。</p>
 <h1 id="RocketMQ的消息重试"><a href="#RocketMQ的消息重试" class="headerlink" title="RocketMQ的消息重试"></a>RocketMQ的消息重试</h1><p>首先明确之前说过的，消息重试只针对集群消费模式，广播消费没有消息重试的特性，消费失败之后，只会继续消费下一条消息。这也是为什么我们一再强调，推荐大家使用集群消费模式，其消息重试的特性能给开发者带来极大的方便。</p>
-<p>那么什么是消息重试呢？简单来说，就是当消费者消费消息失败后，broker 会重新投递该消息，直到消费成功。在 RocketMQ 中，当消费者使用集群消费<br>模式时，消费者接收到消息并进行相应的逻辑处理之后，最后都要返回一个状态值给 broker。这样 broker 才知道是否消费成功，需不需要重新投递消息。<br>也就是说，我们可以通过设置返回的状态值来告诉 broker 是否重新投递消息。</p>
-<p>到这里，可能大家会有一个疑问，那如果这条消息本身就是一条脏数据，就算你消费 100 次也不会消费成功，难道还是一直去重试嘛？其实 RocketMQ 并不<br>会无限制地重试下去，默认每条消息最多重试 16 次，而每次重试的间隔时间如下表所示：</p>
+<p>那么什么是消息重试呢？简单来说，就是当消费者消费消息失败后，broker 会重新投递该消息，直到消费成功。在 RocketMQ 中，当消费者使用集群消费模式时，消费者接收到消息并进行相应的逻辑处理之后，最后都要返回一个状态值给 broker。这样 broker 才知道是否消费成功，需不需要重新投递消息。也就是说，我们可以通过设置返回的状态值来告诉 broker 是否重新投递消息。</p>
+<p>到这里，可能大家会有一个疑问，那如果这条消息本身就是一条脏数据，就算你消费 100 次也不会消费成功，难道还是一直去重试嘛？其实 RocketMQ 并不会无限制地重试下去，默认每条消息最多重试 16 次，而每次重试的间隔时间如下表所示：</p>
 <p><img src="/blog/images/img/mqretry.png"></p>
-<p>那么如果消息重试 16 次之后还是消费失败怎么办呢？那么消息就不会再投递给消费者，而是将消息放到相对应的死信队列中。这时候我们就需要对死信队列<br>的消息做一些人工补偿处理，因为这些消息可能本身就有问题，也有可能和消费逻辑调用的服务有关等，所以需要人工判断之后再进行处理。</p>
+<p>那么如果消息重试 16 次之后还是消费失败怎么办呢？那么消息就不会再投递给消费者，而是将消息放到相对应的死信队列中。这时候我们就需要对死信队列的消息做一些人工补偿处理，因为这些消息可能本身就有问题，也有可能和消费逻辑调用的服务有关等，所以需要人工判断之后再进行处理。</p>
 <p>到这里不知道大家有没有一个疑问，那就是什么样的情况才叫消费失败呢？可以分为 3 种情况：</p>
 <ol>
 <li><p>返回 ConsumeConcurrentlyStatus.RECONSUME_LATER</p>
@@ -295,15 +299,15 @@
 <li><p>抛出异常</p>
 </li>
 </ol>
-<p>前两种情况都比较好理解，就是前面说过的设置状态值，也就是说，只需要消费者返回 ConsumeConcurrentlyStatus.RECONSUME_LATER 或者 null，<br>就相当于告诉 broker 说，这条消息我消费失败了，你给我重新投递一次。而对于抛出异常这种情况，只要在你处理消费逻辑的地方抛出了异常,那么<br>broker 也重新投递这条消息。注意一点，如果是被捕获的异常，则不会进行消息重试。</p>
-<h1 id="消息幂等"><a href="#消息幂等" class="headerlink" title="消息幂等"></a>消息幂等</h1><p>首先什么是消费幂等呢？简单来说就是对于一条消息的处理结果，不管这条消息被处理多少次，最终的结果都一样。比如说，你收到一条消息是要更新一个<br>商品的价格为 6.8 元，那么当这条消息执行 1 次，还是执行 100 次，最终在数据库里的该商品价格就是 6.8 元，这就是所谓的幂等。 那么为什么消费<br>需要幂等呢？因为在实际使用中，尤其在网络不稳定的情况下，RocketMQ 的消息有可能会出现重复，包括两种情况：</p>
+<p>前两种情况都比较好理解，就是前面说过的设置状态值，也就是说，只需要消费者返回 ConsumeConcurrentlyStatus.RECONSUME_LATER 或者 null，就相当于告诉 broker 说，这条消息我消费失败了，你给我重新投递一次。而对于抛出异常这种情况，只要在你处理消费逻辑的地方抛出了异常,那么 broker 也重新投递这条消息。注意一点，如果是被捕获的异常，则不会进行消息重试。</p>
+<h1 id="消息幂等"><a href="#消息幂等" class="headerlink" title="消息幂等"></a>消息幂等</h1><p>首先什么是消费幂等呢？简单来说就是对于一条消息的处理结果，不管这条消息被处理多少次，最终的结果都一样。比如说，你收到一条消息是要更新一个商品的价格为 6.8 元，那么当这条消息执行 1 次，还是执行 100 次，最终在数据库里的该商品价格就是 6.8 元，这就是所谓的幂等。 那么为什么消费需要幂等呢？因为在实际使用中，尤其在网络不稳定的情况下，RocketMQ 的消息有可能会出现重复，包括两种情况：</p>
 <p>发送时消息重复；</p>
 <p>投递时消息重复；</p>
-<p>第一种情况是生产者发送消息的场景，消息已成功发送到 broker ，但是此时可能发生网络闪断或者生产者宕机了，导致 broker 发回的响应失败。这时候<br>生产者由于没有收到响应，认为消息发送失败，于是尝试再次发送消息给 broker。这样一来，broker 就会再收到一条一模一样内容的消息，最终造成了消<br>费者也收到两条内容一模一样的消息。</p>
-<p>第二种情况是消费者消费消息的场景，消息已投递到消费者并完成消费逻辑处理，当消费者给 broker 反馈消费状态时可能发生网络闪断。broker 收不到<br>消费者的消费状态，为了保证至少消费一次的语义，broker 将在网络恢复后再次尝试投递之前已经被处理过的消息，最终造成消费者收到两条内容一模一样<br>的消息。</p>
-<p>当然对于一些允许消息重复的场景，大可以不必关心消费幂等。但是对于那些不允许消息重复的业务场景来说，处理建议就是通过业务上的唯一标识来作为<br>幂等处理的依据。</p>
-<p>消息重试，保证了消费消息的容错性，即使消费失败，也不需要开发者自己去编写代码来做补偿，大大提高了开发效率，同时也是 RocketMQ 相较于其他<br>MQ 的一个非常好的特性。而消费幂等主要是针对那些不允许消息重复的场景，应该说大部分 MQ 都需要幂等处理，这属于代码逻辑或者说业务上的需要，<br>最好的处理方式就是前面所说的根据业务上唯一标识来作为幂等处理的依据。</p>
-<h1 id="消息的重复消费问题及措施"><a href="#消息的重复消费问题及措施" class="headerlink" title="消息的重复消费问题及措施"></a>消息的重复消费问题及措施</h1><p>消息的重复消费问题及措施<br>出现消息的重复消费的原因是因为我们的rocketmq支持失败重试的机制，一些极端情况下，例如消费超时，或者mq没有收到消费端的ACK确认码，将消息<br>发给其他消费者而出现的重复问题</p>
+<p>第一种情况是生产者发送消息的场景，消息已成功发送到 broker ，但是此时可能发生网络闪断或者生产者宕机了，导致 broker 发回的响应失败。这时候生产者由于没有收到响应，认为消息发送失败，于是尝试再次发送消息给 broker。这样一来，broker 就会再收到一条一模一样内容的消息，最终造成了消<br>费者也收到两条内容一模一样的消息。</p>
+<p>第二种情况是消费者消费消息的场景，消息已投递到消费者并完成消费逻辑处理，当消费者给 broker 反馈消费状态时可能发生网络闪断。broker 收不到消费者的消费状态，为了保证至少消费一次的语义，broker 将在网络恢复后再次尝试投递之前已经被处理过的消息，最终造成消费者收到两条内容一模一样的消息。</p>
+<p>当然对于一些允许消息重复的场景，大可以不必关心消费幂等。但是对于那些不允许消息重复的业务场景来说，处理建议就是通过业务上的唯一标识来作为幂等处理的依据。</p>
+<p>消息重试，保证了消费消息的容错性，即使消费失败，也不需要开发者自己去编写代码来做补偿，大大提高了开发效率，同时也是 RocketMQ 相较于其他 MQ 的一个非常好的特性。而消费幂等主要是针对那些不允许消息重复的场景，应该说大部分 MQ 都需要幂等处理，这属于代码逻辑或者说业务上的需要，最好的处理方式就是前面所说的根据业务上唯一标识来作为幂等处理的依据。</p>
+<h1 id="消息的重复消费问题及措施"><a href="#消息的重复消费问题及措施" class="headerlink" title="消息的重复消费问题及措施"></a>消息的重复消费问题及措施</h1><p>消息的重复消费问题及措施出现消息的重复消费的原因是因为我们的rocketmq支持失败重试的机制，一些极端情况下，例如消费超时，或者mq没有收到消费端的ACK确认码，将消息发给其他消费者而出现的重复问题</p>
 <ol>
 <li>针对普通场景，建立一个消息表。对于每条消息，创建唯一的标识，这样避免相同的消息出现重复消费</li>
 <li>针对并发较高的场景，可以通过redis来代替消息表</li>
