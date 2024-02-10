@@ -125,7 +125,7 @@
 <h1 id="防御方法"><a href="#防御方法" class="headerlink" title="防御方法"></a>防御方法</h1><p>（1）不信任用户提交的任何内容，对所有用户提交内容进行可靠的输入验证，包括对URL、查询关键字、HTTP头、REFER、POST数据等，仅接受指定长度范围内、采用适当格式、采用所预期的字符的内容提交，对其他的一律过滤。尽量采用POST而非GET提交表单；对“&lt;”，“&gt;”，“；”，“””等字符做过滤；任何内容输出到页面之前都必须加以en-code，避免不小心把htmltag显示出来。</p>
 <p>（2）实现Session 标记（session tokens）、CAPTCHA（验证码）系统或者HTTP引用头检查，以防功能被第三方网站所执行，对于用户提交信息的中的img等link，检查是否有重定向回本站、不是真的图片等可疑操作。</p>
 <p>（3）cookie 防盗。避免直接在cookie中泄露用户隐私，例如email、密码，等等；通过使cookie和系统IP绑定来降低cookie泄露后的危险。这样攻击者得到的cookie没有实际价值，很难拿来直接进行重放攻击。</p>
-<p>（4）确认接收的内容被妥善地规范化，仅包含最小的、安全的Tag（没有JavaScript），去掉任何对远程内容的引用（尤其是样式表和JavaScript），使用HTTPonly的cookie。</p>
+<p>（4）确认接收的内容被妥善地规范化，仅包含最小的、安全的Tag（没有JavaScript），去掉任何对远程内容的引用（尤其是样式表和JavaScript），使用HttpOnly 的cookie(HttpOnly是cookie的一个属性，在设置了 HttpOnly 属性的情况下，浏览器将禁止通过 JavaScript 访问和修改 Cookie，从而有效地防止一些常见的攻击，例如跨站脚本攻击（XSS）)。</p>
  
       <!-- reward -->
       
@@ -152,9 +152,9 @@
       </a>
     
     
-      <a href="/blog/2024/01/15/%E5%B7%A5%E4%BD%9C%E6%B5%81/activiti7/6-%E6%B5%81%E7%A8%8B%E5%8F%98%E9%87%8F/" class="article-nav-link">
+      <a href="/blog/2024/01/15/%E5%B7%A5%E4%BD%9C%E6%B5%81/activiti7/5-%E4%BB%BB%E5%8A%A1%E5%88%86%E9%85%8D/" class="article-nav-link">
         <strong class="article-nav-caption">下一篇</strong>
-        <div class="article-nav-title">6-流程变量</div>
+        <div class="article-nav-title">5-任务分配</div>
       </a>
     
   </nav>

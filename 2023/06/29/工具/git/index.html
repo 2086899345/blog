@@ -87,7 +87,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> 字数统计:</span>
-            <span class="post-count">470</span>
+            <span class="post-count">505</span>
         </span>
     </span>
 
@@ -96,7 +96,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-book-open-line"></i>
             <span class="post-meta-item-text"> 阅读时长≈</span>
-            <span class="post-count">1 分钟</span>
+            <span class="post-count">2 分钟</span>
         </span>
     </span>
 </div>
@@ -121,11 +121,13 @@
 <h1 id="回退到具体版本"><a href="#回退到具体版本" class="headerlink" title="回退到具体版本"></a>回退到具体版本</h1><p>git reset –hard id </p>
 <p>使用 git log 或者git reflog查看版本id（git reflog一般从过去</p>
 <p>回到未来）</p>
-<h1 id="提交暂缓区之前（git-add），撤销编辑的内容"><a href="#提交暂缓区之前（git-add），撤销编辑的内容" class="headerlink" title="提交暂缓区之前（git add），撤销编辑的内容"></a>提交暂缓区之前（git add），撤销编辑的内容</h1><p>git checkout – [文件]<br>注意：checkout后面有–，没有是切换分支</p>
+<h1 id="提交暂缓区之前（git-add），撤销编辑的内容"><a href="#提交暂缓区之前（git-add），撤销编辑的内容" class="headerlink" title="提交暂缓区之前（git add），撤销编辑的内容"></a>提交暂缓区之前（git add），撤销编辑的内容</h1><p>git checkout – [文件]</p>
+<p>注意：checkout后面有–，没有是切换分支</p>
 <h1 id="提交暂缓区之后（git-add），撤销编辑的内容（此时编辑的内容撤销到工作区）"><a href="#提交暂缓区之后（git-add），撤销编辑的内容（此时编辑的内容撤销到工作区）" class="headerlink" title="提交暂缓区之后（git add），撤销编辑的内容（此时编辑的内容撤销到工作区）"></a>提交暂缓区之后（git add），撤销编辑的内容（此时编辑的内容撤销到工作区）</h1><p>git reset HEAD [文件]</p>
 <p>git reset命令既可以回退版本，也可以把暂存区的修改回退到工作区。</p>
 <h1 id="分支管理"><a href="#分支管理" class="headerlink" title="分支管理"></a>分支管理</h1><h2 id="创建并切换分支"><a href="#创建并切换分支" class="headerlink" title="创建并切换分支"></a>创建并切换分支</h2><p>git checkout -b [分支名称]</p>
-<h2 id="切换分支"><a href="#切换分支" class="headerlink" title="切换分支"></a>切换分支</h2><p>git checkout [分支名称]<br>切换分支还可以使用git switch -c [分支名称]</p>
+<h2 id="切换分支"><a href="#切换分支" class="headerlink" title="切换分支"></a>切换分支</h2><p>git checkout [分支名称]</p>
+<p>切换分支还可以使用git switch -c [分支名称]</p>
 <h2 id="合并分支"><a href="#合并分支" class="headerlink" title="合并分支"></a>合并分支</h2><p>git merge [分支名称]</p>
 <h2 id="删除分支"><a href="#删除分支" class="headerlink" title="删除分支"></a>删除分支</h2><p>git branch -d [分支名称]</p>
 <h1 id="解决冲突"><a href="#解决冲突" class="headerlink" title="解决冲突"></a>解决冲突</h1><p>Git用&lt;&lt;&lt;&lt;&lt;&lt;&lt;，&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;，&gt;&gt;&gt;&gt;&gt;&gt;&gt;标记出不同分支的内容，修改后保存</p>
@@ -133,6 +135,10 @@
 <h1 id="暂存开发现场"><a href="#暂存开发现场" class="headerlink" title="暂存开发现场"></a>暂存开发现场</h1><p>针对当前分支开发而没有提交，需要去处理其他分支的情景，可以使用git stash 暂存开发现场。等解决完其他分支切回当前分支后执行git list查看当前stash记录。然后执行git stash pop还原当前分支开发现场（pop会还原后删除保存的记录，git stash apply则不会删除，删除需要手动执行git stash drop）。</p>
 <h1 id="格式化提交时间线"><a href="#格式化提交时间线" class="headerlink" title="格式化提交时间线"></a>格式化提交时间线</h1><p>git rebase</p>
 <h1 id="提交-gitignore文件中忽视的文件"><a href="#提交-gitignore文件中忽视的文件" class="headerlink" title="提交.gitignore文件中忽视的文件"></a>提交.gitignore文件中忽视的文件</h1><p>git rm -r –cached [文件夹]</p>
+<h1 id="查看-x2F-修改账户密码邮箱"><a href="#查看-x2F-修改账户密码邮箱" class="headerlink" title="查看&#x2F;修改账户密码邮箱"></a>查看&#x2F;修改账户密码邮箱</h1><p>git config –list</p>
+<p>git config –global user.name “账户”</p>
+<p>git config –global user.password “密码”</p>
+<p>git config –global user.email “邮箱”</p>
  
       <!-- reward -->
       
