@@ -87,7 +87,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> 字数统计:</span>
-            <span class="post-count">463</span>
+            <span class="post-count">747</span>
         </span>
     </span>
 
@@ -96,7 +96,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-book-open-line"></i>
             <span class="post-meta-item-text"> 阅读时长≈</span>
-            <span class="post-count">1 分钟</span>
+            <span class="post-count">2 分钟</span>
         </span>
     </span>
 </div>
@@ -141,13 +141,31 @@
 <h1 id="less"><a href="#less" class="headerlink" title="less"></a>less</h1><p>less指令<br>功能：查看文件内容，less用法比more更具有弹性，可以使用 [pageup][pagedown]（前后按键）等按键的功能来往前往后翻看文件，而且less在查看之前不会加载整个文件。</p>
 <p>选项：</p>
 <ul>
-<li>-i ：忽略大小写</li>
-<li>-N :显示行号</li>
-<li>&#x2F;字符串：向上搜索字符串的内容</li>
-<li>?字符串：向下搜索字符串的内容</li>
-<li>n ：重复前一个搜索（与&#x2F; 或?有关）</li>
-<li>N：返向重复前一个搜索（与&#x2F; 或?有关）</li>
-<li>q：退出less</li>
+<li>-e 当文件显示结束后，自动离开</li>
+<li>-f 强迫打开特殊文件，例如外围设备代号、目录和二进制文件</li>
+<li>-g 只标志最后搜索的关键词</li>
+<li>-i 忽略搜索时的大小写</li>
+<li>-m 显示类似more命令的百分比</li>
+<li>-N 显示每行的行号</li>
+<li>-o &lt;文件名&gt;; 将less 输出的内容在指定文件中保存起来</li>
+<li>-Q 不使用警告音</li>
+<li>-s 显示连续空行为一行</li>
+<li>-S 行过长时间将超出部分舍弃</li>
+<li>-x &lt;数字&gt;; 将”tab”键显示为规定的数字空格</li>
+<li>&#x2F;字符串：向下搜索”字符串”的功能</li>
+<li>?字符串：向上搜索”字符串”的功能</li>
+<li>n：重复前一个搜索（与 &#x2F; 或 ? 有关）</li>
+<li>N：反向重复前一个搜索（与 &#x2F; 或 ? 有关）</li>
+<li>b 向上翻一页</li>
+<li>d 向后翻半页</li>
+<li>h 显示帮助界面</li>
+<li>Q 退出less 命令</li>
+<li>u 向前滚动半页</li>
+<li>y 向前滚动一行</li>
+<li>空格键 滚动一页</li>
+<li>回车键 滚动一行</li>
+<li>[pagedown]： 向下翻动一页</li>
+<li>[pageup]： 向上翻动一页</li>
 </ul>
 <h1 id="head"><a href="#head" class="headerlink" title="head"></a>head</h1><p>功能：显示文件内容的开头到标准输出，也就是屏幕上，head不加参数默认显示前10行</p>
 <p>选项：</p>
@@ -161,6 +179,11 @@
 <h1 id="find"><a href="#find" class="headerlink" title="find"></a>find</h1><p>选项：-name :按照文件名查找</p>
 <p>指定目录</p>
 <p>语法：find [起始目录位置] [-name][filename]</p>
+<h1 id="上传下载"><a href="#上传下载" class="headerlink" title="上传下载"></a>上传下载</h1><p>现在大多数Linux服务器都自带有lrzsz程序，方便文件上传下载，如果没有可以直接安装就好。</p>
+<p>1、rz(本机文件上传服务器)</p>
+<p>rz        # 选择本机上的文件上传给服务器</p>
+<p>2、sz(服务器上文件拷贝给本机)</p>
+<p>sz test.tar</p>
  
       <!-- reward -->
       

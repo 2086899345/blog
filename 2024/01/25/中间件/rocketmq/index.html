@@ -87,7 +87,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> 字数统计:</span>
-            <span class="post-count">9.6k</span>
+            <span class="post-count">9.8k</span>
         </span>
     </span>
 
@@ -361,6 +361,21 @@
 <p>场景三：</p>
 <p>mq会在消费端注册一个监听，当consumer拿去到消息消费时，只有消费成功后，才会发送一个COMSUME_SUCCESS的状态，mq会知道消费成功<br>（类似与一个ACK的确认机制）</p>
 <p>当节点挂掉时，rocketmq长时间收不到响应（监听也没了），就会进行故障转移，将消息发给其他消费者处理</p>
+<h1 id="rocket-mq-消息投递状态"><a href="#rocket-mq-消息投递状态" class="headerlink" title="rocket mq 消息投递状态"></a>rocket mq 消息投递状态</h1><ol>
+<li><p>NOT_ONLINE 订阅端不在线</p>
+</li>
+<li><p>CONSUMED 消息已经被投递</p>
+</li>
+</ol>
+<p>订阅端返回ReconsumerLater，或者返回NULL，或者抛出异常，消息都会走重试流程，消息投递状态都是CONSUMED。</p>
+<ol start="3">
+<li>CONSUMED_BUT_FILTERED 消息已经被投递且被过滤</li>
+</ol>
+<p><strong>比如，发布端发布消息topicA，tagA，订阅端订阅topicA，tagB, tagA的消息就被集群消费的消费者忽略掉了</strong></p>
+<ol start="4">
+<li>NOT_CONSUME_YET 消息未被投递</li>
+</ol>
+<p>有可能消息发生了堆积，还未被消费；也有可能消费线程hang住了，导致消费线程迟迟没有返回。</p>
  
       <!-- reward -->
       
