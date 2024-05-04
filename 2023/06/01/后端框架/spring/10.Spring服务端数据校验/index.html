@@ -87,7 +87,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> 字数统计:</span>
-            <span class="post-count">937</span>
+            <span class="post-count">1k</span>
         </span>
     </span>
 
@@ -123,7 +123,9 @@
 <li>@Null 被注解的元素必须为 null </li>
 <li>@NotNull 被注解的元素必须不为 null </li>
 <li>@AssertTrue 被注解的元素必须为 true </li>
-<li>@AssertFalse 被注解的元素必须为 false @Min(value) 被注解的元素必须是一个数字，其值必须大于等于指定的最小值 @Max(value) 被注解的元素必须是一个数字，其值必须小于等于指定的最大值 </li>
+<li>@AssertFalse 被注解的元素必须为 false </li>
+<li>@Min(value) 被注解的元素必须是一个数字，其值必须大于等于指定的最小值 </li>
+<li>@Max(value) 被注解的元素必须是一个数字，其值必须小于等于指定的最大值 </li>
 <li>@DecimalMin(value) 被注解的元素必须是一个数字，其值必须大于等于指定的最小值 </li>
 <li>@DecimalMax(value) 被注解的元素必须是一个数字，其值必须小于等于指定的最大值 </li>
 <li>@Size(max&#x3D;, min&#x3D;) 被注解的元素的大小必须在指定的范围内 </li>
@@ -144,7 +146,7 @@
 <li>controller层增加校验组<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="title function_">ResponResult</span> <span class="params">(<span class="meta">@ResponseBody</span> <span class="meta">@Validated(ValidateGroups.class)</span> UserDto userDto)</span> &#123;</span><br><span class="line">    userService.insert(userDto);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
 <li>实体对象添加检验注解<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> Class UserDto &#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@NotEmpty(message=&quot;新增用户名称不能为空&quot;,groups=&#123;ValidateGroups.insert.class&#125;)</span></span><br><span class="line">    <span class="meta">@NotEmpty(message=&quot;修改用户名称不能为空&quot;,groups=&#123;ValidateGroups.update.class&#125;)</span></span><br><span class="line">    <span class="keyword">private</span> String name;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
 </ol>
- 
+<h1 id="非空校验注解-NotNull、-NotEmpty、-NotBlank的区别和运用"><a href="#非空校验注解-NotNull、-NotEmpty、-NotBlank的区别和运用" class="headerlink" title="非空校验注解 @NotNull、@NotEmpty、@NotBlank的区别和运用"></a>非空校验注解 @NotNull、@NotEmpty、@NotBlank的区别和运用</h1><h2 id="NotNull-常用在数据类型为Long，Integer的基础数据类型上，可以配合-Size、-Max、-Min对数值进行大小的控制"><a href="#NotNull-常用在数据类型为Long，Integer的基础数据类型上，可以配合-Size、-Max、-Min对数值进行大小的控制" class="headerlink" title="@NotNull 常用在数据类型为Long，Integer的基础数据类型上，可以配合@Size、@Max、@Min对数值进行大小的控制"></a>@NotNull 常用在数据类型为Long，Integer的基础数据类型上，可以配合@Size、@Max、@Min对数值进行大小的控制</h2><h2 id="NotEmpty-常用在集合类和数组类型上，也可以配合-Size进行大小的控制。"><a href="#NotEmpty-常用在集合类和数组类型上，也可以配合-Size进行大小的控制。" class="headerlink" title="@NotEmpty 常用在集合类和数组类型上，也可以配合@Size进行大小的控制。"></a>@NotEmpty 常用在集合类和数组类型上，也可以配合@Size进行大小的控制。</h2><h2 id="NotBlank-只用于String数据类型上，可以和-Len配合使用限制字符长度。"><a href="#NotBlank-只用于String数据类型上，可以和-Len配合使用限制字符长度。" class="headerlink" title="@NotBlank 只用于String数据类型上，可以和@Len配合使用限制字符长度。"></a>@NotBlank 只用于String数据类型上，可以和@Len配合使用限制字符长度。</h2> 
       <!-- reward -->
       
     </div>
@@ -162,19 +164,19 @@
    
   <nav class="article-nav">
     
-      <a href="/blog/2023/06/01/%E5%90%8E%E7%AB%AF%E6%A1%86%E6%9E%B6/spring/1.Spring%E7%AE%80%E4%BB%8B/" class="article-nav-link">
+      <a href="/blog/2023/06/01/%E5%90%8E%E7%AB%AF%E6%A1%86%E6%9E%B6/spring/9.Spring%20%E4%BA%8B%E5%8A%A1/" class="article-nav-link">
         <strong class="article-nav-caption">上一篇</strong>
         <div class="article-nav-title">
           
-            1.Spring简介
+            9.Spring 事务
           
         </div>
       </a>
     
     
-      <a href="/blog/2023/06/01/%E5%90%8E%E7%AB%AF%E6%A1%86%E6%9E%B6/spring/2.spring%E7%BB%84%E4%BB%B6/" class="article-nav-link">
+      <a href="/blog/2023/06/01/%E5%90%8E%E7%AB%AF%E6%A1%86%E6%9E%B6/springmvc/10.RESTful/" class="article-nav-link">
         <strong class="article-nav-caption">下一篇</strong>
-        <div class="article-nav-title">2.spring组件</div>
+        <div class="article-nav-title">11.RESTful</div>
       </a>
     
   </nav>
